@@ -25,6 +25,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.Gonzalo" action="https://professor-falken.com/mac/como-instalar-mariadb-mysql-usando-homebrew-en-tu-mac/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.Maribel" action="https://open.spotify.com/album/28adqly9V7wm5DFr7hlqtK?si=lv0oGBM1SLSiBxZ7A7U-wA&nd=1"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.JaviM" action="https://open.spotify.com/album/5pQwQRnQOuKrbVUVnGMEN4?si=-9ewcULTRHKaxRjYfdRrrQ"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-shout" action="/anonymous/shout/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.create-shout" action="/anonymous/shout/create"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
