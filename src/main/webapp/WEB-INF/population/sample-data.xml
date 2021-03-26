@@ -18,5 +18,34 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
-
+	
+	<!-- Shouts -->
+	<bean id="shout01" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/03/18 20:00"/>
+		<property name="author" value="Mary Doe"/>
+		<property name="text" value="I'm tired"/>
+		<property name="info"> <null/></property>
+	</bean>
+	
+	<bean id="shout02" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2020/08/20 17:15"/>
+		<property name="author" value="Patrick Start"/>
+		<property name="text" value="I'm happy"/>
+		<property name="info" value="http://www.example.com"/>
+	</bean>
+	
+	<bean id="shout03" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2020/08/20 17:15"/>
+		<property name="author" value="Ian Somerhalder"/>
+		<property name="text" value="Just turning 42!"/>
+		<property name="info"> <null/></property>
+	</bean>
+	
+	<bean id="shout04" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2018/05/09 10:37"/>
+		<property name="author" value="Peter Parker"/>
+		<property name="text" value="I'm Spiderman!"/>
+		<property name="info" value="http://www.example.com"/>
+	</bean>
+	
 </beans>
