@@ -39,7 +39,7 @@ public class Task extends DomainEntity{
 	protected Date end;
 	
 	@NotBlank
-	@Length(min=500)
+	@Length(max=500)
 	protected String description;
 	
 	@URL 

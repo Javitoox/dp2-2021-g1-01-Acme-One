@@ -67,12 +67,7 @@
 		<property name="begin" value="2050/05/09 10:00"/>
 		<property name="end" value="2050/10/13 23:59"/>
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers.
-		The system must store shouts with the following data: a creation moment, an author (can be an invented name), a piece of text, and an optional link to additional information.  The name must not be smaller than five characters or longer than 25 characters and the text cannot be empty or longer than 100 characters.
-		The system must store tasks, which consists of the following data: a title, an execution period, a workload, a description, and an optional link. 
-		The tasks can be either public or private. The title must not be empty, but shorter than 80 characters. The execution period consists in two moments (including date and time) that must be in future when a task is created. 
-		The workload is a number of hours with an optional fraction that represents the number of minutes (not a percentage as usual); obviously, the workload must fit within the execution period. 
-		The description must not be empty, but shorter than 500 characters.
-		"/>
+		The tasks can be either public or private."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 	</bean>
@@ -81,12 +76,7 @@
 		<property name="begin" value="2030/10/09 10:00"/>
 		<property name="end" value="2030/10/13 23:59"/>
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers.
-		The system must store shouts with the following data: a creation moment, an author (can be an invented name), a piece of text, and an optional link to additional information.  The name must not be smaller than five characters or longer than 25 characters and the text cannot be empty or longer than 100 characters.
-		The system must store tasks, which consists of the following data: a title, an execution period, a workload, a description, and an optional link. 
-		The tasks can be either public or private. The title must not be empty, but shorter than 80 characters. The execution period consists in two moments (including date and time) that must be in future when a task is created. 
-		The workload is a number of hours with an optional fraction that represents the number of minutes (not a percentage as usual); obviously, the workload must fit within the execution period. 
-		The description must not be empty, but shorter than 500 characters.
-		"/>
+		The tasks can be either public or private."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="false"/>
 	</bean>
@@ -94,13 +84,7 @@
 		<property name="title" value="task3"/>
 		<property name="begin" value="2070/02/13 10:00"/>
 		<property name="end" value="2070/03/13 23:59"/>
-		<property name="description" value="-	The principals of the system can be either anonymous users, administrators, or managers.
-		The system must store shouts with the following data: a creation moment, an author (can be an invented name), a piece of text, and an optional link to additional information.  The name must not be smaller than five characters or longer than 25 characters and the text cannot be empty or longer than 100 characters.
-		The system must store tasks, which consists of the following data: a title, an execution period, a workload, a description, and an optional link. 
-		The tasks can be either public or private. The title must not be empty, but shorter than 80 characters. The execution period consists in two moments (including date and time) that must be in future when a task is created. 
-		The workload is a number of hours with an optional fraction that represents the number of minutes (not a percentage as usual); obviously, the workload must fit within the execution period. 
-		The description must not be empty, but shorter than 500 characters.
-		"/>
+		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="false"/>
 	</bean>
@@ -108,13 +92,7 @@
 		<property name="title" value="task4"/>
 		<property name="begin" value="2040/05/09 09:00"/>
 		<property name="end" value="2040/06/09 23:59"/>
-		<property name="description" value="-	The principals of the system can be either anonymous users, administrators, or managers.
-		The system must store shouts with the following data: a creation moment, an author (can be an invented name), a piece of text, and an optional link to additional information.  The name must not be smaller than five characters or longer than 25 characters and the text cannot be empty or longer than 100 characters.
-		The system must store tasks, which consists of the following data: a title, an execution period, a workload, a description, and an optional link. 
-		The tasks can be either public or private. The title must not be empty, but shorter than 80 characters. The execution period consists in two moments (including date and time) that must be in future when a task is created. 
-		The workload is a number of hours with an optional fraction that represents the number of minutes (not a percentage as usual); obviously, the workload must fit within the execution period. 
-		The description must not be empty, but shorter than 500 characters.
-		"/>
+		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="false"/>
 	</bean>
@@ -122,13 +100,7 @@
 		<property name="title" value="task5"/>
 		<property name="begin" value="2035/10/12 09:00"/>
 		<property name="end" value="2035/10/14 23:59"/>
-		<property name="description" value="-	The principals of the system can be either anonymous users, administrators, or managers.
-		The system must store shouts with the following data: a creation moment, an author (can be an invented name), a piece of text, and an optional link to additional information.  The name must not be smaller than five characters or longer than 25 characters and the text cannot be empty or longer than 100 characters.
-		The system must store tasks, which consists of the following data: a title, an execution period, a workload, a description, and an optional link. 
-		The tasks can be either public or private. The title must not be empty, but shorter than 80 characters. The execution period consists in two moments (including date and time) that must be in future when a task is created. 
-		The workload is a number of hours with an optional fraction that represents the number of minutes (not a percentage as usual); obviously, the workload must fit within the execution period. 
-		The description must not be empty, but shorter than 500 characters.
-		"/>
+		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 	</bean>
@@ -136,13 +108,7 @@
 		<property name="title" value="task6"/>
 		<property name="begin" value="2060/05/09 10:00"/>
 		<property name="end" value="2060/07/01 23:59"/>
-		<property name="description" value="-	The principals of the system can be either anonymous users, administrators, or managers.
-		The system must store shouts with the following data: a creation moment, an author (can be an invented name), a piece of text, and an optional link to additional information.  The name must not be smaller than five characters or longer than 25 characters and the text cannot be empty or longer than 100 characters.
-		The system must store tasks, which consists of the following data: a title, an execution period, a workload, a description, and an optional link. 
-		The tasks can be either public or private. The title must not be empty, but shorter than 80 characters. The execution period consists in two moments (including date and time) that must be in future when a task is created. 
-		The workload is a number of hours with an optional fraction that represents the number of minutes (not a percentage as usual); obviously, the workload must fit within the execution period. 
-		The description must not be empty, but shorter than 500 characters.
-		"/>
+		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 	</bean>
@@ -150,13 +116,7 @@
 		<property name="title" value="task7"/>
 		<property name="begin" value="2025/10/27 10:00"/>
 		<property name="end" value="2025/11/30 23:59"/>
-		<property name="description" value="-	The principals of the system can be either anonymous users, administrators, or managers.
-		The system must store shouts with the following data: a creation moment, an author (can be an invented name), a piece of text, and an optional link to additional information.  The name must not be smaller than five characters or longer than 25 characters and the text cannot be empty or longer than 100 characters.
-		The system must store tasks, which consists of the following data: a title, an execution period, a workload, a description, and an optional link. 
-		The tasks can be either public or private. The title must not be empty, but shorter than 80 characters. The execution period consists in two moments (including date and time) that must be in future when a task is created. 
-		The workload is a number of hours with an optional fraction that represents the number of minutes (not a percentage as usual); obviously, the workload must fit within the execution period. 
-		The description must not be empty, but shorter than 500 characters.
-		"/>
+		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="false"/>
 	</bean>
