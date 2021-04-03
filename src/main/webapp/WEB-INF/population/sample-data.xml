@@ -48,4 +48,141 @@
 		<property name="info" value="http://www.example.com"/>
 	</bean>
 	
+	<bean id="shout05" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/01/01 10:37"/>
+		<property name="author" value="Ozuna"/>
+		<property name="text" value="I'm the best singer ever"/>
+		<property name="info" value="https://twitter.com/ozuna?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"/>
+	</bean>
+	
+	<bean id="shout06" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/03/03 10:37"/>
+		<property name="author" value="Daddy Yankee"/>
+		<property name="text" value="Where are the cats that don't speak?"/>
+		<property name="info" value="https://twitter.com/daddy_yankee?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"/>
+	</bean>
+	
+	<!-- Employer -->
+	<bean name="employer1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="employer1"></property>
+		<property name="password" value="employer1"></property>
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Employer"></property>
+				<property name="surname" value="One"></property>
+				<property name="email" value="employer1@gmail.com"></property>
+				<property name="phone" value="+44 123-456-789"></property>
+			</bean>
+		</property>
+		<property name="enabled" value="true"></property>
+		<property name="roles">
+			<list>
+				<ref bean="employer1Employer"/>
+				<ref bean="employer1Authenticated"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="employer2UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="employer2"></property>
+		<property name="password" value="employer2"></property>
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Employer2"></property>
+				<property name="surname" value="Two"></property>
+				<property name="email" value="employer2@gmail.com"></property>
+				<property name="phone" value="+44 123-456-781"></property>
+			</bean>
+		</property>
+		<property name="enabled" value="true"></property>
+		<property name="roles">
+			<list>
+				<ref bean="employer2Employer"/>
+				<ref bean="employer2Authenticated"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Roles -->
+	<bean name="employer1Employer" class="acme.entities.roles.Employer">
+		<property name="company" value="Employer 1, Inc."></property>
+		<property name="sector" value="Sector 1"></property>
+		<property name="userAccount" ref="employer1UserAccount"></property>
+	</bean>
+	
+	<bean name="employer1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="employer1UserAccount"></property>
+	</bean>
+	
+	<bean name="employer2Employer" class="acme.entities.roles.Employer">
+		<property name="company" value="Employer 2, Inc."></property>
+		<property name="sector" value="Sector 2"></property>
+		<property name="userAccount" ref="employer2UserAccount"></property>
+	</bean>
+	
+	<bean name="employer2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="employer2UserAccount"></property>
+	</bean>
+	
+	<!-- Jobs -->
+	<bean name="job1" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP1-JOB1"></property>
+		<property name="title" value="Title 1"></property>
+		<property name="deadline" value="2030/12/11 23:59"></property>
+		<property name="salary" value="€ 15,000.98"></property>
+		<property name="score" value="10.45"></property>
+		<property name="description" value="Lorem ipsum sit dolor amet."></property>
+		<property name="moreInfo" value="https://www.juntadeandalucia.es/"></property>
+		<property name="finalMode" value="true"></property>
+		<property name="employer" ref="employer1Employer"></property>
+	</bean>
+	
+	<bean name="job2" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP1-JOB2"></property>
+		<property name="title" value="Title 2"></property>
+		<property name="deadline" value="2030/12/11 23:59"></property>
+		<property name="salary" value="€ 15,000.98"></property>
+		<property name="score" value="10.45"></property>
+		<property name="description" value="Lorem ipsum sit dolor amet."></property>
+		<property name="moreInfo" value="https://www.juntadeandalucia.es/"></property>
+		<property name="finalMode" value="true"></property>
+		<property name="employer" ref="employer1Employer"></property>
+	</bean>
+	
+	<bean name="job3" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP1-JOB3"></property>
+		<property name="title" value="Title 3"></property>
+		<property name="deadline" value="2030/12/11 23:59"></property>
+		<property name="salary" value="€ 15,000.98"></property>
+		<property name="score" value="10.45"></property>
+		<property name="description" value="Lorem ipsum sit dolor amet."></property>
+		<property name="moreInfo" value="https://www.juntadeandalucia.es/"></property>
+		<property name="finalMode" value="true"></property>
+		<property name="employer" ref="employer1Employer"></property>
+	</bean>
+	
+	<bean name="job4" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP2-JOB4"></property>
+		<property name="title" value="Title 4"></property>
+		<property name="deadline" value="2030/12/11 23:59"></property>
+		<property name="salary" value="€ 15,000.98"></property>
+		<property name="score" value="10.45"></property>
+		<property name="description" value="Lorem ipsum sit dolor amet."></property>
+		<property name="moreInfo" value="https://www.juntadeandalucia.es/"></property>
+		<property name="finalMode" value="true"></property>
+		<property name="employer" ref="employer2Employer"></property>
+	</bean>
+	
+	<bean name="job5" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP2-JOB5"></property>
+		<property name="title" value="Title 5"></property>
+		<property name="deadline" value="2030/12/11 23:59"></property>
+		<property name="salary" value="€ 15,000.98"></property>
+		<property name="score" value="10.45"></property>
+		<property name="description" value="Lorem ipsum sit dolor amet."></property>
+		<property name="moreInfo" value="https://www.juntadeandalucia.es/"></property>
+		<property name="finalMode" value="true"></property>
+		<property name="employer" ref="employer2Employer"></property>
+	</bean>
+	
 </beans>
