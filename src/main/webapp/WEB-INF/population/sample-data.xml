@@ -133,7 +133,7 @@
 		<property name="description" value="Lorem ipsum sit dolor amet."></property>
 		<property name="moreInfo" value="https://www.youtube.com/watch?v=Bv1jALmLfQQ"></property>
 		<property name="finalMode" value="true"></property>
-		<property name="employer" value="employer1Employer"></property>
+		<property name="employer" ref="employer1Employer"></property>
 	</bean>
 	
 	<bean name="job2" class="acme.entities.jobs.Job">
@@ -145,7 +145,7 @@
 		<property name="description" value="Lorem ipsum sit dolor amet."></property>
 		<property name="moreInfo" value="https://www.youtube.com/watch?v=Bv1jALmLfQQ"></property>
 		<property name="finalMode" value="true"></property>
-		<property name="employer" value="employer1Employer"></property>
+		<property name="employer" ref="employer1Employer"></property>
 	</bean>
 	
 	<bean name="job3" class="acme.entities.jobs.Job">
@@ -157,7 +157,7 @@
 		<property name="description" value="Lorem ipsum sit dolor amet."></property>
 		<property name="moreInfo" value="https://www.youtube.com/watch?v=Bv1jALmLfQQ"></property>
 		<property name="finalMode" value="true"></property>
-		<property name="employer" value="employer1Employer"></property>
+		<property name="employer" ref="employer1Employer"></property>
 	</bean>
 	
 	<bean name="job4" class="acme.entities.jobs.Job">
@@ -169,7 +169,7 @@
 		<property name="description" value="Lorem ipsum sit dolor amet."></property>
 		<property name="moreInfo" value="https://www.youtube.com/watch?v=Bv1jALmLfQQ"></property>
 		<property name="finalMode" value="true"></property>
-		<property name="employer" value="employer2Employer"></property>
+		<property name="employer" ref="employer2Employer"></property>
 	</bean>
 	
 	<bean name="job5" class="acme.entities.jobs.Job">
@@ -181,7 +181,7 @@
 		<property name="description" value="Lorem ipsum sit dolor amet."></property>
 		<property name="moreInfo" value="https://www.youtube.com/watch?v=Bv1jALmLfQQ"></property>
 		<property name="finalMode" value="true"></property>
-		<property name="employer" value="employer2Employer"></property>
+		<property name="employer" ref="employer2Employer"></property>
 	</bean>
 	
 </beans>
