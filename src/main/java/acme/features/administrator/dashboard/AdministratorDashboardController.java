@@ -1,19 +1,20 @@
 package acme.features.administrator.dashboard;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import acme.entities.tasks.Task;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 import acme.framework.entities.Administrator;
 
 @Controller
 @RequestMapping("/administrator/dashboard/")
-public class AdministratorDashboardController extends AbstractController<Administrator, Task>{
+public class AdministratorDashboardController extends AbstractController<Administrator, List<String>>{
 	
 	// Internal state ---------------------------------------------------------
 	
@@ -23,8 +24,9 @@ public class AdministratorDashboardController extends AbstractController<Adminis
 	// Constructors -----------------------------------------------------------
 	
 	@PostConstruct
-	private void initialise() {
+	protected void initialise() {
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 	}
 
 }
+ 

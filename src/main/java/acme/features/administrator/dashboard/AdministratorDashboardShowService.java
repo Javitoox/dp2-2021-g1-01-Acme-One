@@ -1,5 +1,9 @@
 package acme.features.administrator.dashboard;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +14,7 @@ import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AdministratorDashboardShowService implements AbstractShowService<Administrator, Task>{
+public class AdministratorDashboardShowService implements AbstractShowService<Administrator, List<String>>{
 	
 	// Internal state ---------------------------------------------------------
 	
@@ -20,19 +24,36 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	// AbstractShowService<Administrator, Task> interface --------------
 
 	@Override
-	public boolean authorise(final Request<Task> request) {
+	public boolean authorise(final Request<List<String>> request) {
 		assert  request != null;
+		
         return true;
 	}
 
 	@Override
-	public void unbind(final Request<Task> request, final Task entity, final Model model) {
+	public void unbind(final Request<List<String>> request, final List<String> entity, final Model model) {
+		assert request != null;
+		assert entity != null;
+		assert model != null;
 		
+		request.unbind(entity, model);
+		model.setAttribute("title", entity.get(0));
 	}
 
 	@Override
-	public Task findOne(final Request<Task> request) {
-		return null;
+	public List<String> findOne(final Request<List<String>> request) {
+		assert request != null;
+		
+		List<String> result;
+		Collection<Task> tasks;
+		
+		result = new ArrayList<>();
+		tasks = this.repository.findAllTasks();
+		for(final Task t: tasks) {
+			result.add(t.getTitle());
+		}
+		
+		return result;
 	}
 
 }
