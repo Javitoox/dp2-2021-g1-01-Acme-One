@@ -27,30 +27,30 @@ import lombok.Setter;
 @Setter
 public class Job extends DomainEntity{
 	
-	// Serialisation identifier
+	// Serialisation identifier -----------------------------------
 	
 	protected static final long serialVersionUID = 1L;
 	
-	// Attributes
+	// Attributes -------------------------------------------------
 	
-	@Column(unique=true)
+	@Column(unique = true)
 	@NotBlank
-	@Length(min=5,max=100)
+	@Length(min = 5, max = 10)
 	protected String reference;
 	
 	@NotBlank
 	protected String title;
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date deadline;
 	
 	@NotNull
 	@Valid
 	protected Money salary;
 	
-	@Range(min=0, max=100)
-	@Digits(integer=2, fraction=2)
+	@Range(min = 0, max = 100)
+	@Digits(integer = 2, fraction = 2)
 	protected double score;
 	
 	@NotBlank
@@ -61,23 +61,23 @@ public class Job extends DomainEntity{
 	
 	protected boolean finalMode;
 	
-	//	Derived attributes
+	// Derived attributes -----------------------------------------
 	
 	public boolean isAvailable() {
 		boolean result;
 		Date now;
 		
 		now = new Date();
-		result=this.finalMode && now.before(this.deadline);
+		result = this.finalMode && now.before(this.deadline);
 		
 		return result;
 	}
 	
-	//	Relationships
+	// Relationships ----------------------------------------------
 	
 	@NotNull
 	@Valid
-	@ManyToOne(optional=false)
+	@ManyToOne(optional = false)
 	protected Employer employer;
-	
+
 }
