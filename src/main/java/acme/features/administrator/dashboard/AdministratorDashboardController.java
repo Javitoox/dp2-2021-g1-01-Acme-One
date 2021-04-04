@@ -1,32 +1,40 @@
 package acme.features.administrator.dashboard;
 
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import acme.framework.components.BasicCommand;
-import acme.framework.controllers.AbstractController;
-import acme.framework.entities.Administrator;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/administrator/dashboard/")
-public class AdministratorDashboardController extends AbstractController<Administrator, List<String>>{
-	
-	// Internal state ---------------------------------------------------------
+public class AdministratorDashboardController implements ApplicationContextAware {
 	
 	@Autowired
-	protected AdministratorDashboardShowService showService;
+	protected AdministratorDashboardService service;
 	
-	// Constructors -----------------------------------------------------------
+	protected ConfigurableApplicationContext context;
+
+	// ApplicationContextAware interface --------------------------------------
+
+
+	@Override
+	public void setApplicationContext(final ApplicationContext context) throws BeansException {
+		assert context != null;
+
+		this.context = (ConfigurableApplicationContext) context;
+	}
 	
-	@PostConstruct
-	protected void initialise() {
-		super.addBasicCommand(BasicCommand.SHOW, this.showService);
+	@GetMapping("/administrator/dashboard")
+	public ModelAndView show() {
+
+        final ModelAndView result = new ModelAndView();
+		
+		result.setViewName("administrator/dashboard/show");
+		
+		return result;
 	}
 
 }
- 
