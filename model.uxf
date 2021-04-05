@@ -299,8 +299,8 @@ has v</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>483</x>
-      <y>322</y>
+      <x>742</x>
+      <y>0</y>
       <w>266</w>
       <h>91</h>
     </coordinates>
@@ -312,5 +312,68 @@ Shout
 + text: String {NotBlank}
 + info: String {URL}</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>483</x>
+      <y>301</y>
+      <w>168</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Employer
+--
++ company: String {NotBlank}
++ sector: String{NotBlank}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>553</x>
+      <y>203</y>
+      <w>21</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>455</y>
+      <w>273</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Job
+--
++ reference: String{Unique, NotBlank, Length(5,60)}
++ title: String{NotBlank}
++ deadline: Date{NotNull, Temporal(TIMESTAMP)}
++ salary: Money
++ score: double{Range(0,100), Digits(integer=2, fraction=2)}
++ description: String{NotBlank}
++ moreInfo: String{Url}
++ finalMode: boolean
++ / isAvailable: boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>364</y>
+      <w>91</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Registered by ^
+lt=x-&gt;
+m1=0..*
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
