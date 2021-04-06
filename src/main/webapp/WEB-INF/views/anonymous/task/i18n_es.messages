@@ -2,4 +2,6 @@
 
 anonymous.task.list.label.title = Titulo
 anonymous.task.list.label.begin = Fecha de inicio
+anonymous.task.list.label.end = Fecha de fin
+anonymous.task.list.label.description = Descripción
 anonymous.task.list.label.link = Link

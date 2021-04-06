@@ -1,6 +1,7 @@
 package acme.features.anonymous.task;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class AnonymousTaskListService implements AbstractListService<Anonymous, 
         assert entity != null;
         assert model != null;
         
-        request.unbind(entity, model, "title", "begin", "link");
+        request.unbind(entity, model, "title", "begin", "end", "description", "link");
 		
 	}
 	
@@ -39,9 +40,9 @@ public class AnonymousTaskListService implements AbstractListService<Anonymous, 
 	@Override
 	public Collection<Task> findMany(Request<Task> request) {
 		assert request != null;
-        Collection<Task> result;
-        result = this.anonymousTaskRepository.findTaskNotFinished();
-        return result;
+        Collection<Task> tasks;
+        tasks = this.anonymousTaskRepository.findPublicTask();
+        return tasks.stream().filter(x->x.isFinished().equals(false)).collect(Collectors.toList());
 	}
 
 }

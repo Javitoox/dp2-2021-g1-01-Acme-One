@@ -10,6 +10,6 @@ import acme.framework.repositories.AbstractRepository;
 
 @Repository
 public interface AnonymousTaskRepository extends AbstractRepository {
-	@Query("select t from Task t where (t.end is null and t.isPublic = 1)")
-    Collection<Task> findTaskNotFinished();
+	@Query("select t from Task t where t.isPublic = 1")
+    Collection<Task> findPublicTask();
 }

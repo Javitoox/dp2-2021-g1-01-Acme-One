@@ -6,5 +6,7 @@
 <acme:list readonly="true">
 	<acme:list-column code="anonymous.task.list.label.title" path="title" width="20%"/>
 	<acme:list-column code="anonymous.task.list.label.begin" path="begin" width="20%"/>
+	<acme:list-column code="anonymous.task.list.label.end" path="end" width="20%"/>
+	<acme:list-column code="anonymous.task.list.label.description" path="description" width="20%"/>
 	<acme:list-column code="anonymous.task.list.label.link" path="link" width="20%"/>
 </acme:list>

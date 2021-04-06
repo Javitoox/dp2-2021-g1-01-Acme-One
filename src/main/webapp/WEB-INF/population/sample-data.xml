@@ -75,7 +75,8 @@
 	<!-- Task -->
 	<bean id="task01" class="acme.entities.tasks.Task">
 		<property name="title" value="task1" />
-		<property name="begin" value="2050/05/09 10:00" />
+		<property name="begin" value="2010/05/09 10:00" />
+		<property name="end" value="2010/10/13 23:59"/>
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers.
 		The tasks can be either public or private." />
 		<property name="link" value="http://www.example.com" />
@@ -83,7 +84,8 @@
 	</bean>
 	<bean id="task02" class="acme.entities.tasks.Task">
 		<property name="title" value="task2" />
-		<property name="begin" value="2030/10/09 10:00" />
+		<property name="begin" value="2020/10/09 10:00" />
+		<property name="end" value="2020/10/13 23:59"/>
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers.
 		The tasks can be either public or private." />
 		<property name="link" value="http://www.example.com" />
@@ -92,6 +94,7 @@
 	<bean id="task03" class="acme.entities.tasks.Task">
 		<property name="title" value="task3" />
 		<property name="begin" value="2070/02/13 10:00" />
+		<property name="end" value="2070/03/13 23:59"/>
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
@@ -99,6 +102,7 @@
 	<bean id="task04" class="acme.entities.tasks.Task">
 		<property name="title" value="task4" />
 		<property name="begin" value="2040/05/09 09:00" />
+		<property name="end" value="2040/06/09 23:59"/>
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
@@ -109,7 +113,7 @@
 		<property name="end" value="2035/10/14 23:59" />
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
-		<property name="isPublic" value="true" />
+		<property name="isPublic" value="false" />
 	</bean>
 	<bean id="task06" class="acme.entities.tasks.Task">
 		<property name="title" value="task6" />
@@ -117,7 +121,7 @@
 		<property name="end" value="2060/07/01 23:59" />
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
-		<property name="isPublic" value="true" />
+		<property name="isPublic" value="false" />
 	</bean>
 	<bean id="task07" class="acme.entities.tasks.Task">
 		<property name="title" value="task7" />
