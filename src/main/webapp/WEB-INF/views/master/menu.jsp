@@ -27,6 +27,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.JaviM" action="https://open.spotify.com/album/5pQwQRnQOuKrbVUVnGMEN4?si=-9ewcULTRHKaxRjYfdRrrQ"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-shout" action="/anonymous/shout/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.create-shout" action="/anonymous/shout/create"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-task" action="/anonymous/task/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
