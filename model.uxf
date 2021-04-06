@@ -405,13 +405,13 @@ WorkPlan
 Task
 --
 + title: String {NotBlank, Length(max=80)}
-+ begin: Date {NotNull, Future}
-+ end: Date {NotNull, Future}
-+ /workload: Double
++ begin: Date {NotNull, Temporal(TIMESTAMP)}
++ end: Date {NotNull, Temporal(TIMESTAMP)}
++ /workload: double
 + description: {NotBlank, Length(min=500)}
 + link: Sting {URL} [0,1]
 + isPublic: boolean {NotNull}
-+ /isFinished: boolean</panel_attributes>
++ /isFinished: boolean {Transient}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
