@@ -1,0 +1,5 @@
+# i18n_en.messages
+
+anonymous.task.list.label.title = Title
+anonymous.task.list.label.begin = Start date
+anonymous.task.list.label.link = Link

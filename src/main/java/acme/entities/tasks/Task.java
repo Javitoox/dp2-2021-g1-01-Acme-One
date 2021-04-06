@@ -32,10 +32,9 @@ public class Task extends DomainEntity{
 	
 	@Future
 	@NotNull
-	protected Date	begin;
+	protected Date begin;
 
 	@Future
-	@NotNull
 	protected Date end;
 	
 	@NotBlank
