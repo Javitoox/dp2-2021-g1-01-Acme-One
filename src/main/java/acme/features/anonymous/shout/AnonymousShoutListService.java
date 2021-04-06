@@ -8,7 +8,9 @@ import acme.framework.services.AbstractListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 @Service
 public class AnonymousShoutListService  implements AbstractListService<Anonymous, Shout> {
@@ -31,7 +33,8 @@ public class AnonymousShoutListService  implements AbstractListService<Anonymous
         request.unbind(entity, model, "author", "text", "moment");
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public Collection<Shout> findMany(final Request<Shout> request) {
         assert request != null;
         Collection<Shout> result;
