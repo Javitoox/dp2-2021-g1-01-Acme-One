@@ -13,18 +13,19 @@
 -->
 
 <beans 
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
 
-	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="formatters">
-			<list>
-				<bean class="acme.framework.utilities.LocalisedDateFormatter"/>
-				<bean class="acme.framework.utilities.LocalisedMoneyFormatter"/>
-			</list>
-		</property>
-	</bean>
-		
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <list>
+                <bean class="acme.framework.utilities.LocalisedDateFormatter"/>
+                <bean class="acme.framework.utilities.LocalisedMoneyFormatter"/>
+                <bean class="acme.components.PhoneFormatter"/>
+            </list>
+        </property>
+    </bean>
+
 </beans>
