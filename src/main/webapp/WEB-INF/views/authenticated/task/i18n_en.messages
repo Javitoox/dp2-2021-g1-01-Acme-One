@@ -1,4 +1,4 @@
 authenticated.task.list.label.title = Title
-authenticated.task.list.label.description = Description
+authenticated.task.list.label.workload = Workload
 authenticated.task.list.label.begin = Begin
 authenticated.task.list.label.end = End
