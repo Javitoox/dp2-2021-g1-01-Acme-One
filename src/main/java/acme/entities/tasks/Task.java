@@ -4,7 +4,8 @@ import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Future;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -30,12 +31,12 @@ public class Task extends DomainEntity{
 	@Length(max=80)
 	protected String title;
 	
-	@Future
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date	begin;
 
-	@Future
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date end;
 	
 	@NotBlank
@@ -49,8 +50,7 @@ public class Task extends DomainEntity{
     protected Boolean isPublic;
 	
 	//	Derived attributes
-	@Transient
-	public Double  getWorkload(){
+	public double  getWorkload(){
 		return (double) (this.end.getTime() - this.begin.getTime()) / (1000 * 3600) ;
 	}
 	
