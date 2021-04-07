@@ -1,5 +1,6 @@
 package acme.features.anonymous.shout;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
@@ -37,13 +38,9 @@ public class AnonymousShoutListRecentService implements AbstractListService<Anon
 	public Collection<Shout> findMany(Request<Shout> request) {
 		assert request != null;
         Collection<Shout> result;
-        Date date = new Date(); //Obtenemos la fecha de hoy y le restamos un mes para obtener los shouts más recientes.
-        if(date.getMonth()==1) {
-        	date.setMonth(12);
-        }else {
-        	date.setMonth(date.getMonth()-1);
-        }
-        result = this.repository.findManyRecent(date);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -1);//Obtenemos la fecha de hoy y le restamos un mes para obtener los shouts más recientes.
+        result = this.repository.findManyRecent(calendar.getTime());
         return result;
 	}
 

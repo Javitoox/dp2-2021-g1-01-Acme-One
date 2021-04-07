@@ -21,13 +21,13 @@
 	if(request.getAttribute("javax.servlet.forward.request_uri").toString().equals("/Acme-One/anonymous/shout/list_recent")){
 %>
 	<acme:form>
-    	<acme:form-submit method="get" action="/anonymous/shout/list" code="anonymous.shout.list.button.all" />
+    	<acme:form-return action="/anonymous/shout/list" code="anonymous.shout.list.button.all" />
 	</acme:form>
 <%
 	}else{
 %>
 	<acme:form>
-    	<acme:form-submit method="get" action="/anonymous/shout/list_recent" code="anonymous.shout.list.button.recent" />
+    	<acme:form-return action="/anonymous/shout/list_recent" code="anonymous.shout.list.button.recent" />
 	</acme:form>
 <% 
 	}
