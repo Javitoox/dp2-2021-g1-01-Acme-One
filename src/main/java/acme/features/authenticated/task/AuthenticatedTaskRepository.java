@@ -12,4 +12,7 @@ import acme.framework.repositories.AbstractRepository;
 public interface AuthenticatedTaskRepository extends AbstractRepository{
 	@Query("SELECT t FROM Task t WHERE t.isPublic = 1")
 	Collection<Task> findManyPublicTasks();
+
+	@Query("SELECT t FROM Task t WHERE t.id = ?1")
+	Task findOneTaskById(int id);
 }
