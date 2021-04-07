@@ -1,0 +1,7 @@
+# i18n_en.messages
+
+anonymous.workplan.list.label.isPublic = Is it public?
+anonymous.workplan.list.label.begin = Start date
+anonymous.workplan.list.label.end = End date
+
+
