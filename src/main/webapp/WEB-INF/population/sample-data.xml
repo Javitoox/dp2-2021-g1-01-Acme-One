@@ -371,4 +371,28 @@
 		</property>
 	</bean>
 
+	<!-- Announcements -->
+	<bean name="announcement1" class="acme.entities.announcement.Announcement">
+		<property name="moment" value="2021/01/12 09:00"/>
+		<property name="title" value="Este es el titulo"/>
+		<property name="announcementStatus" value="INFO"/>
+		<property name="text" value="Este es el texto!"/>
+		<property name="info" value="Esta es la info!"/>
+	</bean>
+	<bean name="announcement2" class="acme.entities.announcement.Announcement">
+		<property name="moment" value="2021/02/12 09:00"/>
+		<property name="title" value="Este es el titulo2"/>
+		<property name="announcementStatus" value="WARNING"/>
+		<property name="text" value="Este es el texto2!"/>
+		<property name="info" value="Esta es la info2!"/>
+	</bean>
+	<bean name="announcement3" class="acme.entities.announcement.Announcement">
+		<property name="moment" value="2020/01/12 09:00"/>
+		<property name="title" value="Este es el titulo3"/>
+		<property name="announcementStatus" value="INFO"/>
+		<property name="text" value="Este es el texto3!"/>
+		<property name="info" value="Esta es la info3!"/>
+	</bean>
+
 </beans>
+
