@@ -12,16 +12,12 @@
 
 package acme.framework.components;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import acme.framework.helpers.CollectionHelper;
 import acme.framework.helpers.MessageHelper;
 import acme.framework.helpers.StringHelper;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 public class Errors implements Iterable<Entry<String, List<String>>> {
 

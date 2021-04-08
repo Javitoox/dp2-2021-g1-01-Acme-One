@@ -12,13 +12,12 @@
 
 package acme.framework.utilities;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import acme.framework.helpers.PrincipalHelper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import acme.framework.helpers.PrincipalHelper;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public final class RememberMeLogoutHandler implements LogoutHandler {
 

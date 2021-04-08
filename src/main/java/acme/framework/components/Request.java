@@ -12,34 +12,24 @@
 
 package acme.framework.components;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import acme.framework.entities.DomainEntity;
+import acme.framework.entities.Principal;
+import acme.framework.helpers.*;
+import acme.framework.utilities.CustomBindingErrorProcessor;
+import acme.framework.utilities.LocalisedDataBinder;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestParameterPropertyValues;
 import org.springframework.web.bind.WebDataBinder;
 
-import acme.framework.entities.DomainEntity;
-import acme.framework.entities.Principal;
-import acme.framework.helpers.CollectionHelper;
-import acme.framework.helpers.ErrorsHelper;
-import acme.framework.helpers.FactoryHelper;
-import acme.framework.helpers.PrincipalHelper;
-import acme.framework.helpers.StringHelper;
-import acme.framework.utilities.CustomBindingErrorProcessor;
-import acme.framework.utilities.LocalisedDataBinder;
-import lombok.Getter;
-import lombok.Setter;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+import java.util.Map.Entry;
 
 @Getter
 @Setter

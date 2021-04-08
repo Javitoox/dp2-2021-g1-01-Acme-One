@@ -12,12 +12,11 @@
 
 package acme.framework.helpers;
 
-import java.io.PrintStream;
-import java.util.Set;
+import acme.framework.entities.DomainEntity;
 
 import javax.validation.ConstraintViolation;
-
-import acme.framework.entities.DomainEntity;
+import java.io.PrintStream;
+import java.util.Set;
 
 public class ThrowableHelper {
 	

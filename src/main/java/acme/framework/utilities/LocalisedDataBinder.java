@@ -12,13 +12,12 @@
 
 package acme.framework.utilities;
 
+import acme.framework.helpers.StringHelper;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.AbstractPropertyBindingResult;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.bind.WebDataBinder;
-
-import acme.framework.helpers.StringHelper;
 
 public class LocalisedDataBinder extends WebDataBinder {
 

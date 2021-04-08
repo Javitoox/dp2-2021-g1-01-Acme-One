@@ -12,17 +12,16 @@
 
 package acme.framework.entities;
 
+import acme.framework.helpers.CollectionHelper;
+import acme.framework.helpers.ReflectionHelper;
+import acme.framework.helpers.StringHelper;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import acme.framework.helpers.CollectionHelper;
-import acme.framework.helpers.ReflectionHelper;
-import acme.framework.helpers.StringHelper;
 
 public class Principal implements UserDetails {
 

@@ -1,8 +1,9 @@
 package acme.entities.workPlan;
 
-import java.beans.Transient;
-import java.util.Collection;
-import java.util.Date;
+import acme.entities.tasks.Task;
+import acme.framework.entities.DomainEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -10,11 +11,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
-import acme.entities.tasks.Task;
-import acme.framework.entities.DomainEntity;
-import lombok.Getter;
-import lombok.Setter;
+import java.beans.Transient;
+import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Getter

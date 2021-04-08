@@ -12,12 +12,11 @@
 
 package acme.framework.services;
 
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
+import acme.framework.entities.UserRole;
 import org.springframework.stereotype.Service;
 
-import acme.framework.entities.UserRole;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 @Service
 @Transactional(TxType.MANDATORY)

@@ -12,9 +12,12 @@
 
 package acme.framework.entities;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import acme.datatypes.UserIdentity;
+import acme.framework.helpers.PasswordHelper;
+import acme.framework.helpers.StringHelper;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,14 +26,9 @@ import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
-import acme.datatypes.UserIdentity;
-import acme.framework.helpers.PasswordHelper;
-import acme.framework.helpers.StringHelper;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 @Entity
 @Getter

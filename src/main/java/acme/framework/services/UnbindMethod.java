@@ -12,12 +12,12 @@
 
 package acme.framework.services;
 
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.UserRole;
+
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 @Transactional(TxType.MANDATORY)
 public interface UnbindMethod<R extends UserRole, E> {

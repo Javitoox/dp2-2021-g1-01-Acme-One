@@ -12,14 +12,10 @@
 
 package acme.framework.components;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import acme.framework.helpers.ConversionHelper;
 import acme.framework.helpers.StringHelper;
+
+import java.util.*;
 
 public class Model {
 

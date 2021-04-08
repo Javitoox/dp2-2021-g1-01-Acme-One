@@ -12,10 +12,9 @@
 
 package acme.framework.utilities;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import acme.framework.entities.DomainEntity;
 import acme.framework.helpers.StringHelper;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class CustomPrintStyle extends ToStringStyle {
 

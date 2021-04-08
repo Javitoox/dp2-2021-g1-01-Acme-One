@@ -12,9 +12,8 @@
 
 package acme.framework.datatypes;
 
-import java.io.Serializable;
-
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
 public abstract class DomainDatatype implements Serializable {

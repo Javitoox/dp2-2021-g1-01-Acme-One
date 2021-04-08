@@ -12,16 +12,15 @@
 
 package acme.framework.helpers;
 
+import acme.framework.datatypes.Money;
+
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import acme.framework.datatypes.Money;
 
 public class JspHelper {
 	

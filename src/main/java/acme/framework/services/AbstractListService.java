@@ -12,14 +12,13 @@
 
 package acme.framework.services;
 
-import java.util.Collection;
-
-import org.springframework.stereotype.Service;
-
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.components.Response;
 import acme.framework.entities.UserRole;
+import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 @Service
 public interface AbstractListService<R extends UserRole, E> extends //

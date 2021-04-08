@@ -12,16 +12,15 @@
 
 package acme.framework.utilities;
 
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import acme.framework.helpers.PasswordHelper;
 import acme.framework.helpers.PrinterHelper;
 import acme.framework.helpers.StringHelper;
 import acme.framework.helpers.ThrowableHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class DatabaseInquirer {

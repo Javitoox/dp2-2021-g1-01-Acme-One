@@ -12,11 +12,8 @@
 
 package acme.framework.helpers;
 
-import java.util.Collection;
-
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
+import acme.framework.entities.Principal;
+import acme.framework.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
@@ -28,8 +25,9 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import acme.framework.entities.Principal;
-import acme.framework.services.AuthenticationService;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
+import java.util.Collection;
 
 @Component
 public class PrincipalHelper {

@@ -12,11 +12,10 @@
 
 package acme.framework.controllers;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import acme.framework.entities.Administrator;
+import acme.framework.helpers.FactoryHelper;
+import acme.framework.helpers.PrincipalHelper;
+import acme.framework.utilities.DatabasePopulator;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
@@ -29,10 +28,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import acme.framework.entities.Administrator;
-import acme.framework.helpers.FactoryHelper;
-import acme.framework.helpers.PrincipalHelper;
-import acme.framework.utilities.DatabasePopulator;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @Controller
 public class MasterController implements ApplicationContextAware {
