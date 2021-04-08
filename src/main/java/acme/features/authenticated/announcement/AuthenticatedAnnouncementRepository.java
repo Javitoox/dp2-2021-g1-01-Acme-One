@@ -1,4 +1,5 @@
-package acme.features.authenticated;
+package acme.features.authenticated.announcement;
+
 
 import acme.entities.announcement.Announcement;
 import acme.framework.repositories.AbstractRepository;
@@ -11,9 +12,8 @@ import java.util.Date;
 @Repository
 public interface AuthenticatedAnnouncementRepository extends AbstractRepository {
     @Query("select a from Announcement a where a.id = ?1")
-
     Announcement findOneAnnouncementById(int id);
 
-    @Query("select a from Announcement a where a.moment >= =1")
+    @Query("select a from Announcement a where a.moment >= ?1")
     Collection<Announcement> findRecentAnnouncements(Date deadline);
 }

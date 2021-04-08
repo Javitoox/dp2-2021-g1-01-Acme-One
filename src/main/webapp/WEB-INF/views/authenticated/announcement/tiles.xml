@@ -8,6 +8,7 @@
     <definition name="authenticated/announcement/list" extends="master">
         <put-attribute name="body" type="template" value="../authenticated/announcement/list.jsp" />
     </definition>
+
     <definition name="authenticated/announcement/form" extends="master">
         <put-attribute name="body" type="template" value="../authenticated/announcement/form.jsp" />
     </definition>

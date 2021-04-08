@@ -32,6 +32,7 @@ public class Announcement extends DomainEntity {
     @NotBlank
     protected String title;
 
+    @NotNull
     protected AnnouncementStatus announcementStatus;
 
     @NotBlank
@@ -39,7 +40,5 @@ public class Announcement extends DomainEntity {
 
     @URL
     protected String info;
-
-
 
 }

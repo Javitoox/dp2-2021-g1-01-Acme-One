@@ -38,11 +38,13 @@ master.menu.anonymous.list-shout = Shouts list
 master.menu.anonymous.create-shout = Create shout
 master.menu.anonymous.list-task = Tasks list
 
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
+master.menu.administrator.announcement = Announcement list
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down

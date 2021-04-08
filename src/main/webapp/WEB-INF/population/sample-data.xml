@@ -373,25 +373,25 @@
 
 	<!-- Announcements -->
 	<bean name="announcement1" class="acme.entities.announcement.Announcement">
-		<property name="moment" value="2021/01/12 09:00"/>
+		<property name="moment" value="2021/04/07 09:00"/>
 		<property name="title" value="Este es el titulo"/>
 		<property name="announcementStatus" value="INFO"/>
 		<property name="text" value="Este es el texto!"/>
-		<property name="info" value="Esta es la info!"/>
+		<property name="info" value="https://www.google.com"/>
 	</bean>
 	<bean name="announcement2" class="acme.entities.announcement.Announcement">
-		<property name="moment" value="2021/02/12 09:00"/>
+		<property name="moment" value="021/04/07 09:00"/>
 		<property name="title" value="Este es el titulo2"/>
 		<property name="announcementStatus" value="WARNING"/>
 		<property name="text" value="Este es el texto2!"/>
-		<property name="info" value="Esta es la info2!"/>
+		<property name="info" value="https://www.google.com/"/>
 	</bean>
 	<bean name="announcement3" class="acme.entities.announcement.Announcement">
 		<property name="moment" value="2020/01/12 09:00"/>
 		<property name="title" value="Este es el titulo3"/>
-		<property name="announcementStatus" value="INFO"/>
+		<property name="announcementStatus" value="IMPORTANT"/>
 		<property name="text" value="Este es el texto3!"/>
-		<property name="info" value="Esta es la info3!"/>
+		<property name="info" value="https://www.google.com"/>
 	</bean>
 
 </beans>

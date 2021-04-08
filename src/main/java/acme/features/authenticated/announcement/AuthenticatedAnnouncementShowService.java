@@ -1,7 +1,6 @@
 package acme.features.authenticated.announcement;
 
 import acme.entities.announcement.Announcement;
-import acme.features.authenticated.AuthenticatedAnnouncementRepository;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
