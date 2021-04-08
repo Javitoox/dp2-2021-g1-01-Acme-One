@@ -19,24 +19,25 @@ public class AnonymousWorkPlanListService implements AbstractListService<Anonymo
     AnonymousWorkPlanRepository anonymousWorkPlanRepository;
 
     @Override
-    public boolean authorise(Request<WorkPlan> request) {
+    public boolean authorise(final Request<WorkPlan> request) {
         assert request != null;
         return true;
     }
 
     @Override
-    public void unbind(Request<WorkPlan> request, WorkPlan entity, Model model) {
+    public void unbind(final Request<WorkPlan> request,final WorkPlan entity,final Model model) {
         assert request != null;
         assert entity != null;
         assert model != null;
-        request.unbind(entity, model, "isPublic", "begin", "end", "tasks");
+        request.unbind(entity, model,  "begin", "end");
     }
 
-    @Override
-    public Collection<WorkPlan> findMany(Request<WorkPlan> request) {
-        assert request != null;
-        Collection<WorkPlan> workPlans;
-        workPlans = this.anonymousWorkPlanRepository.findPublicWorkPlan();
-        return workPlans.stream().filter(x->x.isFinished().equals(false)).collect(Collectors.toList());
+    @Override 
+    public Collection<WorkPlan> findMany(Request<WorkPlan> request) { 
+        assert request != null; 
+        Collection<WorkPlan> result; 
+        result = this.anonymousWorkPlanRepository.findPublicWorkPlan();
+      //  return result.stream().filter(x->x.isFinished().equals(false)).collect(Collectors.toList());
+        return result;
     }
 }
