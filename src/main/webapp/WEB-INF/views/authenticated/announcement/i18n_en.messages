@@ -1,12 +1,14 @@
-#i18n_en.messages
 
-administrator.announcement.form.label.title= Title:
-administrator.announcement.form.label.status= Status:
-administrator.announcement.form.label.text= Text:
-administrator.announcement.form.label.info= Info:
-administrator.announcement.form.button.return= Return
+i18n_en.messages
 
 authenticated.announcement.list.label.moment= Moment
 authenticated.announcement.list.label.status= Status
-authenticated.announcement.list.label.title= Title
+authenticated.announcement.list.label.tittle= Title
 authenticated.announcement.list.label.text= Text
+
+authenticated.announcement.form.label.title= Title
+authenticated.announcement.form.label.status= Status
+authenticated.announcement.form.label.text= Text
+authenticated.announcement.form.label.info= Info
+authenticated.announcement.form.button.return= Return
+

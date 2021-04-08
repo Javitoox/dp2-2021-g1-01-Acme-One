@@ -1,9 +1,6 @@
 package acme.entities.announcement;
 
-import acme.framework.entities.DomainEntity;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
@@ -11,18 +8,19 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.util.Date;
+
+import org.hibernate.validator.constraints.URL;
+
+import acme.framework.entities.DomainEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Announcement extends DomainEntity {
-
-    // Serialisation identifier
+public class Announcement extends DomainEntity{
 
     protected static final long serialVersionUID = 1L;
-
-    // Attributes
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -32,13 +30,11 @@ public class Announcement extends DomainEntity {
     @NotBlank
     protected String title;
 
-    @NotNull
-    protected AnnouncementStatus announcementStatus;
+    protected AnnouncementStatus status;
 
     @NotBlank
     protected String text;
 
     @URL
     protected String info;
-
 }
