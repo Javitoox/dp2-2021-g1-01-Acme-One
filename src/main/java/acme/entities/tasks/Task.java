@@ -19,33 +19,33 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Task extends DomainEntity{
-	
+public class Task extends DomainEntity {
+
 	// Serialisation identifier
-	
+
 	protected static final long serialVersionUID = 1L;
-		
+
 	// Attributes
-	
+
 	@NotBlank
-	@Length(max=80)
+	@Length(max = 80)
 	protected String title;
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date	begin;
+	protected Date begin;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date end;
-	
+
 	@NotBlank
-	@Length(max=500)
+	@Length(max = 500)
 	protected String description;
-	
-	@URL 
+
+	@URL
 	protected String link;
-	
+
 	@NotNull
     protected Boolean isPublic;
 	
@@ -53,15 +53,14 @@ public class Task extends DomainEntity{
 	public double  getWorkload(){
 		return (double) (this.end.getTime() - this.begin.getTime()) / (1000 * 3600) ;
 	}
-	
-	 @Transient
-	 public Boolean isFinished() {
-	    Date now;
-	    now=new Date();
-	    return now.after(this.end);
+
+	@Transient
+	public Boolean isFinished() {
+		Date now;
+		now = new Date();
+		return now.after(this.end);
 	}
-	
-	
-	//	Relationships
+
+	// Relationships
 
 }
