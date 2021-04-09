@@ -1,0 +1,12 @@
+master.menu.authenticated.announcements = Announcements
+
+authenticated.announcement.form.label.title = Title
+authenticated.announcement.form.label.status = Status
+authenticated.announcement.form.label.text = Text
+authenticated.announcement.form.label.info = Info
+authenticated.announcement.form.button.return = Return
+
+authenticated.announcement.list.label.moment = Moment
+authenticated.announcement.list.label.status = Status
+authenticated.announcement.list.label.title = Title
+authenticated.announcement.list.label.text = Text

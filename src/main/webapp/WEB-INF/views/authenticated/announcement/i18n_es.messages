@@ -1,0 +1,12 @@
+master.menu.authenticated.announcements = Anuncios
+
+authenticated.announcement.form.label.title = Título
+authenticated.announcement.form.label.status = Estado
+authenticated.announcement.form.label.text = Texto
+authenticated.announcement.form.label.info = Info
+authenticated.announcement.form.button.return = Volver
+
+authenticated.announcement.list.label.moment = Momento
+authenticated.announcement.list.label.status = Estado
+authenticated.announcement.list.label.title = Título
+authenticated.announcement.list.label.text = Texto

@@ -370,5 +370,29 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean name="announcement1" class="acme.entities.announcements.Announcement">
+		<property name="moment" value="2021/04/05 19:21"></property>
+		<property name="title" value="New announcement"></property>
+		<property name="status" value="INFO"></property>
+		<property name="text" value="This is an INFO announcement"></property>
+		<property name="info" value="http://www.example.com"></property>
+	</bean>
+	
+	<bean name="announcement2" class="acme.entities.announcements.Announcement">
+		<property name="moment" value="2021/04/06 12:21"></property>
+		<property name="title" value="New announcement 2"></property>
+		<property name="status" value="WARNING"></property>
+		<property name="text" value="This is a WARNING announcement"></property>
+		<property name="info" value="http://www.example.com"></property>
+	</bean>
+	
+	<bean name="announcement3" class="acme.entities.announcements.Announcement">
+		<property name="moment" value="2021/04/07 13:31"></property>
+		<property name="title" value="New announcement 3"></property>
+		<property name="status" value="IMPORTANT"></property>
+		<property name="text" value="This is an IMPORTANT announcement"></property>
+		<property name="info" value="http://www.example.com"></property>
+	</bean>
 
 </beans>
