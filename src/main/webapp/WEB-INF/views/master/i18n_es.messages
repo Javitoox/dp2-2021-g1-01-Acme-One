@@ -67,6 +67,11 @@ master.menu.consumer.favourite-link.Gonzalo = Enlace favorito de Álvarez
 master.menu.consumer.favourite-link.Maribel = Enlace favorito de Ramos
 master.menu.consumer.favourite-link.JaviM = Enlace favorito de Martínez
 
+# master.menu.authenticated ##########################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.list-announcement = Lista de anuncios
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
