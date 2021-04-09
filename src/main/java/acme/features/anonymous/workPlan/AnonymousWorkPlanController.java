@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.PostConstruct;
 
 @Controller
-@RequestMapping("/anonymous/workplan/")
+@RequestMapping("/anonymous/work-plan/")
 public class AnonymousWorkPlanController extends AbstractController<Anonymous, WorkPlan> {
 
     @Autowired
     protected AnonymousWorkPlanListService anonymousWorkPlanListService;
 
+    @Autowired
+    protected AnonymousWorkPlanShowService anonymousWorkPlanShowService;
+
     @PostConstruct
     protected void initialise() {
         super.addBasicCommand(BasicCommand.LIST, this.anonymousWorkPlanListService);
+        super.addBasicCommand(BasicCommand.SHOW, this.anonymousWorkPlanShowService);
     }
 }
 

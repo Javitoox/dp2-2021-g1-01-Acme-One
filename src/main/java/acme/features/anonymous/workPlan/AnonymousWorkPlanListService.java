@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Service
 public class AnonymousWorkPlanListService implements AbstractListService<Anonymous, WorkPlan> {
@@ -28,7 +29,7 @@ public class AnonymousWorkPlanListService implements AbstractListService<Anonymo
         assert request != null;
         assert entity != null;
         assert model != null;
-        request.unbind(entity, model,  "begin", "end");
+        request.unbind(entity, model,  "isPublic", "begin", "end", "tasks");
     }
 
     @Override 
@@ -36,7 +37,6 @@ public class AnonymousWorkPlanListService implements AbstractListService<Anonymo
         assert request != null; 
         Collection<WorkPlan> result; 
         result = this.anonymousWorkPlanRepository.findPublicWorkPlan();
-      //  return result.stream().filter(x->x.isFinished().equals(false)).collect(Collectors.toList());
-        return result;
+        return result.stream().filter(x->x.isFinished().equals(false)).collect(Collectors.toList());
     }
 }
