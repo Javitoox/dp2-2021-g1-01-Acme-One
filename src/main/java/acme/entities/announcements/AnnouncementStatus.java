@@ -1,5 +1,5 @@
 /*
- * CustomCommand.java
+ * AnnouncementStatus.java
  *
  * Copyright (C) 2012-2021 Rafael Corchuelo.
  *
@@ -10,10 +10,8 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.components;
+package acme.entities.announcements;
 
-import acme.framework.components.Command;
-
-public enum CustomCommand implements Command {
-	LIST_RECENT, LIST_ALL
+public enum AnnouncementStatus {
+	INFO, WARNING, IMPORTANT
 }

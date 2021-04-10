@@ -38,6 +38,12 @@ master.menu.anonymous.list-shout = Lista de gritos
 master.menu.anonymous.create-shout = Crear gritos
 master.menu.anonymous.list-task = Lista de tareas
 
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.tasks = Listado de tareas
+master.menu.authenticated.list-announcements = Listado de anuncios
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
@@ -46,6 +52,9 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shutdown = Parar el sistema
+master.menu.administrator.list-all-announcement = Listado de todos los anuncios
+master.menu.administrator.list-recent-announcement = Listado de anuncios recientes
+master.menu.administrator.create-announcement = Crear anuncio
 
 # master.menu.provider ########################################################
 

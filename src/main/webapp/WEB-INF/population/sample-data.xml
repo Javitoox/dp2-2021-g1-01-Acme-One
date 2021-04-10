@@ -370,5 +370,39 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!-- Announcement -->
+	
+	<bean id="announcement01" class="acme.entities.announcements.Announcement">
+		<property name="title" value="Hello brother"/>
+		<property name="moment" value="2001/01/01 00:00"/>
+		<property name="status" value="INFO"/>
+		<property name="text" value="This is a greeting to you."/>
+		<property name="info"><null/></property>
+	</bean>
+		
+	<bean id="announcement02" class="acme.entities.announcements.Announcement">
+		<property name="title" value="I like football"/>
+		<property name="moment" value="2021/03/02 00:01"/>
+		<property name="status" value="INFO"/>
+		<property name="text" value="I'm looking for a soccer team."/>
+		<property name="info"><null/></property>
+	</bean>
+		
+	<bean id="announcement03" class="acme.entities.announcements.Announcement">
+		<property name="title" value="Error in the system"/>
+		<property name="moment" value="2021/03/02 07:00"/>
+		<property name="status" value="WARNING"/>
+		<property name="text" value="They may be hacking us."/>
+		<property name="info"><null/></property>
+	</bean>
+		
+	<bean id="announcement04" class="acme.entities.announcements.Announcement">
+		<property name="title" value="Great job"/>
+		<property name="moment" value="2021/03/02 09:00"/>
+		<property name="status" value="IMPORTANT"/>
+		<property name="text" value="I need a programmer in my company"/>
+		<property name="info" value="https://undefinedlabs.com/"/>
+	</bean>
 
 </beans>
