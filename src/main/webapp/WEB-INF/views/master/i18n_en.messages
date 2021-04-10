@@ -46,6 +46,9 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
+master.menu.administrator.list-all-announcement = List all announcements
+master.menu.administrator.list-recent-announcement = List recent announcements
+master.menu.administrator.create-announcement = Create announcement
 
 # master.menu.provider ########################################################
 
@@ -66,6 +69,11 @@ master.menu.consumer.favourite-link.JaviV = Vilariño's favourite link
 master.menu.consumer.favourite-link.Gonzalo = Álvarez's favourite link
 master.menu.consumer.favourite-link.Maribel = Ramos' favourite link
 master.menu.consumer.favourite-link.JaviM = Martínez's favourite link
+
+# master.menu.authenticated ##########################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.list-announcement = List announcements
 
 # master.menu.user-account ####################################################
 

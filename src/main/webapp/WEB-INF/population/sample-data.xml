@@ -15,7 +15,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml" />
-
 	<!-- Shouts -->
 	<bean id="shout01" class="acme.entities.shouts.Shout">
 		<property name="moment" value="2021/03/18 20:00" />
@@ -369,6 +368,27 @@
 				<ref bean="task03" />
 			</list>
 		</property>
+	</bean>
+	
+	<bean name="announcement1" class="acme.entities.announcement.Announcement">
+		<property name="moment" value="2021/04/04 05:32"></property>
+		<property name="title" value="Announcement number 1"></property>
+		<property name="status" value="IMPORTANT"></property>
+		<property name="text" value="This is an important announcement"></property>
+	</bean>
+
+	<bean name="announcement2" class="acme.entities.announcement.Announcement">
+		<property name="moment" value="2021/04/05 21:22"></property>
+		<property name="title" value="Announcement number 2"></property>
+		<property name="status" value="WARNING"></property>
+		<property name="text" value="This is a warning announcement"></property>
+	</bean>
+	
+	<bean name="announcement3" class="acme.entities.announcement.Announcement">
+		<property name="moment" value="2021/01/05 21:22"></property>
+		<property name="title" value="Announcement number 3"></property>
+		<property name="status" value="WARNING"></property>
+		<property name="text" value="This is a warning announcement"></property>
 	</bean>
 
 </beans>
