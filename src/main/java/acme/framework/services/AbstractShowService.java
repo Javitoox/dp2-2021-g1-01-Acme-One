@@ -12,12 +12,11 @@
 
 package acme.framework.services;
 
-import org.springframework.stereotype.Service;
-
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.components.Response;
 import acme.framework.entities.UserRole;
+import org.springframework.stereotype.Service;
 
 @Service
 public interface AbstractShowService<R extends UserRole, E> extends //

@@ -12,16 +12,15 @@
 
 package acme.framework.utilities;
 
-import javax.servlet.http.HttpServletRequest;
-
+import acme.framework.entities.UserRole;
+import acme.framework.helpers.PrincipalHelper;
+import acme.framework.helpers.StringHelper;
 import org.springframework.security.access.expression.SecurityExpressionRoot;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.util.matcher.IpAddressMatcher;
 
-import acme.framework.entities.UserRole;
-import acme.framework.helpers.PrincipalHelper;
-import acme.framework.helpers.StringHelper;
+import javax.servlet.http.HttpServletRequest;
 
 public class ExtendedSecurityExpressionRoot extends SecurityExpressionRoot {
 

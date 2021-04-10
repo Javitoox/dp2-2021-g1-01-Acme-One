@@ -12,17 +12,13 @@
 
 package acme.framework.controllers;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
+import acme.components.CustomCommand;
+import acme.framework.components.*;
+import acme.framework.entities.UserRole;
+import acme.framework.helpers.*;
+import acme.framework.services.AbstractService;
+import acme.framework.utilities.ServiceWrapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.http.HttpStatus;
@@ -37,26 +33,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-
-import acme.components.CustomCommand;
-import acme.framework.components.BasicCommand;
-import acme.framework.components.Command;
-import acme.framework.components.CommandManager;
-import acme.framework.components.Errors;
-import acme.framework.components.HttpMethod;
-import acme.framework.components.Model;
-import acme.framework.components.Request;
-import acme.framework.components.Response;
-import acme.framework.entities.UserRole;
-import acme.framework.helpers.Assert;
-import acme.framework.helpers.CollectionHelper;
-import acme.framework.helpers.CommandHelper;
-import acme.framework.helpers.HttpMethodHelper;
-import acme.framework.helpers.StringHelper;
-import acme.framework.helpers.ValidationHelper;
-import acme.framework.services.AbstractService;
-import acme.framework.utilities.ServiceWrapper;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 
 @Controller
 public abstract class AbstractController<R extends UserRole, E> {

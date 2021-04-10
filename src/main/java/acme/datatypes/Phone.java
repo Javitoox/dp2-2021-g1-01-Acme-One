@@ -1,15 +1,14 @@
 package acme.datatypes;
 
+import acme.framework.datatypes.DomainDatatype;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Range;
-
-import acme.framework.datatypes.DomainDatatype;
-import lombok.Getter;
-import lombok.Setter;
 @Embeddable
 @Getter
 @Setter

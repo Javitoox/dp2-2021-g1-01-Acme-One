@@ -12,16 +12,15 @@
 
 package acme.framework.utilities;
 
+import acme.framework.helpers.MessageHelper;
+import org.springframework.expression.ParseException;
+import org.springframework.format.Formatter;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.springframework.expression.ParseException;
-import org.springframework.format.Formatter;
-
-import acme.framework.helpers.MessageHelper;
 
 public class LocalisedDoubleFormatter implements Formatter<Double> {
 

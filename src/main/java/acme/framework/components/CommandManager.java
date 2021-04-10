@@ -12,15 +12,15 @@
 
 package acme.framework.components;
 
+import acme.components.CustomCommand;
+import acme.framework.entities.UserRole;
+import acme.framework.services.AbstractService;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import acme.components.CustomCommand;
-import acme.framework.entities.UserRole;
-import acme.framework.services.AbstractService;
 
 public class CommandManager<R extends UserRole, E> {
 

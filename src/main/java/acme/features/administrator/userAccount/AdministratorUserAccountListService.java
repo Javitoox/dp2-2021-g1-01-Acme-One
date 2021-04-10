@@ -12,11 +12,6 @@
 
 package acme.features.administrator.userAccount;
 
-import java.util.Collection;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
@@ -24,6 +19,10 @@ import acme.framework.entities.UserAccount;
 import acme.framework.entities.UserAccountStatus;
 import acme.framework.entities.UserRole;
 import acme.framework.services.AbstractListService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 @Service
 public class AdministratorUserAccountListService implements AbstractListService<Administrator, UserAccount> {
