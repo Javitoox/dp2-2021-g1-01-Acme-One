@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.3.0">
+<diagram program="umlet" version="13.3">
   <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -366,7 +366,7 @@ Job
     <coordinates>
       <x>602</x>
       <y>448</y>
-      <w>91</w>
+      <w>98</w>
       <h>105</h>
     </coordinates>
     <panel_attributes>Registered by ^
@@ -419,7 +419,7 @@ Task
     <coordinates>
       <x>973</x>
       <y>511</y>
-      <w>56</w>
+      <w>63</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>Contains
@@ -427,5 +427,40 @@ lt=&lt;-x
 m1=0..*
 m2=0..*</panel_attributes>
     <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>84</x>
+      <y>476</y>
+      <w>287</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Announcement
+--
++ moment: Date {NotNull, Temporal(TIMESTAMP), Past}
++ title: String {NotBlank}
++ status: AnnouncementStatus
++ text: String {NotBlank}
++ info: String {Url}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>98</y>
+      <w>154</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AnnouncementStatus
+--
++ INFO
++ WARNING
++ IMPORTANT
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

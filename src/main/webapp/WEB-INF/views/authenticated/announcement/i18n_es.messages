@@ -2,7 +2,7 @@ i18n_en.messages
 
 authenticated.announcement.list.label.moment= Momento
 authenticated.announcement.list.label.status= Estado
-authenticated.announcement.list.label.tittle= Titulo
+authenticated.announcement.list.label.title= Titulo
 authenticated.announcement.list.label.text= Texto
 
 authenticated.announcement.form.label.title= Titulo

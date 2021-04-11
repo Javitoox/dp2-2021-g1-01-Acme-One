@@ -22,13 +22,10 @@ public class AuthenticatedAnnouncementController extends AbstractController<Auth
 	@Autowired
 	protected AuthenticatedAnnouncementShowService showService;
 
-	@Autowired
-	protected AuthenticatedAnnouncementListAllService listAllService;
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCustomCommand(CustomCommand.LIST_RECENT,BasicCommand.LIST, this.listRecentService);
-		super.addCustomCommand(CustomCommand.LIST_ALL,BasicCommand.LIST, this.listAllService);
+		super.addBasicCommand(BasicCommand.LIST, this.listRecentService);
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 		
 	}
