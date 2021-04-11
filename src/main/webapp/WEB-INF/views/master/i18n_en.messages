@@ -41,12 +41,19 @@ master.menu.anonymous.list-task = Tasks list
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
+master.menu.administrator.announcement.list-all = List all announcements
+master.menu.administrator.announcement.list-recent = List recent announcements
+master.menu.administrator.announcement.create = Create announcement
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
 
+# master.menu.authenticated ##########################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.list-announcement = List announcements
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
