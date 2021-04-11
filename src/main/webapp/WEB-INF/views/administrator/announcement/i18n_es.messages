@@ -1,0 +1,14 @@
+# i18n_es.messages
+
+administrator.announcement.form.label.title = Título:
+administrator.announcement.form.label.status = Status:
+administrator.announcement.form.label.text = Texto:
+administrator.announcement.form.label.info = Información:
+administrator.announcement.form.label.confirmation = Confirme que el anuncio es correcto
+
+administrator.announcement.form.button.create = Crear
+administrator.announcement.form.button.return = Volver
+ 
+administrator.announcement.list.label.moment = Momento
+administrator.announcement.list.label.status = Status
+administrator.announcement.list.label.title = Título
