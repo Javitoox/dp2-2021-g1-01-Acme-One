@@ -24,4 +24,20 @@
 			<acme:print value="${totalNumberOfPrivateWorkplans}"/>
 		</td>
 	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.total-number-finished-workplan"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfFinishedWorkplans}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.total-number-non-finished-workplan"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfNonFinishedWorkplans}"/>
+		</td>
+	</tr>
 </table>

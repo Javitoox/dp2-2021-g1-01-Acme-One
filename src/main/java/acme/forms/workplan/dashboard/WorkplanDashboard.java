@@ -13,4 +13,7 @@ public class WorkplanDashboard implements Serializable{
 	
 	Integer totalNumberOfPublicWorkplans;
 	Integer totalNumberOfPrivateWorkplans;
+	Integer totalNumberOfFinishedWorkplans;
+	Integer totalNumberOfNonFinishedWorkplans;
+
 }

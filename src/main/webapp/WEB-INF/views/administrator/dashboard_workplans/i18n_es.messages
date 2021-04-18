@@ -4,4 +4,6 @@ administrator.workplan.dashboard.form.title.show = Panel de indicadores
 
 administrator.workplan.dashboard.form.title.general-indicators = Indicadores generales
 administrator.workplan.dashboard.form.label.total-number-public-workplan =  Número total de planes de trabajo públicos
-administrator.workplan.dashboard.form.label.total-number-private-workplan = TNúmero total de planes de trabajo privados
+administrator.workplan.dashboard.form.label.total-number-private-workplan = Número total de planes de trabajo privados
+administrator.workplan.dashboard.form.label.total-number-finished-workplan = Número total de planes de trabajo terminados
+administrator.workplan.dashboard.form.label.total-number-non-finished-workplan = Número total de planes de trabajo no terminados
