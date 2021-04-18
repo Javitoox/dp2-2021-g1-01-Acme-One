@@ -30,7 +30,11 @@ public class AdministratorWorkPlanDashboardShowService implements AbstractShowSe
 		assert request != null;
         assert entity != null;
         assert model != null;
-        request.unbind(entity, model, "totalNumberOfPublicWorkplans", "totalNumberOfPrivateWorkplans", "totalNumberOfFinishedWorkplans", "totalNumberOfNonFinishedWorkplans");
+        request.unbind(entity, model, //
+        		"totalNumberOfPublicWorkplans", "totalNumberOfPrivateWorkplans", //
+        		"totalNumberOfFinishedWorkplans", "totalNumberOfNonFinishedWorkplans", //
+        		"averageNumberOfPeriods", "minimumNumberOfPeriods", "maximumNumberOfPeriods",  //
+        		"averageNumberOfWorkloads", "minimumNumberOfWorkloads", "maximumNumberOfWorkloads");
 	}
 
 	@Override
@@ -43,12 +47,25 @@ public class AdministratorWorkPlanDashboardShowService implements AbstractShowSe
 		List<WorkPlan> workplans = this.administratorWorkPlanDashboardRepository.findAllWorkplans();
 		List<WorkPlan> workplansFinished = workplans.stream().filter(x->x.isFinished().equals(true)).collect(Collectors.toList());
 		List<WorkPlan> workplansNonFinished = workplans.stream().filter(x->x.isFinished().equals(false)).collect(Collectors.toList());
-		
+		Double averageNumberOfWorkloads = workplans.stream().mapToDouble(x->x.getWorkload()).average().orElse(0.);
+		Double minimumNumberOfWorkloads = workplans.stream().mapToDouble(x->x.getWorkload()).min().orElse(0.);
+		Double maximumNumberOfWorkloads = workplans.stream().mapToDouble(x->x.getWorkload()).max().orElse(0.);
+		int milisecondsByDay = 86400000;
+		Double averageNumberOfPeriods = workplans.stream().mapToDouble(x->x.getEnd().getTime()/milisecondsByDay - x.getBegin().getTime()/milisecondsByDay).average().orElse(0.);
+		Double minimumNumberOfPeriods = workplans.stream().mapToDouble(x->x.getEnd().getTime()/milisecondsByDay - x.getBegin().getTime()/milisecondsByDay).min().orElse(0.);
+		Double maximumNumberOfPeriods = workplans.stream().mapToDouble(x->x.getEnd().getTime()/milisecondsByDay - x.getBegin().getTime()/milisecondsByDay).max().orElse(0.);
+
 		result = new WorkplanDashboard();
 		result.setTotalNumberOfPublicWorkplans(totalNumberOfPublicWorkplans);
 		result.setTotalNumberOfPrivateWorkplans(totalNumberOfPrivateWorkplans);
 		result.setTotalNumberOfFinishedWorkplans(workplansFinished.size());
 		result.setTotalNumberOfNonFinishedWorkplans(workplansNonFinished.size());
+		result.setAverageNumberOfWorkloads(averageNumberOfWorkloads);
+		result.setMinimumNumberOfWorkloads(minimumNumberOfWorkloads);
+		result.setMaximumNumberOfWorkloads(maximumNumberOfWorkloads);
+		result.setAverageNumberOfPeriods(averageNumberOfPeriods);
+		result.setMinimumNumberOfPeriods(minimumNumberOfPeriods);
+		result.setMaximumNumberOfPeriods(maximumNumberOfPeriods);
 		
 		return result;
 	}

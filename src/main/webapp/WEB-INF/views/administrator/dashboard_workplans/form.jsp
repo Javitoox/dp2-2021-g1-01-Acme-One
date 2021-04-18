@@ -40,4 +40,55 @@
 			<acme:print value="${totalNumberOfNonFinishedWorkplans}"/>
 		</td>
 	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.average-periods"/>
+		</th>
+		<td>
+			<acme:print value="${averageNumberOfPeriods}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.days"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.minimum-periods"/>
+		</th>
+		<td>
+			<acme:print value="${minimumNumberOfPeriods}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.days"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.maximum-periods"/>
+		</th>
+		<td>
+			<acme:print value="${maximumNumberOfPeriods}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.days"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.average-workloads"/>
+		</th>
+		<td>
+			<acme:print value="${averageNumberOfWorkloads}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.minimum-number-workloads"/>
+		</th>
+		<td>
+			<acme:print value="${minimumNumberOfWorkloads}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.maximum-number-workloads"/>
+		</th>
+		<td>
+			<acme:print value="${maximumNumberOfWorkloads}"/>
+		</td>
+	</tr>
 </table>
