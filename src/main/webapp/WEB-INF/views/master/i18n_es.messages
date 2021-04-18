@@ -42,7 +42,7 @@ master.menu.anonymous.list-workplan = Lista de planes de trabajo
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
-master.menu.administrator.dashboard = Panel de indicadores
+master.menu.administrator.dashboard-workplans = Panel de indicadores de los planes de trabajo
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
@@ -67,6 +67,12 @@ master.menu.consumer.favourite-link.JaviV = Enlace favorito de Vilariño
 master.menu.consumer.favourite-link.Gonzalo = Enlace favorito de Álvarez
 master.menu.consumer.favourite-link.Maribel = Enlace favorito de Ramos
 master.menu.consumer.favourite-link.JaviM = Enlace favorito de Martínez
+
+
+# master.menu.authenticated ##########################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.tasks= Tareas
 
 # master.menu.user-account ####################################################
 

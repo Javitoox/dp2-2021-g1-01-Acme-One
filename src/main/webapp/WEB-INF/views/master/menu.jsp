@@ -33,6 +33,7 @@
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.dashboard-workplans" action="/administrator/workplan-dashboard/show"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/master/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/master/populate-sample"/>			
@@ -57,7 +58,11 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link.Maribel" action="https://open.spotify.com/album/28adqly9V7wm5DFr7hlqtK?si=lv0oGBM1SLSiBxZ7A7U-wA&nd=1"/>
 			<acme:menu-suboption code="master.menu.consumer.favourite-link.JaviM" action="https://open.spotify.com/album/5pQwQRnQOuKrbVUVnGMEN4?si=-9ewcULTRHKaxRjYfdRrrQ"/>
 		</acme:menu-option>
-		<acme:menu-option code="master.menu.authenticated.tasks" action="/authenticated/task/list" access="isAuthenticated()"></acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.tasks" action="/authenticated/task/list"/>
+		</acme:menu-option>
+		
 	</acme:menu-left>
 
 	<acme:menu-right>
