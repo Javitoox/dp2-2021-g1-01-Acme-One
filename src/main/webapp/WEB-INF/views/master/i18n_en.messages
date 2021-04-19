@@ -68,6 +68,13 @@ master.menu.consumer.favourite-link.Gonzalo = Álvarez's favourite link
 master.menu.consumer.favourite-link.Maribel = Ramos' favourite link
 master.menu.consumer.favourite-link.JaviM = Martínez's favourite link
 
+
+# master.menu.manager ##########################################################
+
+master.menu.manager= Manager
+master.menu.manager.workplan.list= Workplan list
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
