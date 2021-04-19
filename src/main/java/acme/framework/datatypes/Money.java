@@ -12,13 +12,13 @@
 
 package acme.framework.datatypes;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-
-import lombok.Getter;
-import lombok.Setter;
 
 @Embeddable
 @Getter

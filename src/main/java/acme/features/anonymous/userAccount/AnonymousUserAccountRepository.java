@@ -12,11 +12,10 @@
 
 package acme.features.anonymous.userAccount;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-
 import acme.framework.entities.UserAccount;
 import acme.framework.repositories.AbstractRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AnonymousUserAccountRepository extends AbstractRepository {

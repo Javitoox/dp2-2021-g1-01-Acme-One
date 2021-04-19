@@ -12,24 +12,18 @@
 
 package acme.framework.components;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Base64;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
+import acme.framework.entities.DomainEntity;
+import acme.framework.helpers.StringHelper;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.core.convert.converter.GenericConverter;
 import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 
-import acme.framework.entities.DomainEntity;
-import acme.framework.helpers.StringHelper;
+import java.io.*;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UniversalConverter implements GenericConverter {
 

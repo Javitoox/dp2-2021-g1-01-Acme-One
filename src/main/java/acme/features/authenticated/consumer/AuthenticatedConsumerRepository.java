@@ -12,12 +12,11 @@
 
 package acme.features.authenticated.consumer;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-
 import acme.entities.roles.Consumer;
 import acme.framework.entities.UserAccount;
 import acme.framework.repositories.AbstractRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AuthenticatedConsumerRepository extends AbstractRepository {

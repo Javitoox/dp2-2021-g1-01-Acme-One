@@ -35,7 +35,9 @@ master.menu.anonymous.favourite-link.Gonzalo = Álvarez's favourite link
 master.menu.anonymous.favourite-link.Maribel = Ramos' favourite link
 master.menu.anonymous.favourite-link.JaviM = Martínez's favourite link
 master.menu.anonymous.list-shout = Shouts list
-master.menu.anonymous.create-shout = Shout!
+master.menu.anonymous.create-shout = Create shout
+master.menu.anonymous.list-task = Tasks list
+master.menu.anonymous.list-workplan = Workplan list
 
 # master.menu.administrator ###################################################
 

@@ -12,8 +12,7 @@
 
 package acme.framework.helpers;
 
-import javax.persistence.EntityManager;
-
+import lombok.Getter;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.MessageSource;
@@ -23,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-import lombok.Getter;
+import javax.persistence.EntityManager;
 
 public class FactoryHelper {
 	

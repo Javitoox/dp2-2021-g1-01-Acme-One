@@ -12,16 +12,16 @@
 
 package acme.datatypes;
 
-import java.beans.Transient;
-
-import javax.persistence.Embeddable;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
 import acme.framework.datatypes.DomainDatatype;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.persistence.Embeddable;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.beans.Transient;
 
 @Embeddable
 @Getter
@@ -44,6 +44,9 @@ public class UserIdentity extends DomainDatatype {
 	@NotBlank
 	@Email
 	protected String			email;
+	
+	@Valid
+	protected Phone phone;
 
 	// Derived attributes -----------------------------------------------------
 

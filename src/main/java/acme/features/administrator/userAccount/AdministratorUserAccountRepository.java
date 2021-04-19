@@ -12,13 +12,12 @@
 
 package acme.features.administrator.userAccount;
 
-import java.util.Collection;
-
+import acme.framework.entities.UserAccount;
+import acme.framework.repositories.AbstractRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.framework.entities.UserAccount;
-import acme.framework.repositories.AbstractRepository;
+import java.util.Collection;
 
 @Repository
 public interface AdministratorUserAccountRepository extends AbstractRepository {

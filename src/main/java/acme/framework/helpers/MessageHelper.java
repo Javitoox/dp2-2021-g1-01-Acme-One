@@ -12,12 +12,11 @@
 
 package acme.framework.helpers;
 
-import java.util.Locale;
-
+import acme.framework.patches.ExtendedMessageSource;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
-import acme.framework.patches.ExtendedMessageSource;
+import java.util.Locale;
 
 public class MessageHelper {
 	

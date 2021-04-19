@@ -12,15 +12,14 @@
 
 package acme.framework.utilities;
 
-import java.beans.PropertyChangeEvent;
-
+import acme.framework.helpers.StringHelper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 
-import acme.framework.helpers.StringHelper;
+import java.beans.PropertyChangeEvent;
 
 public class LocalisedBeanWrapperImpl extends BeanWrapperImpl {
 

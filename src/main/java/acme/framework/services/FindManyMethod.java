@@ -12,13 +12,12 @@
 
 package acme.framework.services;
 
-import java.util.Collection;
+import acme.framework.components.Request;
+import acme.framework.entities.UserRole;
 
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
-
-import acme.framework.components.Request;
-import acme.framework.entities.UserRole;
+import java.util.Collection;
 
 @Transactional(TxType.MANDATORY)
 public interface FindManyMethod<R extends UserRole, E> {

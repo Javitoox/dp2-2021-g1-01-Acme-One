@@ -12,9 +12,9 @@
 
 package acme.framework.helpers;
 
-import java.util.regex.Pattern;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.regex.Pattern;
 
 public class PasswordHelper {
 	

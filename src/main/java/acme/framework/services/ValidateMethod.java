@@ -12,12 +12,12 @@
 
 package acme.framework.services;
 
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
 import acme.framework.components.Errors;
 import acme.framework.components.Request;
 import acme.framework.entities.UserRole;
+
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 @Transactional(TxType.MANDATORY)
 public interface ValidateMethod<R extends UserRole, E> {

@@ -12,20 +12,21 @@
 
 package acme.framework.services;
 
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
+import acme.framework.entities.Anonymous;
+import acme.framework.entities.Authenticated;
+import acme.framework.entities.Principal;
+import acme.framework.entities.UserAccount;
+import acme.framework.repositories.AuthenticationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import acme.framework.entities.Anonymous;
-import acme.framework.entities.Authenticated;
-import acme.framework.entities.Principal;
-import acme.framework.entities.UserAccount;
-import acme.framework.repositories.AuthenticationRepository;;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
+
+;
 
 @Service
 @Transactional(TxType.SUPPORTS)

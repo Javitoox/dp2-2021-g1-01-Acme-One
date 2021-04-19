@@ -12,17 +12,16 @@
 
 package acme.framework.entities;
 
+import acme.datatypes.UserIdentity;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import acme.datatypes.UserIdentity;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Getter

@@ -12,12 +12,11 @@
 
 package acme.framework.utilities;
 
-import java.util.logging.Level;
-import java.util.regex.Pattern;
-
+import lombok.extern.java.Log;
 import org.hibernate.resource.jdbc.spi.StatementInspector;
 
-import lombok.extern.java.Log;
+import java.util.logging.Level;
+import java.util.regex.Pattern;
 
 @Log
 public class SqlCommentStatementInspector implements StatementInspector {
