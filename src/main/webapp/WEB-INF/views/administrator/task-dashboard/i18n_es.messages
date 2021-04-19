@@ -1,0 +1,7 @@
+administrator.dashboard.form.title.show = Panel de indicadores de tareas
+
+administrator.dashboard.form.title.general-indicators = Indicadores generales
+administrator.dashboard.form.label.total-public = Número total de tareas públicas
+administrator.dashboard.form.label.total-private = Número total de tareas privadas
+administrator.dashboard.form.label.total-finished = Número total de tareas finalizadas
+administrator.dashboard.form.label.total-pending = Número total de tareas pendientes

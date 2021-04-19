@@ -32,7 +32,7 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
-		    <acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard"/>
+			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/task-dashboard/show"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>

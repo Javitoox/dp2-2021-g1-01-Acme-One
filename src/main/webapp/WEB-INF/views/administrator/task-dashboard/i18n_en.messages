@@ -1,0 +1,7 @@
+administrator.dashboard.form.title.show = Tasks dashboard
+
+administrator.dashboard.form.title.general-indicators = General indicators
+administrator.dashboard.form.label.total-public = Total number of public tasks
+administrator.dashboard.form.label.total-private = Total number of private tasks
+administrator.dashboard.form.label.total-finished = Total number of finished tasks
+administrator.dashboard.form.label.total-pending = Total number of pending tasks
