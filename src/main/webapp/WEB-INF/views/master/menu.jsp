@@ -58,6 +58,12 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link.JaviM" action="https://open.spotify.com/album/5pQwQRnQOuKrbVUVnGMEN4?si=-9ewcULTRHKaxRjYfdRrrQ"/>
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.authenticated.tasks" action="/authenticated/task/list" access="isAuthenticated()"></acme:menu-option>
+	
+	
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<acme:menu-suboption code="master.menu.manager.workplan.list" action="/manager/work-plan/list"/>
+		</acme:menu-option>
+		
 	</acme:menu-left>
 
 	<acme:menu-right>

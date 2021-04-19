@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.3.0">
+<diagram program="umlet" version="13.3">
   <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -357,7 +357,7 @@ Task
     <coordinates>
       <x>973</x>
       <y>539</y>
-      <w>56</w>
+      <w>63</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>Contains
@@ -365,5 +365,20 @@ lt=&lt;-x
 m1=0..*
 m2=0..*</panel_attributes>
     <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>763</x>
+      <y>392</y>
+      <w>70</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Manager
+--
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
