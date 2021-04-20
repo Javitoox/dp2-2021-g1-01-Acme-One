@@ -73,7 +73,8 @@ master.menu.consumer.favourite-link.JaviM = Martínez's favourite link
 
 master.menu.manager= Manager
 master.menu.manager.workplan.list= Workplan list
-
+master.menu.manager.task.list= Task list
+master.menu.manager.task.create = Create Task
 
 # master.menu.user-account ####################################################
 

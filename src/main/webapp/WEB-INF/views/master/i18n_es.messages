@@ -72,6 +72,8 @@ master.menu.consumer.favourite-link.JaviM = Enlace favorito de Martínez
 
 master.menu.manager= Manager
 master.menu.manager.workplan.list = Lista de planes de trabajo
+master.menu.manager.task.list = Lista de tareas
+master.menu.manager.task.create = Crear Tarea
 
 # master.menu.user-account ####################################################
 

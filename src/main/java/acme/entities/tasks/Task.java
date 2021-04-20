@@ -10,6 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -51,10 +52,11 @@ public class Task extends DomainEntity {
 	@NotNull
     protected Boolean isPublic;
 	
+	@NotNull
+	@Positive
+	protected double workload;
+	
 	//	Derived attributes
-	public double  getWorkload(){
-		return (double) (this.end.getTime() - this.begin.getTime()) / (1000 * 3600) ;
-	}
 
 	public Period getExecutionPeriod(){
 		return Period.between(this.begin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), 
