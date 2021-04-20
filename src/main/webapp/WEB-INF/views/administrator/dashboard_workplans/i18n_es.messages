@@ -14,3 +14,5 @@ administrator.workplan.dashboard.form.label.average-workloads = Media de las car
 administrator.workplan.dashboard.form.label.minimum-number-workloads = Mínimo número de carga de trabajo
 administrator.workplan.dashboard.form.label.maximum-number-workloads = Máximo número de carga de trabajo
 administrator.workplan.dashboard.form.label.days = días
+
+administrator.workplan.dashboard.form.title.application-statuses = Gráfico de estadísticas

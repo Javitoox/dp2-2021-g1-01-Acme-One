@@ -15,4 +15,4 @@ administrator.workplan.dashboard.form.label.minimum-number-workloads = Minimum n
 administrator.workplan.dashboard.form.label.maximum-number-workloads = Maximum number of worloads
 administrator.workplan.dashboard.form.label.days = days
 
-
+administrator.workplan.dashboard.form.title.application-statuses = Application statuses
