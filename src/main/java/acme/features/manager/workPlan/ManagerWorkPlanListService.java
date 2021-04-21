@@ -28,7 +28,7 @@ public class ManagerWorkPlanListService  implements AbstractListService<Manager,
 	     assert request != null;
 	     assert entity != null;
 	     assert model != null;
-	     
+	     model.setAttribute("manager",entity.getManager().getUserAccount().getUsername() );
 	     request.unbind(entity, model,  "isPublic", "begin", "end", "tasks");
 
 	}
@@ -36,7 +36,7 @@ public class ManagerWorkPlanListService  implements AbstractListService<Manager,
 	@Override
 	public Collection<WorkPlan> findMany(Request<WorkPlan> request) {
 		assert request!=null;
-		return managerWorkPlanRepository.getAllWorkPlans();
+		return managerWorkPlanRepository.getAllWorkPlans(request.getPrincipal().getActiveRoleId());
 	}
 
 }

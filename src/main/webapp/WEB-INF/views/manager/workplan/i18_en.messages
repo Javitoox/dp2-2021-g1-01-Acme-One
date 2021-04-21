@@ -5,10 +5,16 @@ manager.workplan.list.label.tasks = Tasks
 manager.workplan.list.label.begin = Start date
 manager.workplan.list.label.end = End date
 manager.workplan.list.label.id = Workplan's id
+manager.workplan.list.label.manager = Manager
 manager.workplan.form.label.isPublic = Is it public?
 manager.workplan.form.label.begin = Start date
 manager.workplan.form.label.end = End date
 manager.workplan.form.label.workload = Workload
 manager.workplan.form.button.return = Return
 manager.workplan.form.label.id = Workplan id
+manager.workplan.form.button.create = Create
+manager.workplan.form.label.tasks.title= Title
+manager.workplan.form.label.tasks.id= Id
+manager.workplan.form.label.tasks= Workplan tasks
+manager.workplan.form.button.delete= Delete workplan
 

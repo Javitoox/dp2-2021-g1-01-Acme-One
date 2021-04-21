@@ -6,7 +6,7 @@
 <acme:list>
 	<acme:list-column code="manager.workplan.list.label.id" path="id" width="20%"/>
 	<acme:list-column code="manager.workplan.list.label.begin" path="begin" width="30%"/>
-	<acme:list-column code="manager.workplan.list.label.end" path="end" width="30%"/>
+	<acme:list-column code="manager.workplan.list.label.end" path="end" width="20%"/>
 	<acme:list-column code="manager.workplan.list.label.isPublic" path="isPublic" width="10%"/>
-
+	<acme:list-column code="manager.workplan.list.label.manager" path="manager" width="10%"/>
 </acme:list>
