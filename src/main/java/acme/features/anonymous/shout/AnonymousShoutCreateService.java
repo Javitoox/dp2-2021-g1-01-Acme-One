@@ -2,6 +2,7 @@ package acme.features.anonymous.shout;
 
 import acme.entities.shouts.Shout;
 import acme.features.spam.AnonymousSpamRepository;
+import acme.features.spam.AnonymousSpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -25,7 +26,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 	protected AnonymousShoutRepository repository;
 
 	@Autowired
-	protected AnonymousSpamRepository spam;
+	protected AnonymousSpamService spam;
 	
 	// AbstractCreateService<Administrator, Shout> interface
 
@@ -72,38 +73,6 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		return result;
 	}
 
-	public List<String> removeSpaces(List<String> s){
-		List<String> result = new ArrayList<>();
-		for(int i=0; i<s.size();i++){
-			String a = s.get(i).replace(" ", "");
-			result.add(a);
-		}
-		return result;
-	}
-	public boolean isItSpam(String phrase){
-		boolean result;
-		List<String> spamWords = spam.findMany().stream().map(x-> x.getWord()).collect(Collectors.toList());
-		List<String> spamList = removeSpaces(spamWords); // con esto tenemos todas las palabras spam sin espacio
-		List<String> wordList = new ArrayList<String>(Arrays.asList(phrase.split(" "))); // con esto tenemos todas las palabras de la frase dividida
-		Double threshold=0.;
-		for(String a : wordList){ //empezamos a comparar una a una las palabras de la frase con las de la lista de spam
-			String c = a.toLowerCase();
-			for(String b: spamList){
-				String d = b.toLowerCase();
-				if(c.equals(d)){ //si la palabra coincide con una de la lista de spam
-					threshold += ((1./wordList.size())*100); //le sumamos al threshold su tanto % correspondiente conforme a la longitud de la frase
-				}else {
-					threshold += 0.;
-				}
-			}
-		}
-		if(threshold<=10.){
-			result = false;
-		}else{
-			result= true;
-		}
-		return result;
-	}
 
 	@Override
 	public void validate(final Request<Shout> request, final Shout entity, final Errors errors) {
@@ -113,8 +82,8 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		String phrase = request.getModel().getAttribute("text").toString();
 		String author = request.getModel().getAttribute("author").toString();
 
-		boolean authorSpam = isItSpam(author);
-		boolean phraseSpam = isItSpam(phrase);
+		boolean authorSpam = spam.isItSpam(author);
+		boolean phraseSpam = spam.isItSpam(phrase);
 
 
 		if (phraseSpam == true && authorSpam == false) {
