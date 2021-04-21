@@ -80,6 +80,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
 		<property name="workload" value="20.0" />
+		<property name="executionPeriod" value="2000.0" />
 	</bean>
 	<bean id="task02" class="acme.entities.tasks.Task">
 		<property name="title" value="task2" />
@@ -89,7 +90,8 @@
 		The tasks can be either public or private." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
-		<property name="workload" value="22.0" />
+		<property name="workload" value="30.0" />
+		<property name="executionPeriod" value="3000.0" />
 	</bean>
 	<bean id="task03" class="acme.entities.tasks.Task">
 		<property name="title" value="task3" />
@@ -99,6 +101,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
 		<property name="workload" value="5.30" />
+		<property name="executionPeriod" value="1000.0" />
 	</bean>
 	<bean id="task04" class="acme.entities.tasks.Task">
 		<property name="title" value="task4" />
@@ -108,6 +111,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
 		<property name="workload" value="6.0" />
+		<property name="executionPeriod" value="2500.0" />
 	</bean>
 	<bean id="task05" class="acme.entities.tasks.Task">
 		<property name="title" value="task5" />
@@ -117,6 +121,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="false" />
 		<property name="workload" value="10.15" />
+		<property name="executionPeriod" value="2100.0" />
 	</bean>
 	<bean id="task06" class="acme.entities.tasks.Task">
 		<property name="title" value="task6" />
@@ -126,6 +131,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="false" />
 		<property name="workload" value="15.0" />
+		<property name="executionPeriod" value="1000.0" />
 	</bean>
 	<bean id="task07" class="acme.entities.tasks.Task">
 		<property name="title" value="task7"/>
@@ -135,6 +141,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="false"/>
 		<property name="workload" value="30.0" />
+		<property name="executionPeriod" value="4000.0" />
 	</bean>
 	<bean id="task08" class="acme.entities.tasks.Task">
 		<property name="title" value="task8"/>
@@ -144,6 +151,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 		<property name="workload" value="25.30" />
+		<property name="executionPeriod" value="2000.0" />
 	</bean>
 	<bean id="task09" class="acme.entities.tasks.Task">
 		<property name="title" value="task9"/>
@@ -153,6 +161,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 		<property name="workload" value="20.0" />
+		<property name="executionPeriod" value="2000.0" />
 	</bean>
 	<bean id="task10" class="acme.entities.tasks.Task">
 		<property name="title" value="task10"/>
@@ -162,6 +171,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 		<property name="workload" value="26.15" />
+		<property name="executionPeriod" value="3000.0" />
 	</bean>
 
 	<!-- Workplan -->

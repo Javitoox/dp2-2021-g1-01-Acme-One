@@ -1,8 +1,6 @@
 package acme.entities.tasks;
 
 import java.beans.Transient;
-import java.time.Period;
-import java.time.ZoneId;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -56,11 +54,12 @@ public class Task extends DomainEntity {
 	@Positive
 	protected double workload;
 	
+	protected double executionPeriod;
+	
 	//	Derived attributes
 
-	public Period getExecutionPeriod(){
-		return Period.between(this.begin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), 
-			this.end.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+	public void setExecutionPeriod() {
+		this.executionPeriod = (double) (this.end.getTime() - this.begin.getTime()) / (1000 * 3600);
 	}
 
 	@Transient

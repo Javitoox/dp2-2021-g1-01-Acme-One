@@ -1,7 +1,6 @@
 package acme.forms;
 
 import java.io.Serializable;
-import java.time.Period;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,10 +19,10 @@ public class TaskDashboard implements Serializable {
 	Integer						totalNumberOfPrivateTasks;
 	Integer						totalNumberOfFinishedTasks;
 	Integer						totalNumberOfPendingTasks;
-	Period						averageNumberOfTaskExecutionPeriod;
-	Period						deviationOfTaskExecutionPeriod;
-	Period						minTaskExecutionPeriod;
-	Period						maxTaskExecutionPeriod;
+	Double						averageNumberOfTaskExecutionPeriod;
+	Double						deviationOfTaskExecutionPeriod;
+	Double						minTaskExecutionPeriod;
+	Double						maxTaskExecutionPeriod;
 	Double						averageNumberOfWorkload;
 	Double						deviationOfWorkload;
 	Double						minWorkload;

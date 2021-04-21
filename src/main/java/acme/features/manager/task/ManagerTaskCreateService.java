@@ -62,6 +62,7 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		result.setLink("");
 		result.setIsPublic(true);
 		result.setWorkload(0.00);
+		result.setExecutionPeriod();
 
 		return result;
 	}
@@ -89,6 +90,7 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		assert request != null;
 		assert entity != null;
 	
+		entity.setExecutionPeriod();
 		this.repository.save(entity);
 		
 	}

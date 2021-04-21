@@ -1,6 +1,5 @@
 package acme.features.administrator.taskDashboard;
 
-import java.time.Period;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,10 +53,10 @@ public class AdministratorTaskDashboardShowService implements AbstractShowServic
 		Integer	totalNumberOfPrivateTasks;
 		Integer	totalNumberOfFinishedTasks;
 		Integer	totalNumberOfPendingTasks;
-		Period	averageNumberOfTaskExecutionPeriod;
-		Period	deviationOfTaskExecutionPeriod;
-		Period	minTaskExecutionPeriod;
-		Period	maxTaskExecutionPeriod;
+		Double	averageNumberOfTaskExecutionPeriod;
+		Double	deviationOfTaskExecutionPeriod;
+		Double	minTaskExecutionPeriod;
+		Double	maxTaskExecutionPeriod;
 		Double	averageNumberOfWorkload;
 		Double	deviationOfWorkload;
 		Double	minWorkload;
@@ -67,14 +66,14 @@ public class AdministratorTaskDashboardShowService implements AbstractShowServic
 		totalNumberOfPrivateTasks = this.repository.totalNumberOfPrivateTasks();
 		totalNumberOfFinishedTasks = this.repository.totalNumberOfFinishedTasks(new Date());
 		totalNumberOfPendingTasks = this.repository.totalNumberOfPendingTasks(new Date());
-		averageNumberOfTaskExecutionPeriod = null;
-		deviationOfTaskExecutionPeriod = null;
-		minTaskExecutionPeriod = null;
-		maxTaskExecutionPeriod = null;
+		averageNumberOfTaskExecutionPeriod = this.repository.averageNumberOfTaskExecutionPeriod();
+		deviationOfTaskExecutionPeriod = this.repository.deviationOfTaskExecutionPeriod(averageNumberOfTaskExecutionPeriod);
+		minTaskExecutionPeriod = this.repository.minTaskExecutionPeriod();
+		maxTaskExecutionPeriod = this.repository.maxTaskExecutionPeriod();
 		averageNumberOfWorkload = this.repository.averageNumberOfWorkload();
-		deviationOfWorkload = null;
-		minWorkload = null;
-		maxWorkload = null;
+		deviationOfWorkload = this.repository.deviationOfWorkload(averageNumberOfWorkload);
+		minWorkload = this.repository.minWorkload();
+		maxWorkload = this.repository.maxWorkload();
 		
 		result = new TaskDashboard();
 		result.setTotalNumberOfPublicTasks(totalNumberOfPublicTasks);
