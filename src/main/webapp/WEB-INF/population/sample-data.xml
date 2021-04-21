@@ -220,4 +220,34 @@
 		</property>
 	</bean>
 
+	<bean name="spam1" class="acme.entities.spam.Spam">
+		<property name="word" value = "Nigeria"/>
+		<property name="threshold" value = "10"/>
+	</bean>
+
+	<bean name="spam2" class="acme.entities.spam.Spam">
+		<property name="word" value = "sexo"/>
+		<property name="threshold" value = "10"/>
+	</bean>
+
+	<bean name="spam2.1" class="acme.entities.spam.Spam">
+		<property name="word" value = "sex"/>
+		<property name="threshold" value = "10"/>
+	</bean>
+
+	<bean name="spam3" class="acme.entities.spam.Spam">
+		<property name="word" value = "hardcore"/>
+		<property name="threshold" value = "10"/>
+	</bean>
+
+	<bean name="spam4" class="acme.entities.spam.Spam">
+		<property name="word" value = "viagra"/>
+		<property name="threshold" value = "10"/>
+	</bean>
+
+	<bean name="spam5" class="acme.entities.spam.Spam">
+		<property name="word" value = "cialis"/>
+		<property name="threshold" value = "10"/>
+	</bean>
+
 </beans>
