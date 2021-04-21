@@ -40,7 +40,8 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end", "workload");
+		request.unbind(entity, model, "title", "begin", "end", "description");
+		request.unbind(entity, model, "link", "isPublic", "workload");
 		model.setAttribute("readonly", false);
 		
 	}
@@ -50,18 +51,10 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		assert request != null;
 
 		Task result;
-		Date moment;
-
-		moment = new Date(System.currentTimeMillis() - 1);
-
+		
+		final Manager manager = this.repository.findOneManagerById(request.getPrincipal().getActiveRoleId());
 		result = new Task();
-		result.setTitle("");
-		result.setBegin(moment);
-		result.setEnd(moment);
-		result.setDescription("");
-		result.setLink("");
-		result.setIsPublic(true);
-		result.setWorkload(0.00);
+		result.setManager(manager);
 
 		return result;
 	}
@@ -72,15 +65,25 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		assert entity != null;
 		assert errors != null;
 		final Date now =new Date();
-		final Date begin = (Date) request.getModel().getAttribute("begin");
-		final Date end = (Date) request.getModel().getAttribute("end");
-		if(begin.before(end)) {
-			errors.state(request,begin.before(end), "begin", "The date begin must be after tan the date end");
-		}else if(begin.before(now)) {
-			errors.state(request, begin.before(now), "begin", "The date begin must be in the future");
+		final Date begin = entity.getBegin();
+		final Date end = entity.getEnd();
+		final double periodo = (end.getTime()-begin.getTime())/(1000.0*3600); //Este calculo se debe a que la diferencia está en milisegundos
+		if(!errors.hasErrors("begin")) {
+			errors.state(request, end.after(begin), "begin", "manager.task.form.error.must-be-before-end");
+		} 
+		if(!errors.hasErrors("begin")) {
+			errors.state(request, begin.after(now), "begin", "manager.task.form.error.must-be-in-future");
 		}
-		else if(end.before(now)) {
-			errors.state(request, end.before(now), "end", "The date end must be in the future");
+		if(!errors.hasErrors("end")) {
+			errors.state(request, end.after(now), "end", "manager.task.form.error.must-be-in-future");
+		}
+		if(!errors.hasErrors("workload")) {
+			errors.state(request, periodo>entity.getWorkload(), "workload", "manager.task.form.error.must-be-less-than-work-period");
+		}
+		final int ent = (int) entity.getWorkload();
+		final double dec = entity.getWorkload() - ent;
+		if(!errors.hasErrors("workload")) {
+			errors.state(request, 0.59>=dec, "workload", "manager.task.form.error.decimal-must-be-under-60");
 		}
 	}
 

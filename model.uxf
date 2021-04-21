@@ -349,7 +349,7 @@ Task
 + description: {NotBlank, Length(min=500)}
 + link: Sting {URL} [0,1]
 + isPublic: boolean {NotNull}
-+ ExecutionPeriod: Period 
++ executionPeriod: double 
 + /isFinished: boolean {Transient}</panel_attributes>
     <additional_attributes/>
   </element>

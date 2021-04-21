@@ -10,6 +10,7 @@ import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
@@ -30,7 +31,7 @@ public class ManagerTaskListService implements AbstractListService<Manager, Task
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end", "workload");
+		request.unbind(entity, model, "title", "begin", "end", "workload", "isPublic");
 		
 	}
 
@@ -38,7 +39,8 @@ public class ManagerTaskListService implements AbstractListService<Manager, Task
 	public Collection<Task> findMany(final Request<Task> request) {
 		assert request != null;
 		Collection<Task> result;
-		result = this.repository.findAllTasks().stream().collect(Collectors.toList());
+		final Principal principal = request.getPrincipal();
+		result = this.repository.findAllManagerTasks(principal.getUsername()).stream().collect(Collectors.toList());
 		return result;
 	}
 }

@@ -8,6 +8,7 @@ import acme.entities.tasks.Task;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
@@ -22,10 +23,14 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		final boolean result;
 		Task task;
 		int taskId;
+		Manager manager;
+		Principal principal;
 		
 		taskId=request.getModel().getInteger("id");
 		task=this.repository.findOneTaskById(taskId);
-		result = task !=null && !task.isFinished();
+		manager = task.getManager();
+		principal = request.getPrincipal();
+		result = !task.isFinished() && manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -45,9 +50,9 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end", "workload");
+		request.unbind(entity, model, "title", "begin", "end","description");
+		request.unbind(entity, model, "link", "isPublic", "workload");
 		model.setAttribute("readonly", false);
-		model.setAttribute("id", entity.getId());
 		
 	}
 

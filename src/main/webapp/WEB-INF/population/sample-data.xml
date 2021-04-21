@@ -80,6 +80,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
 		<property name="workload" value="20.0" />
+		<property name="manager" ref="manager1Manager" />
 	</bean>
 	<bean id="task02" class="acme.entities.tasks.Task">
 		<property name="title" value="task2" />
@@ -90,6 +91,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
 		<property name="workload" value="22.0" />
+		<property name="manager" ref="manager1Manager" />
 	</bean>
 	<bean id="task03" class="acme.entities.tasks.Task">
 		<property name="title" value="task3" />
@@ -99,6 +101,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
 		<property name="workload" value="5.30" />
+		<property name="manager" ref="manager1Manager" />
 	</bean>
 	<bean id="task04" class="acme.entities.tasks.Task">
 		<property name="title" value="task4" />
@@ -108,6 +111,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
 		<property name="workload" value="6.0" />
+		<property name="manager" ref="manager1Manager" />
 	</bean>
 	<bean id="task05" class="acme.entities.tasks.Task">
 		<property name="title" value="task5" />
@@ -117,6 +121,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="false" />
 		<property name="workload" value="10.15" />
+		<property name="manager" ref="manager2Manager" />
 	</bean>
 	<bean id="task06" class="acme.entities.tasks.Task">
 		<property name="title" value="task6" />
@@ -126,6 +131,7 @@
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="false" />
 		<property name="workload" value="15.0" />
+		<property name="manager" ref="manager2Manager" />
 	</bean>
 	<bean id="task07" class="acme.entities.tasks.Task">
 		<property name="title" value="task7"/>
@@ -135,6 +141,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="false"/>
 		<property name="workload" value="30.0" />
+		<property name="manager" ref="manager2Manager" />
 	</bean>
 	<bean id="task08" class="acme.entities.tasks.Task">
 		<property name="title" value="task8"/>
@@ -144,6 +151,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 		<property name="workload" value="25.30" />
+		<property name="manager" ref="manager1Manager" />
 	</bean>
 	<bean id="task09" class="acme.entities.tasks.Task">
 		<property name="title" value="task9"/>
@@ -153,6 +161,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 		<property name="workload" value="20.0" />
+		<property name="manager" ref="manager1Manager" />
 	</bean>
 	<bean id="task10" class="acme.entities.tasks.Task">
 		<property name="title" value="task10"/>
@@ -162,6 +171,7 @@
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
 		<property name="workload" value="26.15" />
+		<property name="manager" ref="manager1Manager" />
 	</bean>
 
 	<!-- Workplan -->
@@ -230,6 +240,7 @@
 		</property>
 	</bean>
 	
+	<!-- Manager -->
 		<bean name="manager1UserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="manager1" />
 		<property name="password" value="manager1" />
@@ -244,18 +255,46 @@
 		<property name="enabled" value="true" />
 		<property name="roles">
 			<list>
-				<ref bean="manager1Employer" />
+				<ref bean="manager1Manager" />
 				<ref bean="manager1Authenticated" />
 			</list>
 		</property>
 	</bean>
 
-	<bean name="manager1Employer" class="acme.entities.roles.Manager">
+	<bean name="manager1Manager" class="acme.entities.roles.Manager">
 		<property name="userAccount" ref="manager1UserAccount" />
 	</bean>
 
 	<bean name="manager1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="manager1UserAccount" />
+	</bean>
+	
+	<bean name="manager2UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="manager2" />
+		<property name="password" value="manager2" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Manager" />
+				<property name="surname" value="One" />
+				<property name="email" value="manager2@mail.com" />
+				<property name="phone" value="+44 123-456-789" />
+			</bean>
+		</property>
+		<property name="enabled" value="true" />
+		<property name="roles">
+			<list>
+				<ref bean="manager2Manager" />
+				<ref bean="manager2Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="manager2Manager" class="acme.entities.roles.Manager">
+		<property name="userAccount" ref="manager2UserAccount" />
+	</bean>
+
+	<bean name="manager2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="manager2UserAccount" />
 	</bean>
 
 </beans>

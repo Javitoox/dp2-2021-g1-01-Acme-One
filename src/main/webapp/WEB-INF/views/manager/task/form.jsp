@@ -11,17 +11,16 @@
     <acme:form-double path="workload" code="manager.task.form.label.workload"/>
     <acme:form-url path="link" code="manager.task.form.label.link"/>
     <acme:form-textarea path="description" code="manager.task.form.label.description"/>
+    <jstl:if test="${command=='show' && isFinished=='false'}">
+    <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
+    </jstl:if>
     <jstl:if test="${command=='create'}">
     <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
-    <acme:form-submit code="manager.task.form.button.create" 
+    </jstl:if>
+    <acme:form-submit test="${command=='create'}" code="manager.task.form.button.create" 
     action="/manager/task/create"/>
-    </jstl:if>
-    <jstl:if test="${command!='create'}">
-    <acme:form-submit code="manager.task.form.button.update" 
-    action="/manager/task/update"/>
-    <acme:form-submit code="manager.task.form.button.delete" 
-    action="/manager/task/delete"/>
-    </jstl:if>
+    <acme:form-submit test= "${command=='show' && isFinished=='false'}" code="manager.task.form.button.update" action="/manager/task/update"/>
+    <acme:form-submit test= "${command=='show' && isFinished=='false'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
     <acme:form-return code="manager.task.form.button.return" />
     
 </acme:form>

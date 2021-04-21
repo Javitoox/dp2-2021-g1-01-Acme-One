@@ -8,4 +8,5 @@
 	<acme:list-column code="manager.task.list.label.begin" path="begin" width="30%"/>
 	<acme:list-column code="manager.task.list.label.end" path="end" width="30%"/>
 	<acme:list-column code="manager.task.list.label.workload" path="workload" width="30%"/>
+	<acme:list-column code="manager.task.list.label.isPublic" path="isPublic" width="10%"/>
 </acme:list>

@@ -1,5 +1,7 @@
 package acme.features.manager.task;
 
+
+
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import acme.entities.tasks.Task;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -24,10 +27,14 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		final boolean result;
 		Task task;
 		int taskId;
+		Manager manager;
+		Principal principal;
 		
 		taskId=request.getModel().getInteger("id");
 		task=this.repository.findOneTaskById(taskId);
-		result = task !=null && !task.isFinished();
+		manager = task.getManager();
+		principal = request.getPrincipal();
+		result = !task.isFinished() && manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -47,9 +54,9 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end", "workload");
+		request.unbind(entity, model, "title", "begin", "end","description");
+		request.unbind(entity, model, "link", "isPublic", "workload");
 		model.setAttribute("readonly", false);
-		model.setAttribute("id", entity.getId());
 	}
 
 	@Override
@@ -68,17 +75,26 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		assert entity != null;
 		assert errors != null;
 		final Date now =new Date();
-		final Date begin = (Date) request.getModel().getAttribute("begin");
-		final Date end = (Date) request.getModel().getAttribute("end");
-		if(begin.before(end)) {
-			errors.state(request,begin.before(end), "begin", "The date begin must be after tan the date end");
-		}else if(begin.before(now)) {
-			errors.state(request, begin.before(now), "begin", "The date begin must be in the future");
+		final Date begin = entity.getBegin();
+		final Date end = entity.getEnd();
+		final double periodo = (end.getTime()-begin.getTime())/(1000.0*3600); //Este calculo se debe a que la diferencia está en milisegundos
+		if(!errors.hasErrors("begin")) {
+			errors.state(request, end.after(begin), "begin", "manager.task.form.error.must-be-before-end");
+		} 
+		if(!errors.hasErrors("begin")) {
+			errors.state(request, begin.after(now), "begin", "manager.task.form.error.must-be-in-future");
 		}
-		else if(end.before(now)) {
-			errors.state(request, end.before(now), "end", "The date end must be in the future");
+		if(!errors.hasErrors("end")) {
+			errors.state(request, end.after(now), "end", "manager.task.form.error.must-be-in-future");
 		}
-		
+		if(!errors.hasErrors("workload")) {
+			errors.state(request, periodo>entity.getWorkload(), "workload", "manager.task.form.error.must-be-less-than-work-period");
+		}
+		final int ent = (int) entity.getWorkload();
+		final double dec = entity.getWorkload() - ent;
+		if(!errors.hasErrors("workload")) {
+			errors.state(request, 0.59>=dec, "workload", "manager.task.form.error.decimal-must-be-under-60");
+		}
 	}
 
 	@Override

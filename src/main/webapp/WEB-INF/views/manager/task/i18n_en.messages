@@ -4,6 +4,7 @@ manager.task.list.label.title = Title
 manager.task.list.label.begin = Start date
 manager.task.list.label.end = End date
 manager.task.list.label.workload = Workload
+manager.task.list.label.isPublic = Is public?
 
 manager.task.form.label.title = Title
 manager.task.form.label.begin = Start date
@@ -15,5 +16,5 @@ manager.task.form.label.workload = Workload
 
 manager.task.form.button.return = Return
 manager.task.form.button.create = Create
-manager.task.form.button.update = Save Changes
+manager.task.form.button.update = Update
 manager.task.form.button.delete = Delete
