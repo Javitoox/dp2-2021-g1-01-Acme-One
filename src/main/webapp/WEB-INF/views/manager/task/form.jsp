@@ -3,7 +3,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<acme:form readonly="${readonly}">
+<acme:form>
     <acme:form-hidden path="id"/>
     <acme:form-textbox path="title" code="manager.task.form.label.title"/>
     <acme:form-moment path="begin" code="manager.task.form.label.begin"/>
@@ -14,6 +14,9 @@
     <jstl:if test="${command=='show' && isFinished=='false'}">
     <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
     </jstl:if>
+     <jstl:if test="${command=='update'}">
+    <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
+    </jstl:if>
     <jstl:if test="${command=='create'}">
     <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
     </jstl:if>
@@ -21,6 +24,8 @@
     action="/manager/task/create"/>
     <acme:form-submit test= "${command=='show' && isFinished=='false'}" code="manager.task.form.button.update" action="/manager/task/update"/>
     <acme:form-submit test= "${command=='show' && isFinished=='false'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
+    <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.update" action="/manager/task/update"/>
+    <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>		
     <acme:form-return code="manager.task.form.button.return" />
     
 </acme:form>
