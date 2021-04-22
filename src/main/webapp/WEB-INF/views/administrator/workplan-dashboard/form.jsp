@@ -76,6 +76,15 @@
 		</td>
 	</tr>
 	<tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.workplan.dashboard.form.label.deviation-workplan"/>
+		</th>
+		<td>
+			<acme:print value="${deviationOfWorkloads}"/>
+		</td>
+	</tr>
+	<tr>
 		<th scope="row">
 			<acme:message code="administrator.workplan.dashboard.form.label.minimum-number-workloads"/>
 		</th>

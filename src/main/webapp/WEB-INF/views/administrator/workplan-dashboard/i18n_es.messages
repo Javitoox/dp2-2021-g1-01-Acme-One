@@ -11,6 +11,7 @@ administrator.workplan.dashboard.form.label.average-periods = Media de los perio
 administrator.workplan.dashboard.form.label.minimum-periods = Mínimo número de periodo de los planes de trabajo
 administrator.workplan.dashboard.form.label.maximum-periods = Máximo número de periodo de los planes de trabajo
 administrator.workplan.dashboard.form.label.average-workloads = Media de las cargas de trabajo
+administrator.workplan.dashboard.form.label.deviation-workplan = Desviación de las cargas de trabajo
 administrator.workplan.dashboard.form.label.minimum-number-workloads = Mínimo número de carga de trabajo
 administrator.workplan.dashboard.form.label.maximum-number-workloads = Máximo número de carga de trabajo
 administrator.workplan.dashboard.form.label.days = días

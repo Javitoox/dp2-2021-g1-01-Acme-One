@@ -34,7 +34,7 @@ public class AdministratorWorkPlanDashboardShowService implements AbstractShowSe
         		"totalNumberOfPublicWorkplans", "totalNumberOfPrivateWorkplans", //
         		"totalNumberOfFinishedWorkplans", "totalNumberOfNonFinishedWorkplans", //
         		"averageNumberOfPeriods", "minimumNumberOfPeriods", "maximumNumberOfPeriods",  //
-        		"averageNumberOfWorkloads", "minimumNumberOfWorkloads", "maximumNumberOfWorkloads");
+        		"averageNumberOfWorkloads", "deviationOfWorkloads", "minimumNumberOfWorkloads", "maximumNumberOfWorkloads");
 	}
 
 	@Override
@@ -50,11 +50,14 @@ public class AdministratorWorkPlanDashboardShowService implements AbstractShowSe
 		Double averageNumberOfWorkloads = workplans.stream().mapToDouble(x->x.getWorkload()).average().orElse(0.);
 		Double minimumNumberOfWorkloads = workplans.stream().mapToDouble(x->x.getWorkload()).min().orElse(0.);
 		Double maximumNumberOfWorkloads = workplans.stream().mapToDouble(x->x.getWorkload()).max().orElse(0.);
+		
+		Double deviationOfWorkloads = null;
+		
 		int milisecondsByDay = 86400000;
 		Double averageNumberOfPeriods = workplans.stream().mapToDouble(x->x.getEnd().getTime()/milisecondsByDay - x.getBegin().getTime()/milisecondsByDay).average().orElse(0.);
 		Double minimumNumberOfPeriods = workplans.stream().mapToDouble(x->x.getEnd().getTime()/milisecondsByDay - x.getBegin().getTime()/milisecondsByDay).min().orElse(0.);
 		Double maximumNumberOfPeriods = workplans.stream().mapToDouble(x->x.getEnd().getTime()/milisecondsByDay - x.getBegin().getTime()/milisecondsByDay).max().orElse(0.);
-
+		
 		result = new WorkplanDashboard();
 		result.setTotalNumberOfPublicWorkplans(totalNumberOfPublicWorkplans);
 		result.setTotalNumberOfPrivateWorkplans(totalNumberOfPrivateWorkplans);
@@ -66,8 +69,10 @@ public class AdministratorWorkPlanDashboardShowService implements AbstractShowSe
 		result.setAverageNumberOfPeriods(averageNumberOfPeriods);
 		result.setMinimumNumberOfPeriods(minimumNumberOfPeriods);
 		result.setMaximumNumberOfPeriods(maximumNumberOfPeriods);
+		result.setDeviationOfWorkloads(deviationOfWorkloads);
 		
 		return result;
 	}
 
+	
 }

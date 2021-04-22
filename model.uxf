@@ -372,7 +372,7 @@ m2=0..*</panel_attributes>
       <x>875</x>
       <y>133</y>
       <w>231</w>
-      <h>147</h>
+      <h>168</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 WorkplanDashboard
@@ -382,9 +382,11 @@ WorkplanDashboard
 + totalNumberOfFinishedWorkplans: integer
 + totalNumberOfNonFinishedWorkplans: integer
 + averageNumberOfPeriods: double
++ deviationOfPeriods: double
 + minimumNumberOfPeriods: double
 + maximumNumberOfPeriods: double
 + averageNumberOfWorkloads: double
++ deviationOfWorkloads: double
 + minimumNumberOfWorkloads: double
 + maximumNumberOfWorkloads: double
 
