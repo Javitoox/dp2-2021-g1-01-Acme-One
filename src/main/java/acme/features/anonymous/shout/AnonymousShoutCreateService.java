@@ -1,8 +1,7 @@
 package acme.features.anonymous.shout;
 
 import acme.entities.shouts.Shout;
-import acme.features.spam.AnonymousSpamRepository;
-import acme.features.spam.AnonymousSpamService;
+import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -11,11 +10,7 @@ import acme.framework.services.AbstractCreateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AnonymousShoutCreateService implements AbstractCreateService<Anonymous, Shout>{
@@ -26,7 +21,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 	protected AnonymousShoutRepository repository;
 
 	@Autowired
-	protected AnonymousSpamService spam;
+	protected SpamService spam;
 	
 	// AbstractCreateService<Administrator, Shout> interface
 
@@ -79,18 +74,18 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
 		String phrase = request.getModel().getAttribute("text").toString();
 		String author = request.getModel().getAttribute("author").toString();
 
 		boolean authorSpam = spam.isItSpam(author);
 		boolean phraseSpam = spam.isItSpam(phrase);
 
-
 		if (phraseSpam == true && authorSpam == false) {
 			errors.add("text", "Your text is considered spam, please, use a proper vocabulary ");
 		}else if(phraseSpam==false && authorSpam==true){
 			errors.add("author", "Your author is considered spam, please, use a proper vocabulary");
-		} else if(phraseSpam==true && authorSpam==true){
+		}else if(phraseSpam==true && authorSpam==true){
 			errors.add("text", "Your text is considered spam, please, use a proper vocabulary");
 			errors.add("author", "Your author is considered spam, please, use a proper vocabulary");
 		}

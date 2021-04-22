@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 @Repository
-public interface AnonymousSpamRepository extends AbstractRepository {
+public interface SpamRepository extends AbstractRepository {
 
     @Query("select s from Spam s")
-    Collection<Spam> findMany();
+    Spam findOne();
 }

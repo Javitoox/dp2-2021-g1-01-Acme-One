@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.OneToMany;
+import java.util.Collection;
+
 
 @Entity
 @Getter
@@ -15,10 +16,10 @@ import javax.validation.constraints.NotBlank;
 public class Spam extends DomainEntity {
     protected static final long serialVersionUID = 1L;
 
-    @NotBlank
-    protected String word;
+    @OneToMany
+    private Collection<Word> spamWords;
 
 
-    protected Integer threshold;
+    protected double threshold;
 //Definimos el threshold (umbral)que debe tener el spam para hacer getThreshold y compararlo con el actual, por defecto siempre debera estar a 10%
 }
