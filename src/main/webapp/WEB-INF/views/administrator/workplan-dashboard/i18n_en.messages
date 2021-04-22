@@ -7,13 +7,14 @@ administrator.workplan.dashboard.form.label.total-number-public-workplan =  Tota
 administrator.workplan.dashboard.form.label.total-number-private-workplan = Total number of private workplans
 administrator.workplan.dashboard.form.label.total-number-finished-workplan = Total number of finished workplans
 administrator.workplan.dashboard.form.label.total-number-non-finished-workplan = Total number of non finished workplans
-administrator.workplan.dashboard.form.label.average-periods = Average of workplans periods
+administrator.workplan.dashboard.form.label.average-periods = Average of execution periods
+administrator.workplan.dashboard.form.label.deviation-periods = Deviation of execution periods
 administrator.workplan.dashboard.form.label.minimum-periods = Minimum number of workplans period
 administrator.workplan.dashboard.form.label.maximum-periods = Maximum number of workplans period
 administrator.workplan.dashboard.form.label.average-workloads = Average of worloads
 administrator.workplan.dashboard.form.label.deviation-workplan = Deviation of workloads
 administrator.workplan.dashboard.form.label.minimum-number-workloads = Minimum number of worloads
 administrator.workplan.dashboard.form.label.maximum-number-workloads = Maximum number of worloads
-administrator.workplan.dashboard.form.label.days = days
+administrator.workplan.dashboard.form.label.seconds = seconds
 
 

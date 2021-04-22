@@ -7,7 +7,7 @@
 <tiles-definitions>
 	
 	<definition name="administrator/workplan-dashboard/form" extends="master">
-		<put-attribute name="body" type="template" value="../administrator/dashboard_workplans/form.jsp" />
+		<put-attribute name="body" type="template" value="../administrator/workplan-dashboard/form.jsp" />
 	</definition>
 
 </tiles-definitions>
