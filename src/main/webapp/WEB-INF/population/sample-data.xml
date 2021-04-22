@@ -256,6 +256,14 @@
 		<property name="word" value = "You have won"/>
 	</bean>
 
+	<bean name="word10" class="acme.entities.spam.Word">
+		<property name="word" value = "Millon de euros"/>
+	</bean>
+
+	<bean name="word11" class="acme.entities.spam.Word">
+		<property name="word" value = "Million dollars"/>
+	</bean>
+
 	<bean name="spam1" class="acme.entities.spam.Spam">
 		<property name="spamWords" >
 				<list>
@@ -268,6 +276,8 @@
 					<ref bean="word7" />
 					<ref bean="word8" />
 					<ref bean="word9" />
+					<ref bean="word10" />
+					<ref bean="word11" />
 				</list>
 			</property>
 		<property name="threshold" value="10." />
