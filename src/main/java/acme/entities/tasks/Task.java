@@ -58,6 +58,8 @@ public class Task extends DomainEntity {
 	
 	protected double executionPeriod;
 	
+	protected boolean finalMode;
+	
 	//	Derived attributes
 
 	public void setExecutionPeriod() {

@@ -1,16 +1,17 @@
 package acme.features.anonymous.task;
 
-import acme.entities.tasks.Task;
-import acme.framework.repositories.AbstractRepository;
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
+import acme.entities.tasks.Task;
+import acme.framework.repositories.AbstractRepository;
 
 @Repository
 public interface AnonymousTaskRepository extends AbstractRepository {
 	
-	@Query("select t from Task t where t.isPublic = 1")
+	@Query("select t from Task t where t.isPublic = true and t.finalMode = true")
     Collection<Task> findPublicTask();
 
 	@Query("select t from Task t where t.id = ?1")

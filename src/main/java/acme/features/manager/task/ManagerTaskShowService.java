@@ -7,6 +7,7 @@ import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -18,7 +19,18 @@ public class ManagerTaskShowService implements AbstractShowService<Manager, Task
 	@Override
 	public boolean authorise(final Request<Task> request) {
 		assert request != null;
-		return true;
+		final boolean result;
+		Task task;
+		int taskId;
+		Manager manager;
+		Principal principal;
+		
+		taskId=request.getModel().getInteger("id");
+		task=this.repository.findOneTaskById(taskId);
+		manager = task.getManager();
+		principal = request.getPrincipal();
+		result = task.isFinalMode() ||!task.isFinalMode() && manager.getUserAccount().getId() == principal.getAccountId();
+		return result;
 	}
 
 	@Override
@@ -28,7 +40,7 @@ public class ManagerTaskShowService implements AbstractShowService<Manager, Task
 		assert model != null;
 		
 		request.unbind(entity, model, "title", "begin", "end","description","link", "isPublic", "workload");
-		model.setAttribute("isFinished", entity.isFinished());
+		model.setAttribute("finalMode", entity.isFinalMode());
 	}
 
 	@Override

@@ -4876,3 +4876,427 @@ INFO [acme.framework.utilities.DatabasePopulator] > Persisting task08 = acme.ent
 INFO [acme.framework.utilities.DatabasePopulator] > Persisting task09 = acme.entities.tasks.Task{id=116, version=0}
 INFO [acme.framework.utilities.DatabasePopulator] > Persisting task10 = acme.entities.tasks.Task{id=117, version=0}
 INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on LAPTOP-9R0L1N1V with PID 3236 (C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One\target\classes started by manum in C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 12.516 seconds (JVM running for 13.571)
+INFO [acme.framework.utilities.DatabasePopulator] Populating sample data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerManager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for managerUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for managerManager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for managerAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 5 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 6 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 7 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerManager = acme.entities.roles.Manager{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=6, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=7, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=8, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/sample-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout01 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout02 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout03 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout04 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout05 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout06 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout07 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task01 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task02 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task03 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task04 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task05 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task06 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task07 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task08 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task09 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task10 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan1 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan2 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan3 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan4 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan5 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan6 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1UserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1Manager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1Authenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2UserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2Manager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2Authenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for shout01.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for shout02.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for shout03.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for shout04.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for shout05.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 5 for shout06.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 6 for shout07.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task01.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task02.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task03.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task04.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task05.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task06.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task07.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task08.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task09.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task10.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 7 for workPlan1.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 8 for workPlan2.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 9 for workPlan3.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 10 for workPlan4.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 11 for workPlan5.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 12 for workPlan6.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 13 for manager1UserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 14 for manager1Manager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 15 for manager1Authenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 16 for manager2UserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 17 for manager2Manager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 18 for manager2Authenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 19 for task01.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 20 for task02.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 21 for task03.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 22 for task04.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 23 for task05.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 24 for task06.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 25 for task07.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 26 for task08.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 27 for task09.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 28 for task10.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout01 = acme.entities.shouts.Shout{id=89, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout02 = acme.entities.shouts.Shout{id=90, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout03 = acme.entities.shouts.Shout{id=91, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout04 = acme.entities.shouts.Shout{id=92, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout05 = acme.entities.shouts.Shout{id=93, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout06 = acme.entities.shouts.Shout{id=94, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout07 = acme.entities.shouts.Shout{id=95, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan1 = acme.entities.workPlan.WorkPlan{id=96, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan2 = acme.entities.workPlan.WorkPlan{id=97, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan3 = acme.entities.workPlan.WorkPlan{id=98, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan4 = acme.entities.workPlan.WorkPlan{id=99, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan5 = acme.entities.workPlan.WorkPlan{id=100, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan6 = acme.entities.workPlan.WorkPlan{id=101, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1UserAccount = acme.framework.entities.UserAccount{id=102, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1Manager = acme.entities.roles.Manager{id=103, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1Authenticated = acme.framework.entities.Authenticated{id=104, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2UserAccount = acme.framework.entities.UserAccount{id=105, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2Manager = acme.entities.roles.Manager{id=106, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2Authenticated = acme.framework.entities.Authenticated{id=107, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task01 = acme.entities.tasks.Task{id=108, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task02 = acme.entities.tasks.Task{id=109, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task03 = acme.entities.tasks.Task{id=110, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task04 = acme.entities.tasks.Task{id=111, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task05 = acme.entities.tasks.Task{id=112, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task06 = acme.entities.tasks.Task{id=113, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task07 = acme.entities.tasks.Task{id=114, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task08 = acme.entities.tasks.Task{id=115, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task09 = acme.entities.tasks.Task{id=116, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task10 = acme.entities.tasks.Task{id=117, version=0}
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+WARN [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] SQL Error: 1451, SQLState: 23000
+ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] Cannot delete or update a parent row: a foreign key constraint fails (`acme-one`.`work_plan_task`, CONSTRAINT `FK1bn09ja7ynyafv8syn5au40um` FOREIGN KEY (`tasks_id`) REFERENCES `task` (`id`))
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP POST /Acme-One/WEB-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:276): could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:59): could not execute statement
+com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117): Cannot delete or update a parent row: a foreign key constraint fails (`acme-one`.`work_plan_task`, CONSTRAINT `FK1bn09ja7ynyafv8syn5au40um` FOREIGN KEY (`tasks_id`) REFERENCES `task` (`id`))
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on LAPTOP-9R0L1N1V with PID 12900 (C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One\target\classes started by manum in C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 11.985 seconds (JVM running for 13.006)
+INFO [acme.framework.utilities.DatabasePopulator] Populating sample data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerManager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for managerUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for managerManager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for managerAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 5 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 6 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 7 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerManager = acme.entities.roles.Manager{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=6, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=7, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=8, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/sample-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout01 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout02 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout03 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout04 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout05 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout06 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout07 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task01 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task02 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task03 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task04 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task05 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task06 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task07 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task08 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task09 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task10 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan1 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan2 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan3 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan4 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan5 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan6 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1UserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1Manager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1Authenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2UserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2Manager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2Authenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for shout01.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for shout02.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for shout03.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for shout04.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for shout05.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 5 for shout06.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 6 for shout07.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task01.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task02.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task03.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task04.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task05.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task06.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task07.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task08.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task09.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task10.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 7 for workPlan1.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 8 for workPlan2.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 9 for workPlan3.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 10 for workPlan4.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 11 for workPlan5.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 12 for workPlan6.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 13 for manager1UserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 14 for manager1Manager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 15 for manager1Authenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 16 for manager2UserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 17 for manager2Manager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 18 for manager2Authenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 19 for task01.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 20 for task02.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 21 for task03.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 22 for task04.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 23 for task05.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 24 for task06.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 25 for task07.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 26 for task08.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 27 for task09.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 28 for task10.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout01 = acme.entities.shouts.Shout{id=89, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout02 = acme.entities.shouts.Shout{id=90, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout03 = acme.entities.shouts.Shout{id=91, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout04 = acme.entities.shouts.Shout{id=92, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout05 = acme.entities.shouts.Shout{id=93, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout06 = acme.entities.shouts.Shout{id=94, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout07 = acme.entities.shouts.Shout{id=95, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan1 = acme.entities.workPlan.WorkPlan{id=96, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan2 = acme.entities.workPlan.WorkPlan{id=97, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan3 = acme.entities.workPlan.WorkPlan{id=98, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan4 = acme.entities.workPlan.WorkPlan{id=99, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan5 = acme.entities.workPlan.WorkPlan{id=100, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan6 = acme.entities.workPlan.WorkPlan{id=101, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1UserAccount = acme.framework.entities.UserAccount{id=102, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1Manager = acme.entities.roles.Manager{id=103, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1Authenticated = acme.framework.entities.Authenticated{id=104, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2UserAccount = acme.framework.entities.UserAccount{id=105, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2Manager = acme.entities.roles.Manager{id=106, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2Authenticated = acme.framework.entities.Authenticated{id=107, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task01 = acme.entities.tasks.Task{id=108, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task02 = acme.entities.tasks.Task{id=109, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task03 = acme.entities.tasks.Task{id=110, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task04 = acme.entities.tasks.Task{id=111, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task05 = acme.entities.tasks.Task{id=112, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task06 = acme.entities.tasks.Task{id=113, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task07 = acme.entities.tasks.Task{id=114, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task08 = acme.entities.tasks.Task{id=115, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task09 = acme.entities.tasks.Task{id=116, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task10 = acme.entities.tasks.Task{id=117, version=0}
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on LAPTOP-9R0L1N1V with PID 7152 (C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One\target\classes started by manum in C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One)
+INFO [acme.Launcher] The following profiles are active: development,populator
+WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'anonymousTaskController': Unsatisfied dependency expressed through field 'anonymousTaskListService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'anonymousTaskListService': Unsatisfied dependency expressed through field 'anonymousTaskRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'anonymousTaskRepository' defined in acme.features.anonymous.task.AnonymousTaskRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.Collection acme.features.anonymous.task.AnonymousTaskRepository.findPublicTask()!
+ERROR [org.springframework.boot.SpringApplication] at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643): Error creating bean with name 'anonymousTaskController': Unsatisfied dependency expressed through field 'anonymousTaskListService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'anonymousTaskListService': Unsatisfied dependency expressed through field 'anonymousTaskRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'anonymousTaskRepository' defined in acme.features.anonymous.task.AnonymousTaskRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.Collection acme.features.anonymous.task.AnonymousTaskRepository.findPublicTask()!
+at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643): Error creating bean with name 'anonymousTaskListService': Unsatisfied dependency expressed through field 'anonymousTaskRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'anonymousTaskRepository' defined in acme.features.anonymous.task.AnonymousTaskRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.Collection acme.features.anonymous.task.AnonymousTaskRepository.findPublicTask()!
+at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788): Error creating bean with name 'anonymousTaskRepository' defined in acme.features.anonymous.task.AnonymousTaskRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.Collection acme.features.anonymous.task.AnonymousTaskRepository.findPublicTask()!
+at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:93): Validation failed for query for method public abstract java.util.Collection acme.features.anonymous.task.AnonymousTaskRepository.findPublicTask()!
+at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:138): org.hibernate.QueryException: could not resolve property: finalModel of: acme.entities.tasks.Task [select t from acme.entities.tasks.Task t where t.isPublic = true and t.finalModel = true]
+at org.hibernate.QueryException.generateQueryException(QueryException.java:120): could not resolve property: finalModel of: acme.entities.tasks.Task [select t from acme.entities.tasks.Task t where t.isPublic = true and t.finalModel = true]
+at org.hibernate.persister.entity.AbstractPropertyMapping.propertyException(AbstractPropertyMapping.java:77): could not resolve property: finalModel of: acme.entities.tasks.Task
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on LAPTOP-9R0L1N1V with PID 15140 (C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One\target\classes started by manum in C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on LAPTOP-9R0L1N1V with PID 12052 (C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One\target\classes started by manum in C:\Users\manum\OneDrive\Desktop\Workspace-21.1\Projects\dp2-2021-g1-01-Acme-One)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 11.755 seconds (JVM running for 12.766)
+INFO [acme.framework.utilities.DatabasePopulator] Populating sample data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerManager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating managerAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for managerUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for managerManager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for managerAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 5 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 6 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 7 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerManager = acme.entities.roles.Manager{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting managerAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=6, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=7, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=8, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/sample-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout01 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout02 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout03 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout04 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout05 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout06 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating shout07 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task01 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task02 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task03 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task04 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task05 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task06 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task07 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task08 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task09 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task10 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan1 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan2 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan3 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan4 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan5 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating workPlan6 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1UserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1Manager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager1Authenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2UserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2Manager ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating manager2Authenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for shout01.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for shout02.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for shout03.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for shout04.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for shout05.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 5 for shout06.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 6 for shout07.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task01.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task02.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task03.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task04.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task05.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task06.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task07.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task08.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task09.
+INFO [acme.framework.utilities.DatabasePopulator] > Deferring task10.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 7 for workPlan1.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 8 for workPlan2.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 9 for workPlan3.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 10 for workPlan4.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 11 for workPlan5.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 12 for workPlan6.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 13 for manager1UserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 14 for manager1Manager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 15 for manager1Authenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 16 for manager2UserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 17 for manager2Manager.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 18 for manager2Authenticated.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 19 for task01.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 20 for task02.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 21 for task03.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 22 for task04.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 23 for task05.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 24 for task06.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 25 for task07.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 26 for task08.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 27 for task09.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 28 for task10.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout01 = acme.entities.shouts.Shout{id=89, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout02 = acme.entities.shouts.Shout{id=90, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout03 = acme.entities.shouts.Shout{id=91, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout04 = acme.entities.shouts.Shout{id=92, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout05 = acme.entities.shouts.Shout{id=93, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout06 = acme.entities.shouts.Shout{id=94, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout07 = acme.entities.shouts.Shout{id=95, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan1 = acme.entities.workPlan.WorkPlan{id=96, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan2 = acme.entities.workPlan.WorkPlan{id=97, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan3 = acme.entities.workPlan.WorkPlan{id=98, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan4 = acme.entities.workPlan.WorkPlan{id=99, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan5 = acme.entities.workPlan.WorkPlan{id=100, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting workPlan6 = acme.entities.workPlan.WorkPlan{id=101, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1UserAccount = acme.framework.entities.UserAccount{id=102, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1Manager = acme.entities.roles.Manager{id=103, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager1Authenticated = acme.framework.entities.Authenticated{id=104, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2UserAccount = acme.framework.entities.UserAccount{id=105, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2Manager = acme.entities.roles.Manager{id=106, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting manager2Authenticated = acme.framework.entities.Authenticated{id=107, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task01 = acme.entities.tasks.Task{id=108, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task02 = acme.entities.tasks.Task{id=109, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task03 = acme.entities.tasks.Task{id=110, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task04 = acme.entities.tasks.Task{id=111, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task05 = acme.entities.tasks.Task{id=112, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task06 = acme.entities.tasks.Task{id=113, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task07 = acme.entities.tasks.Task{id=114, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task08 = acme.entities.tasks.Task{id=115, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task09 = acme.entities.tasks.Task{id=116, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task10 = acme.entities.tasks.Task{id=117, version=0}
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...

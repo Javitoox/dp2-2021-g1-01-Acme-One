@@ -18,3 +18,4 @@ manager.task.form.button.return = Volver
 manager.task.form.button.create = Crear
 manager.task.form.button.update = Actualizar
 manager.task.form.button.delete = Eliminar
+manager.task.form.button.publish = Publicar

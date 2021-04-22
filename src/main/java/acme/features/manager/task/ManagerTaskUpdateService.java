@@ -34,7 +34,7 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		task=this.repository.findOneTaskById(taskId);
 		manager = task.getManager();
 		principal = request.getPrincipal();
-		result = !task.isFinished() && manager.getUserAccount().getId() == principal.getAccountId();
+		result = !task.isFinalMode() && manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -55,7 +55,7 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		assert model != null;
 		
 		request.unbind(entity, model, "title", "begin", "end","description");
-		request.unbind(entity, model, "link", "isPublic", "workload");
+		request.unbind(entity, model, "link", "isPublic", "workload", "finalMode");
 		model.setAttribute("readonly", false);
 	}
 
