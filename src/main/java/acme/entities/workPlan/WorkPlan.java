@@ -40,15 +40,6 @@ public class WorkPlan extends DomainEntity{
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	protected Collection<@Valid Task> tasks;
-	
-    //	Derived attributes
-	@Transient
-	public Boolean isFinished() {
-		Date now;
-		now = new Date();
-		return now.after(this.end);
-	}
-
 
 	public double getWorkload() {
 		return this.tasks.stream().mapToDouble(Task::getWorkload).sum();
