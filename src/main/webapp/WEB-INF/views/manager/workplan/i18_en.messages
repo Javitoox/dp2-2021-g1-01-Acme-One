@@ -17,4 +17,8 @@ manager.workplan.form.label.tasks.title= Title
 manager.workplan.form.label.tasks.id= Id
 manager.workplan.form.label.tasks= Workplan tasks
 manager.workplan.form.button.delete= Delete workplan
+manager.workplan.form.label.tasks.public = Privacity
+manager.workplan.form.label.tasks.public.true= Public
+manager.workplan.form.label.tasks.public.false= Private
+manager.workplan.form.button.publish = Publish
 

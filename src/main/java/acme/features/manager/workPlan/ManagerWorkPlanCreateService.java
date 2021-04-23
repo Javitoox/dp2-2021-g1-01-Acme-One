@@ -1,11 +1,9 @@
 package acme.features.manager.workPlan;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.hibernate.event.internal.EventUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +36,6 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		System.out.println(request.getModel().getAttribute("tasks"));
 		request.bind(entity, errors);
 		
 	}
@@ -48,10 +44,10 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	public void unbind(Request<WorkPlan> request, WorkPlan entity, Model model) {
 		assert request != null;
 		assert entity != null;
-		assert model != null;
+		assert model != null;		
 		
         model.setAttribute("workload", entity.getWorkload());
-		request.unbind(entity, model,  "isPublic", "begin", "end", "tasks");
+		request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","manager");
 		model.setAttribute("readonly", false);
 		List<Task>taskList = taskRepository.findPublicTask().stream().collect(Collectors.toList());//cambiar publicas por todas
 		model.setAttribute("tasksEneabled", taskList);
@@ -61,10 +57,12 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	@Override
 	public WorkPlan instantiate(Request<WorkPlan> request) {
 		assert request != null;
-		
+
+		Manager manager = this.repository.findOneManagerById(request.getPrincipal().getActiveRoleId());
 		WorkPlan workPlan = new WorkPlan();
-		workPlan.setIsPublic(true);
+		workPlan.setManager(manager);
 		workPlan.setTasks(new ArrayList<Task>());
+		
 		
 		return workPlan;
 	}
@@ -74,7 +72,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		assert request != null;
 		assert errors != null;
 		assert entity != null;
-		
+
 	}
 
 	@Override
@@ -83,6 +81,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		assert entity!= null;
 
 		this.repository.save(entity);
+		
 		
 		
 	}

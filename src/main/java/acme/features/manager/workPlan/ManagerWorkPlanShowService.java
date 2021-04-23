@@ -28,15 +28,21 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
         assert entity != null;
         assert model != null;
         
-        int workplanId=request.getModel().getInteger("id");
-		WorkPlan workplan=this.managerWorkPlanRepository.findWorkPlanById(workplanId);
+        int workplanId = request.getModel().getInteger("id");
+		WorkPlan workplan = this.managerWorkPlanRepository.findWorkPlanById(workplanId);
 		Manager manager = workplan.getManager();
 		Principal principal = request.getPrincipal();
 		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
-        model.setAttribute("workload", entity.getWorkload());
-        request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");
+		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
+		//You can publish a workplan if you have created it and all tasks inside are public
+        
+		request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");
         model.setAttribute("readonly", true);
-        model.setAttribute("canDelete", canDelete);
+        model.setAttribute("ItsMine", canDelete);
+        model.setAttribute("canPublish", canPublish);
+        model.setAttribute("workload", entity.getWorkload());
+
+
 	
 	}
 

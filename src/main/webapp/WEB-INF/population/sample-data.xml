@@ -215,7 +215,7 @@
 
 	<!-- Workplan -->
 	<bean name="workPlan1" class="acme.entities.workPlan.WorkPlan">
-		<property name="isPublic" value="true" />
+		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/09 09:00" />
 		<property name="end" value="2021/06/09 09:00" />
 		<property name="manager" ref="manager1Manager" />
