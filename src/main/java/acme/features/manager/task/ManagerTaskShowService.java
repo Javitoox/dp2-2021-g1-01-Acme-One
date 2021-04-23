@@ -14,7 +14,7 @@ import acme.framework.services.AbstractShowService;
 public class ManagerTaskShowService implements AbstractShowService<Manager, Task>{
 	
 	@Autowired
-	ManagerTaskRepository repository;
+	protected ManagerTaskRepository repository;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {

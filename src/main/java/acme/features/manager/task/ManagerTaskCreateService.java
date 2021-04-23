@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
+import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -16,7 +17,10 @@ import acme.framework.services.AbstractCreateService;
 public class ManagerTaskCreateService implements AbstractCreateService<Manager, Task>{
 	
 	@Autowired
-	ManagerTaskRepository repository;
+	protected ManagerTaskRepository repository;
+	
+	@Autowired
+	protected SpamService spam;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -68,6 +72,11 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		final Date begin = entity.getBegin();
 		final Date end = entity.getEnd();
 		final double periodo = (end.getTime()-begin.getTime())/(1000.0*3600); //Este calculo se debe a que la diferencia está en milisegundos
+		
+		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
+		final boolean descripcionSpam = this.spam.isItSpam(entity.getDescription());
+		
+		
 		if(!errors.hasErrors("begin")) {
 			errors.state(request, end.after(begin), "begin", "manager.task.form.error.must-be-before-end");
 		} 
@@ -84,6 +93,12 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		final double dec = entity.getWorkload() - ent;
 		if(!errors.hasErrors("workload")) {
 			errors.state(request, 0.59>=dec, "workload", "manager.task.form.error.decimal-must-be-under-60");
+		}
+		if(titleSpam==true) {
+			errors.add("title", "Your text is considered spam, please, use a proper vocabulary ");
+		}
+		if(descripcionSpam==true) {
+			errors.add("description", "Your text is considered spam, please, use a proper vocabulary ");
 		}
 	}
 
