@@ -99,7 +99,7 @@ Task
 + /isFinished: boolean {Transient}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>600</y><w>80</w><h>180</h></coordinates><panel_attributes>Contains
 lt=&lt;-x
 m1=0..*
-m2=0..*</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>480</y><w>240</w><h>80</h></coordinates><panel_attributes>&lt;&lt;Entity&gt;&gt;
+m2=0..*</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>490</y><w>240</w><h>80</h></coordinates><panel_attributes>&lt;&lt;Entity&gt;&gt;
 Spam
 --
 +threshold: Double
@@ -107,7 +107,7 @@ Spam
 Word
 --
 +word: String{NotBlank}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>550</y><w>80</w><h>190</h></coordinates><panel_attributes>Contains
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>560</y><w>80</w><h>180</h></coordinates><panel_attributes>Contains
 lt=&lt;-x
 m1=0..*
-m2=0..*</panel_attributes><additional_attributes>10;170;10;10</additional_attributes></element></diagram>
+m2=0..*</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element></diagram>
