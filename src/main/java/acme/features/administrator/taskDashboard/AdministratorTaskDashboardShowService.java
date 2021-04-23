@@ -67,11 +67,11 @@ public class AdministratorTaskDashboardShowService implements AbstractShowServic
 		totalNumberOfFinishedTasks = this.repository.totalNumberOfFinishedTasks(new Date());
 		totalNumberOfPendingTasks = this.repository.totalNumberOfPendingTasks(new Date());
 		averageNumberOfTaskExecutionPeriod = this.repository.averageNumberOfTaskExecutionPeriod();
-		deviationOfTaskExecutionPeriod = this.repository.deviationOfTaskExecutionPeriod(averageNumberOfTaskExecutionPeriod);
+		deviationOfTaskExecutionPeriod = this.repository.deviationOfTaskExecutionPeriod();
 		minTaskExecutionPeriod = this.repository.minTaskExecutionPeriod();
 		maxTaskExecutionPeriod = this.repository.maxTaskExecutionPeriod();
 		averageNumberOfWorkload = this.repository.averageNumberOfWorkload();
-		deviationOfWorkload = this.repository.deviationOfWorkload(averageNumberOfWorkload);
+		deviationOfWorkload = this.repository.deviationOfWorkload();
 		minWorkload = this.repository.minWorkload();
 		maxWorkload = this.repository.maxWorkload();
 		

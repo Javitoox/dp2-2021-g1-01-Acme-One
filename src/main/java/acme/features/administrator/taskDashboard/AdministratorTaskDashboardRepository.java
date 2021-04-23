@@ -31,8 +31,8 @@ public interface AdministratorTaskDashboardRepository extends AbstractRepository
 	@Query("select max(t.executionPeriod) from Task t")
 	Double maxTaskExecutionPeriod();
 	
-	@Query("select ((select sum((t.executionPeriod - ?1) * (t.executionPeriod - ?1)) from Task t) / count(t)) * 0.5 from Task t")
-	Double deviationOfTaskExecutionPeriod(Double averageNumberOfTaskExecutionPeriod);
+	@Query("select stddev(t.executionPeriod) from Task t")
+	Double deviationOfTaskExecutionPeriod();
 	
 	@Query("select avg(t.workload) from Task t")
 	Double averageNumberOfWorkload();
@@ -43,7 +43,7 @@ public interface AdministratorTaskDashboardRepository extends AbstractRepository
 	@Query("select max(t.workload) from Task t")
 	Double maxWorkload();
 	
-	@Query("select ((select sum((t.workload - ?1) * (t.workload - ?1)) from Task t) / count(t)) * 0.5 from Task t")
-	Double deviationOfWorkload(Double averageNumberOfWorkload);
+	@Query("select stddev(t.workload) from Task t")
+	Double deviationOfWorkload();
 
 }
