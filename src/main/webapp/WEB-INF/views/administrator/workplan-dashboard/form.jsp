@@ -2,6 +2,7 @@
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <h2>
 	<acme:message code="administrator.workplan.dashboard.form.title.general-indicators"/>
@@ -45,7 +46,7 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.average-periods"/>
 		</th>
 		<td>
-			<acme:print value="${averageNumberOfPeriods}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${averageNumberOfPeriods}"/>
 			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
@@ -55,7 +56,7 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.deviation-periods"/>
 		</th>
 		<td>
-			<acme:print value="${deviationOfExecutionPeriods}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${deviationOfExecutionPeriods}"/>
 			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
@@ -64,7 +65,7 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.minimum-periods"/>
 		</th>
 		<td>
-			<acme:print value="${minimumNumberOfPeriods}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${minimumNumberOfPeriods}"/>
 			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
@@ -73,7 +74,7 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.maximum-periods"/>
 		</th>
 		<td>
-			<acme:print value="${maximumNumberOfPeriods}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${maximumNumberOfPeriods}"/>
 			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
@@ -82,7 +83,7 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.average-workloads"/>
 		</th>
 		<td>
-			<acme:print value="${averageNumberOfWorkloads}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${averageNumberOfWorkloads}"/>
 			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
@@ -92,7 +93,7 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.deviation-workplan"/>
 		</th>
 		<td>
-			<acme:print value="${deviationOfWorkloads}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${deviationOfWorkloads}"/>
 			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
@@ -101,7 +102,7 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.minimum-number-workloads"/>
 		</th>
 		<td>
-			<acme:print value="${minimumNumberOfWorkloads}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${minimumNumberOfWorkloads}"/>
 			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
@@ -110,7 +111,8 @@
 			<acme:message code="administrator.workplan.dashboard.form.label.maximum-number-workloads"/>
 		</th>
 		<td>
-			<acme:print value="${maximumNumberOfWorkloads}"/>
+			<fmt:formatNumber type="number" maxFractionDigits="2" value="${maximumNumberOfWorkloads}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 </table>
