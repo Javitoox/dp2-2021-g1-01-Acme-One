@@ -4,7 +4,6 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form readonly="true">
-    <acme:form-textbox code="anonymous.workplan.form.label.id" path="id"/>
     <acme:form-textbox code="anonymous.workplan.form.label.title" path="title"/>
     <acme:form-textbox code="anonymous.workplan.form.label.begin" path="begin"/>
     <acme:form-textbox code="anonymous.workplan.form.label.end" path="end"/>
