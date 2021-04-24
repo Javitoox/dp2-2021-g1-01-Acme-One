@@ -166,7 +166,7 @@
 				<ref bean="task04" />
 			</list>
 		</property>
-		<property name="workload" value="15.0"></property>
+		<property name="workload" value="56.0"></property>
 		<property name="executionPeriod" value="31.744"></property>
 	</bean>
 
@@ -190,7 +190,7 @@
 				<ref bean="task04" />
 			</list>
 		</property>
-		<property name="workload" value="35.0"></property>
+		<property name="workload" value="11.3"></property>
 		<property name="executionPeriod" value="744.44640"></property>
 	</bean>
 
@@ -203,7 +203,7 @@
 				<ref bean="task05" />
 			</list>
 		</property>
-		<property name="workload" value="20.0"></property>
+		<property name="workload" value="10.15"></property>
 		<property name="executionPeriod" value="744.44640"></property>
 	</bean>
 
@@ -226,7 +226,7 @@
 				<ref bean="task03" />
 			</list>
 		</property>
-		<property name="workload" value="15.0"></property>
+		<property name="workload" value="5.30"></property>
 		<property name="executionPeriod" value="744.44649"></property>
 	</bean>
 	
