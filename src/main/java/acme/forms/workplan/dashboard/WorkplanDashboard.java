@@ -16,9 +16,11 @@ public class WorkplanDashboard implements Serializable{
 	Integer totalNumberOfFinishedWorkplans;
 	Integer totalNumberOfNonFinishedWorkplans;
 	Double averageNumberOfPeriods;
+	Double deviationOfExecutionPeriods;
 	Double minimumNumberOfPeriods;
 	Double maximumNumberOfPeriods;
 	Double averageNumberOfWorkloads;
+	Double deviationOfWorkloads;
 	Double minimumNumberOfWorkloads;
 	Double maximumNumberOfWorkloads;
 
