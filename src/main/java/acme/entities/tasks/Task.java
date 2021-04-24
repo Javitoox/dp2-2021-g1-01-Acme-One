@@ -48,7 +48,7 @@ public class Task extends DomainEntity {
     protected Boolean isPublic;
 	
 	//	Derived attributes
-	public double getWorkload(){
+	public double  getWorkload(){
 		return (double) (this.end.getTime() - this.begin.getTime()) / (1000 * 3600) ;
 	}
 

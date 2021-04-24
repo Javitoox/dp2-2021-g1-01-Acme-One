@@ -1,21 +1,16 @@
 package acme.entities.workPlan;
 
-import java.beans.Transient;
-import java.util.Collection;
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
 import acme.entities.tasks.Task;
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.beans.Transient;
+import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -41,16 +36,7 @@ public class WorkPlan extends DomainEntity{
 	@ManyToMany(fetch = FetchType.EAGER)
 	protected Collection<@Valid Task> tasks;
 	
-	protected double workload;
-	
-	protected double executionPeriod;
-	
     //	Derived attributes
-	
-	public void setExecutionPeriod() {
-		this.executionPeriod = (double) (this.end.getTime() - this.begin.getTime()) / (1000 * 3600);
-	}
-	
 	@Transient
 	public Boolean isFinished() {
 		Date now;
@@ -58,7 +44,8 @@ public class WorkPlan extends DomainEntity{
 		return now.after(this.end);
 	}
 
-	public void setWorkload() {
-		this.workload = this.tasks.stream().mapToDouble(Task::getWorkload).sum();
+
+	public double getWorkload() {
+		return this.tasks.stream().mapToDouble(Task::getWorkload).sum();
 	}
 }

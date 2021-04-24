@@ -1,4 +1,4 @@
-package acme.features.administrator.workplanDashboard;
+package acme.features.administrator.workplan.dashboard;
 
 import javax.annotation.PostConstruct;
 
