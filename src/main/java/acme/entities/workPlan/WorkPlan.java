@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.beans.Transient;
 import java.util.Collection;
@@ -22,9 +23,12 @@ public class WorkPlan extends DomainEntity{
 	protected static final long serialVersionUID = 1L;
 		
 	// Attributes
+
+	@NotBlank
+	protected String title;
 	
 	protected Boolean isPublic;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	protected Date begin;

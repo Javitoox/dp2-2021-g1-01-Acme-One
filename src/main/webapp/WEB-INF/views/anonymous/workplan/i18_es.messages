@@ -10,3 +10,5 @@ anonymous.workplan.form.label.end = Fecha de fin
 anonymous.workplan.form.label.workload = Carga de trabajo
 anonymous.workplan.form.button.return = Return
 anonymous.workplan.form.label.id = Id del plan
+anonymous.workplan.form.label.title = Título
+anonymous.workplan.list.label.title = Título
