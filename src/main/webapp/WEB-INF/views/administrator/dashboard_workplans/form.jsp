@@ -87,41 +87,32 @@
 
 				var data = {
 					labels : [
-							"TOTAL", "PRIVATE", "PUBLIC"
+							"PRIVATE", "PUBLIC"
 					],
 
 					datasets : [
 						{
 							data : [
-									<jstl:out value="${totalNumberOfPublicWorkplans} + ${totalNumberOfPrivateWorkplans}" />,									
 									<jstl:out value="${totalNumberOfPrivateWorkplans}" />,
 									<jstl:out value="${totalNumberOfPublicWorkplans}" />
 							],
 							backgroundColor : [
-									'rgba(45, 144, 221, 1)', 'rgba(250, 10, 10, 1)', 'rgba(205, 205, 3, 1)'
+									'rgba(45, 144, 221, 1)', 'rgba(205, 205, 3, 1)'
 							]
 
 						}
 					]
 				};
+				
+				var total = <jstl:out value="${totalNumberOfPublicWorkplans} + ${totalNumberOfPrivateWorkplans}" />;
 
 				var options = {
-					scales : {
-						yAxes : [
-							{
-								ticks : {
-									suggestedMin : 0.0,
-									suggestedMax : <jstl:out value="${totalNumberOfPublicWorkplans} + ${totalNumberOfPrivateWorkplans}" />
-								}
-							}
-						]
-					},
 					legend : {
 						display : true
 					},
 					title : {
 						display : true,
-						text : "WorkPlans"
+						text : "WorkPlans: " + total
 					}
 				};
 
