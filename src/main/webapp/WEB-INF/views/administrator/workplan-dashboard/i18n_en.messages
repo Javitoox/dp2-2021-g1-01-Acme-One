@@ -1,7 +1,6 @@
 # i18n_en.messages
 
 administrator.workplan.dashboard.form.title.show = Dashboard
-
 administrator.workplan.dashboard.form.title.general-indicators = General indicators
 administrator.workplan.dashboard.form.label.total-number-public-workplan =  Total number of public workplans
 administrator.workplan.dashboard.form.label.total-number-private-workplan = Total number of private workplans

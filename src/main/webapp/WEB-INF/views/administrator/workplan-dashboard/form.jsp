@@ -9,6 +9,9 @@
 </h2>
 
 <table class="table table-sm">
+	<caption>
+		<acme:message code="administrator.workplan.dashboard.form.title.general-indicators"/>
+	</caption>
 	<tr>
 		<th scope="row">
 			<acme:message code="administrator.workplan.dashboard.form.label.total-number-public-workplan"/>
