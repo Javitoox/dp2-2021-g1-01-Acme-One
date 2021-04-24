@@ -78,11 +78,8 @@ public class SpamService implements AbstractListService<Anonymous, Spam> {
             }
         }
         thresholdPhrases =  calculateComposedThreshold(phrase, spamPhrases);
-        System.out.println("El umbral de frases es: " + thresholdPhrases);
         thresholdWords = calculateSimpleThreshold(phrase, spamWords);
-        System.out.println("El umbral de palabras es: " + thresholdWords);
         threshold = thresholdPhrases + thresholdWords;
-        System.out.println("El umbral total es: " + threshold);
         if(threshold<=required){
             result = false;
         }else{

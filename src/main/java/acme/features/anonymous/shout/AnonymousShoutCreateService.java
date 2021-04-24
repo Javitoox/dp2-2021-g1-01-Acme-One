@@ -81,14 +81,12 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		boolean authorSpam = spam.isItSpam(author);
 		boolean phraseSpam = spam.isItSpam(phrase);
 
-		if (phraseSpam == true && authorSpam == false) {
-			errors.add("text", "Your text is considered spam, please, use a proper vocabulary ");
-		}else if(phraseSpam==false && authorSpam==true){
-			errors.add("author", "Your author is considered spam, please, use a proper vocabulary");
-		}else if(phraseSpam==true && authorSpam==true){
-			errors.add("text", "Your text is considered spam, please, use a proper vocabulary");
-			errors.add("author", "Your author is considered spam, please, use a proper vocabulary");
+		if (!errors.hasErrors("text")) {
+			errors.state(request, !phraseSpam, "text", "anonymous.shout.form.error.spam");
+		}if(!errors.hasErrors("author")){
+			errors.state(request, !authorSpam, "author", "anonymous.shout.form.error.spam");
 		}
+
 	}
 
 
