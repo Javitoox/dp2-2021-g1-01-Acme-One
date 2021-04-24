@@ -13,3 +13,4 @@ administrator.dashboard.form.label.average-period = Average execution periods
 administrator.dashboard.form.label.min-period = Minimum execution periods
 administrator.dashboard.form.label.max-period = Maximum execution periods
 administrator.dashboard.form.label.deviation-period = Deviation execution periods
+administrator.dashboard.form.label.hours = hours
