@@ -1,18 +1,21 @@
 package acme.entities.workPlan;
 
+import java.beans.Transient;
+import java.util.Collection;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import acme.entities.tasks.Task;
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-
-import java.beans.Transient;
-import java.util.Collection;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -38,7 +41,6 @@ public class WorkPlan extends DomainEntity{
 	@ManyToMany(fetch = FetchType.EAGER)
 	protected Collection<@Valid Task> tasks;
 	
-	@Positive
 	protected double workload;
 	
 	protected double executionPeriod;
@@ -56,7 +58,7 @@ public class WorkPlan extends DomainEntity{
 		return now.after(this.end);
 	}
 
-	public double getWorkload() {
-		return this.tasks.stream().mapToDouble(Task::getWorkload).sum();
+	public void setWorkload() {
+		this.workload = this.tasks.stream().mapToDouble(Task::getWorkload).sum();
 	}
 }

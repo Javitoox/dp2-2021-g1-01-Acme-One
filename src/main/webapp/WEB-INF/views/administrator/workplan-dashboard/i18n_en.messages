@@ -14,7 +14,7 @@ administrator.workplan.dashboard.form.label.maximum-periods = Maximum number of 
 administrator.workplan.dashboard.form.label.average-workloads = Average of worloads
 administrator.workplan.dashboard.form.label.deviation-workplan = Deviation of workloads
 administrator.workplan.dashboard.form.label.minimum-number-workloads = Minimum number of worloads
-administrator.workplan.dashboard.form.label.maximum-number-workloads = Maximum number of worloads
-administrator.workplan.dashboard.form.label.seconds = seconds
+administrator.workplan.dashboard.form.label.maximun-number-workloads = Maximum number of worloads
+administrator.workplan.dashboard.form.label.hours = hours
 
 

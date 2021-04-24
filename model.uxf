@@ -377,18 +377,18 @@ m2=0..*</panel_attributes>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 WorkplanDashboard
 --
-+ totalNumberOfPublicWorkplans: integer
-+ totalNumberOfPrivateWorkplans: integer
-+ totalNumberOfFinishedWorkplans: integer
-+ totalNumberOfNonFinishedWorkplans: integer
-+ averageNumberOfPeriods: double
-+ deviationOfPeriods: double
-+ minimumNumberOfPeriods: double
-+ maximumNumberOfPeriods: double
-+ averageNumberOfWorkloads: double
-+ deviationOfWorkloads: double
-+ minimumNumberOfWorkloads: double
-+ maximumNumberOfWorkloads: double
++ totalNumberOfPublicWorkplans: Integer
++ totalNumberOfPrivateWorkplans: Integer
++ totalNumberOfFinishedWorkplans: Integer
++ totalNumberOfNonFinishedWorkplans: Integer
++ averageNumberOfPeriods: Double
++ deviationOfPeriods: Double
++ minimumNumberOfPeriods: Double
++ maximumNumberOfPeriods: Double
++ averageNumberOfWorkloads: Double
++ deviationOfWorkloads: Double
++ minimumNumberOfWorkloads: Double
++ maximumNumberOfWorkloads: Double
 
 </panel_attributes>
     <additional_attributes/>

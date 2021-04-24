@@ -167,7 +167,7 @@
 			</list>
 		</property>
 		<property name="workload" value="15.0"></property>
-		<property name="executionPeriod" value="2000.0"></property>
+		<property name="executionPeriod" value="31.744"></property>
 	</bean>
 
 	<bean name="workPlan2" class="acme.entities.workPlan.WorkPlan">
@@ -177,8 +177,7 @@
 		<property name="tasks">
 			<null />
 		</property>
-		<property name="workload" value="20.0"></property>
-		<property name="executionPeriod" value="1000.0"></property>
+		<property name="executionPeriod" value="744.44640"></property>
 	</bean>
 
 	<bean name="workPlan3" class="acme.entities.workPlan.WorkPlan">
@@ -192,7 +191,7 @@
 			</list>
 		</property>
 		<property name="workload" value="35.0"></property>
-		<property name="executionPeriod" value="1000.0"></property>
+		<property name="executionPeriod" value="744.44640"></property>
 	</bean>
 
 	<bean name="workPlan4" class="acme.entities.workPlan.WorkPlan">
@@ -205,7 +204,7 @@
 			</list>
 		</property>
 		<property name="workload" value="20.0"></property>
-		<property name="executionPeriod" value="2000.0"></property>
+		<property name="executionPeriod" value="744.44640"></property>
 	</bean>
 
 	<bean name="workPlan5" class="acme.entities.workPlan.WorkPlan">
@@ -215,8 +214,7 @@
 		<property name="tasks">
 			<null />
 		</property>
-		<property name="workload" value="30.0"></property>
-		<property name="executionPeriod" value="3000.0"></property>
+		<property name="executionPeriod" value="744.44649"></property>
 	</bean>
 
 	<bean name="workPlan6" class="acme.entities.workPlan.WorkPlan">
@@ -229,7 +227,7 @@
 			</list>
 		</property>
 		<property name="workload" value="15.0"></property>
-		<property name="executionPeriod" value="3000.0"></property>
+		<property name="executionPeriod" value="744.44649"></property>
 	</bean>
 	
 	<bean name="workPlan7" class="acme.entities.workPlan.WorkPlan">
@@ -239,8 +237,7 @@
 		<property name="tasks">
 			<null />
 		</property>
-		<property name="workload" value="20.0"></property>
-		<property name="executionPeriod" value="1000.0"></property>
+		<property name="executionPeriod" value="48.2880 "></property>
 	</bean>
 
 </beans>

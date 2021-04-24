@@ -46,7 +46,7 @@
 		</th>
 		<td>
 			<acme:print value="${averageNumberOfPeriods}"/>
-			<acme:message code="administrator.workplan.dashboard.form.label.seconds"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -56,6 +56,7 @@
 		</th>
 		<td>
 			<acme:print value="${deviationOfExecutionPeriods}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -64,7 +65,7 @@
 		</th>
 		<td>
 			<acme:print value="${minimumNumberOfPeriods}"/>
-			<acme:message code="administrator.workplan.dashboard.form.label.seconds"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -73,7 +74,7 @@
 		</th>
 		<td>
 			<acme:print value="${maximumNumberOfPeriods}"/>
-			<acme:message code="administrator.workplan.dashboard.form.label.seconds"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -82,6 +83,7 @@
 		</th>
 		<td>
 			<acme:print value="${averageNumberOfWorkloads}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -91,6 +93,7 @@
 		</th>
 		<td>
 			<acme:print value="${deviationOfWorkloads}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -99,6 +102,7 @@
 		</th>
 		<td>
 			<acme:print value="${minimumNumberOfWorkloads}"/>
+			<acme:message code="administrator.workplan.dashboard.form.label.hours"/>
 		</td>
 	</tr>
 	<tr>

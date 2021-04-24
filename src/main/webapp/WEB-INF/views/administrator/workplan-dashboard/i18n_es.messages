@@ -15,4 +15,4 @@ administrator.workplan.dashboard.form.label.average-workloads = Media de las car
 administrator.workplan.dashboard.form.label.deviation-workplan = Desviación de las cargas de trabajo
 administrator.workplan.dashboard.form.label.minimum-number-workloads = Mínimo número de carga de trabajo
 administrator.workplan.dashboard.form.label.maximum-number-workloads = Máximo número de carga de trabajo
-administrator.workplan.dashboard.form.label.seconds = segundos
+administrator.workplan.dashboard.form.label.hours = horas
