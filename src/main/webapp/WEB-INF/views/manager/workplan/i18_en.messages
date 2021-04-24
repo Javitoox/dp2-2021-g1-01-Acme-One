@@ -1,0 +1,14 @@
+# i18n_en.messages
+
+manager.workplan.list.label.isPublic = Is the workplan public?
+manager.workplan.list.label.tasks = Tasks
+manager.workplan.list.label.begin = Start date
+manager.workplan.list.label.end = End date
+manager.workplan.list.label.id = Workplan's id
+manager.workplan.form.label.isPublic = Is it public?
+manager.workplan.form.label.begin = Start date
+manager.workplan.form.label.end = End date
+manager.workplan.form.label.workload = Workload
+manager.workplan.form.button.return = Return
+manager.workplan.form.label.id = Workplan id
+
