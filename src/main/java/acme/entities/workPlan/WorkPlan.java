@@ -10,6 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import acme.entities.tasks.Task;
@@ -27,9 +28,12 @@ public class WorkPlan extends DomainEntity{
 	protected static final long serialVersionUID = 1L;
 		
 	// Attributes
+
+	@NotBlank
+	protected String title;
 	
 	protected Boolean isPublic;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	protected Date begin;
