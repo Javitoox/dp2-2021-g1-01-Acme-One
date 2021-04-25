@@ -328,6 +328,7 @@ WorkPlan
 + begin: Date {NotNull, Temporal(TIMESTAMP)}
 + end: Date {NotNull, Temporal(TIMESTAMP)}
 + / workload: double
++ ExecutionPeriod: double 
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -349,7 +350,7 @@ Task
 + description: {NotBlank, Length(min=500)}
 + link: Sting {URL} [0,1]
 + isPublic: boolean {NotNull}
-+ ExecutionPeriod: Period 
++ ExecutionPeriod: double 
 + /isFinished: boolean {Transient}</panel_attributes>
     <additional_attributes/>
   </element>
@@ -405,6 +406,33 @@ TaskDashboard
 + deviationOfWorkload: Double
 + minWorkload: Double
 + maxWorkload: Double</panel_attributes>
+      <additional_attributes/>
+      </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>553</x>
+      <y>413</y>
+      <w>231</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+WorkplanDashboard
+--
++ totalNumberOfPublicWorkplans: Integer
++ totalNumberOfPrivateWorkplans: Integer
++ totalNumberOfFinishedWorkplans: Integer
++ totalNumberOfNonFinishedWorkplans: Integer
++ averageNumberOfPeriods: Double
++ deviationOfPeriods: Double
++ minimumNumberOfPeriods: Double
++ maximumNumberOfPeriods: Double
++ averageNumberOfWorkloads: Double
++ deviationOfWorkloads: Double
++ minimumNumberOfWorkloads: Double
++ maximumNumberOfWorkloads: Double
+
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
