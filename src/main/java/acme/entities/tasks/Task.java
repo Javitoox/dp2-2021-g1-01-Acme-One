@@ -1,6 +1,5 @@
 package acme.entities.tasks;
 
-import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;

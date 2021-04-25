@@ -1,6 +1,5 @@
 package acme.features.manager.workPlan;
 
-import org.hibernate.boot.registry.classloading.spi.ClassLoaderService.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
