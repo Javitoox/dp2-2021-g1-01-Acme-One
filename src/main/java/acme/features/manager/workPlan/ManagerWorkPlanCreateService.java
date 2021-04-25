@@ -48,7 +48,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		
         model.setAttribute("workload", entity.getWorkload());
 		request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","manager");
-		model.setAttribute("readonly", false);
+		model.setAttribute("ItsMine", true);
 		List<Task>taskList = taskRepository.findPublicTask().stream().collect(Collectors.toList());//cambiar publicas por todas
 		model.setAttribute("tasksEneabled", taskList);
 		
@@ -62,7 +62,6 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		WorkPlan workPlan = new WorkPlan();
 		workPlan.setManager(manager);
 		workPlan.setTasks(new ArrayList<Task>());
-		
 		
 		return workPlan;
 	}
@@ -79,7 +78,8 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	public void create(Request<WorkPlan> request, WorkPlan entity) {
 		assert request!= null;
 		assert entity!= null;
-
+		entity.setWorkload();
+		entity.setExecutionPeriod();
 		this.repository.save(entity);
 		
 		

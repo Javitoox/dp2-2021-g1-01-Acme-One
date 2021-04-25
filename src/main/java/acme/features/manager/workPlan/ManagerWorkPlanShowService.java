@@ -36,14 +36,9 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		//You can publish a workplan if you have created it and all tasks inside are public
         
-		request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");
-        model.setAttribute("readonly", true);
+	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
         model.setAttribute("ItsMine", canDelete);
         model.setAttribute("canPublish", canPublish);
-        model.setAttribute("workload", entity.getWorkload());
-
-
-	
 	}
 
 	@Override

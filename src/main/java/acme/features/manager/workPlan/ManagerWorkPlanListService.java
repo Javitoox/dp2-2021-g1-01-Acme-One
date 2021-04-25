@@ -29,7 +29,7 @@ public class ManagerWorkPlanListService  implements AbstractListService<Manager,
 	     assert entity != null;
 	     assert model != null;
 	     model.setAttribute("manager",entity.getManager().getUserAccount().getUsername() );
-	     request.unbind(entity, model,  "isPublic", "begin", "end", "tasks");
+	     request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 
 	}
 
