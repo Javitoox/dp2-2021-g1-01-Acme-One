@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,11 +33,17 @@ public class AnonymousWorkPlanListService implements AbstractListService<Anonymo
         request.unbind(entity, model,  "isPublic", "begin", "end", "tasks");
     }
 
+    public Boolean isFinished(WorkPlan w) {
+        Date now;
+        now = new Date();
+        return now.after(w.getEnd());
+    }
+
     @Override 
     public Collection<WorkPlan> findMany(Request<WorkPlan> request) { 
         assert request != null; 
         Collection<WorkPlan> result; 
         result = this.anonymousWorkPlanRepository.findPublicWorkPlan();
-        return result.stream().filter(x->x.isFinished().equals(false)).collect(Collectors.toList());
+        return result.stream().filter(x->isFinished(x).equals(false)).collect(Collectors.toList());
     }
 }
