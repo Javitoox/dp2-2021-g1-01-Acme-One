@@ -34,9 +34,6 @@ public class WorkPlan extends DomainEntity{
 	@NotBlank
 	protected String title;
 	
-	@NotBlank
-	protected String title;
-	
 	protected Boolean isPublic;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -54,11 +51,7 @@ public class WorkPlan extends DomainEntity{
 	@Valid
 	@ManyToOne(optional=false)
 	protected Manager manager;
-	
-	protected double workload;
-	
-	protected double executionPeriod;
-	
+		
 	protected double workload;
 	
 	protected double executionPeriod;

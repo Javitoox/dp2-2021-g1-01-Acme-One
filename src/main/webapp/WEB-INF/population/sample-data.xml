@@ -231,8 +231,6 @@
 		<property name="userAccount" ref="manager2UserAccount" />
 	</bean>
 
-
-
 	<!-- Workplan -->
 	<bean name="workPlan1" class="acme.entities.workPlan.WorkPlan">
 		<property name="title" value="WorkPlan 1" />
@@ -331,34 +329,6 @@
 			<null />
 		</property>
 		<property name="executionPeriod" value="48.2880 "></property>
-	</bean>
-	
-		<bean name="manager1UserAccount" class="acme.framework.entities.UserAccount">
-		<property name="username" value="manager1" />
-		<property name="password" value="manager1" />
-		<property name="identity">
-			<bean class="acme.datatypes.UserIdentity">
-				<property name="name" value="Manager" />
-				<property name="surname" value="One" />
-				<property name="email" value="manager1@mail.com" />
-				<property name="phone" value="+44 123-456-789" />
-			</bean>
-		</property>
-		<property name="enabled" value="true" />
-		<property name="roles">
-			<list>
-				<ref bean="manager1Employer" />
-				<ref bean="manager1Authenticated" />
-			</list>
-		</property>
-	</bean>
-
-	<bean name="manager1Employer" class="acme.entities.roles.Manager">
-		<property name="userAccount" ref="manager1UserAccount" />
-	</bean>
-
-	<bean name="manager1Authenticated" class="acme.framework.entities.Authenticated">
-		<property name="userAccount" ref="manager1UserAccount" />
 	</bean>
 
 	<bean name="word1" class="acme.entities.spam.Word">
