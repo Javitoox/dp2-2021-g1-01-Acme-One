@@ -251,42 +251,6 @@
 		<property name="userAccount" ref="manager2UserAccount" />
 	</bean>
 
-	<bean name="manager1Manager" class="acme.entities.roles.Manager">
-		<property name="userAccount" ref="manager1UserAccount" />
-	</bean>
-
-	<bean name="manager1Authenticated" class="acme.framework.entities.Authenticated">
-		<property name="userAccount" ref="manager1UserAccount" />
-	</bean>
-	
-	<bean name="manager2UserAccount" class="acme.framework.entities.UserAccount">
-		<property name="username" value="manager2" />
-		<property name="password" value="manager2" />
-		<property name="identity">
-			<bean class="acme.datatypes.UserIdentity">
-				<property name="name" value="Manager" />
-				<property name="surname" value="One" />
-				<property name="email" value="manager2@mail.com" />
-				<property name="phone" value="+44 123-456-789" />
-			</bean>
-		</property>
-		<property name="enabled" value="true" />
-		<property name="roles">
-			<list>
-				<ref bean="manager2Manager" />
-				<ref bean="manager2Authenticated" />
-			</list>
-		</property>
-	</bean>
-
-	<bean name="manager2Manager" class="acme.entities.roles.Manager">
-		<property name="userAccount" ref="manager2UserAccount" />
-	</bean>
-
-	<bean name="manager2Authenticated" class="acme.framework.entities.Authenticated">
-		<property name="userAccount" ref="manager2UserAccount" />
-	</bean>
-	
 	<!-- Workplan -->
 	<bean name="workPlan1" class="acme.entities.workPlan.WorkPlan">
 		<property name="title" value="WorkPlan 1" />

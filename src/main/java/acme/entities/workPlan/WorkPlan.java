@@ -27,12 +27,7 @@ public class WorkPlan extends DomainEntity{
 	
 	// Serialisation identifier
 	
-		protected static final long serialVersionUID = 1L;
-			
-		// Attributes
-
-		@NotBlank
-		protected String title;
+	protected static final long serialVersionUID = 1L;
 		
 	// Attributes
 
