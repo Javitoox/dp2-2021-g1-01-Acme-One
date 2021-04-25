@@ -76,6 +76,8 @@ master.menu.manager= Manager
 master.menu.manager.workplan.list= Workplan list
 master.menu.manager.task.list= Task list
 master.menu.manager.task.create = Create Task
+master.menu.manager.workplan.create = Create WorkPlan
+
 # master.menu.authenticated ##########################################################
 
 master.menu.authenticated = Authenticated
