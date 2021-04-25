@@ -1,20 +1,24 @@
 package acme.features.manager.task;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
+import acme.entities.workPlan.WorkPlan;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
 public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, Task>{
 	
 	@Autowired
-	ManagerTaskRepository repository;
+	protected ManagerTaskRepository repository;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -22,10 +26,14 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		final boolean result;
 		Task task;
 		int taskId;
+		Manager manager;
+		Principal principal;
 		
 		taskId=request.getModel().getInteger("id");
 		task=this.repository.findOneTaskById(taskId);
-		result = task !=null && !task.isFinished();
+		manager = task.getManager();
+		principal = request.getPrincipal();
+		result = !task.isFinalMode() && manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -45,9 +53,9 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end", "workload");
+		request.unbind(entity, model, "title", "begin", "end","description");
+		request.unbind(entity, model, "link", "isPublic", "workload", "finalMode");
 		model.setAttribute("readonly", false);
-		model.setAttribute("id", entity.getId());
 		
 	}
 
@@ -73,8 +81,14 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 	public void delete(final Request<Task> request, final Task entity) {
 		assert request != null;
 		assert entity != null;
-	
-		this.repository.delete(entity);
+		
+		final List<WorkPlan> workPlans = this.repository.findWorkPlansByTaskId(entity.getId());
+		for(int i=0; i<workPlans.size();i++) {
+			final WorkPlan w = workPlans.get(i);
+			w.getTasks().remove(entity);
+		}
+		
+		this.repository.deleteById(entity.getId());
 		
 	}
 

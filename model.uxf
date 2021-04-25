@@ -337,9 +337,9 @@ WorkPlan
     <id>UMLClass</id>
     <coordinates>
       <x>847</x>
-      <y>532</y>
+      <y>539</y>
       <w>266</w>
-      <h>140</h>
+      <h>154</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Task
@@ -352,6 +352,7 @@ Task
 + link: Sting {URL} [0,1]
 + isPublic: boolean {NotNull}
 + executionPeriod: double 
++ finalModel: boolean 
 + /isFinished: boolean {Transient}</panel_attributes>
     <additional_attributes/>
   </element>
@@ -361,13 +362,13 @@ Task
       <x>973</x>
       <y>420</y>
       <w>56</w>
-      <h>126</h>
+      <h>133</h>
     </coordinates>
     <panel_attributes>Contains
 lt=&lt;-x
 m1=0..*
 m2=0..*</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

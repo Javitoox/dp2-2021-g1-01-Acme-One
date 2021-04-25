@@ -17,7 +17,6 @@
 
 <acme:list>
 	<acme:list-column code="authenticated.task.list.label.title" path="title" width="25%"/>
-	<acme:list-column code="authenticated.task.list.label.begin" path="begin" width="25%"/>
-	<acme:list-column code="authenticated.task.list.label.end" path="end" width="25%"/>
+	<acme:list-column code="authenticated.task.list.label.executionPeriod" path="executionPeriod" width="30%"/>
 	<acme:list-column code="authenticated.task.list.label.workload" path="workload" width="25%"/>
 </acme:list>

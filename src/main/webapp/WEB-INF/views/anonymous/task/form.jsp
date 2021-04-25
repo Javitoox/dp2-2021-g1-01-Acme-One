@@ -11,6 +11,7 @@
 	<acme:form-textbox code="anonymous.task.form.label.link" path="link" readonly="true"/>
 	<acme:form-textbox code="anonymous.task.form.label.isPublic" path="isPublic" readonly="true"/>
 	<acme:form-textbox code="anonymous.task.form.label.workload" path="workload" readonly="true"/>
+	<acme:form-double  code="anonymous.task.form.label.executionPeriod" path="executionPeriod" readonly="true"/>
 	
 	<acme:form-return code="anonymous.task.form.button.return"/>
 </acme:form>

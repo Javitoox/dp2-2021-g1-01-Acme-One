@@ -1,7 +1,5 @@
 package acme.features.manager.task;
 
-
-
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,7 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, Task>{
+public class ManagerTaskPublishService implements AbstractUpdateService<Manager, Task>{
 	
 	@Autowired
 	protected ManagerTaskRepository repository;
@@ -118,10 +116,9 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 	public void update(final Request<Task> request, final Task entity) {
 		assert request != null;
 		assert entity != null;
-	
-		entity.setExecutionPeriod();
+		
+		entity.setFinalMode(true);
 		this.repository.save(entity);
 		
 	}
-
 }
