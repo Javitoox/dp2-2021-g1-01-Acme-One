@@ -20,3 +20,5 @@ anonymous.shout.list.label.text = Text
 
 anonymous.shout.list.button.all= All shouts
 anonymous.shout.list.button.recent= Recently shouts
+
+anonymous.shout.form.error.spam= Your message is considered spam, please, use a proper vocabulary

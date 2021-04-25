@@ -1,6 +1,7 @@
 package acme.features.anonymous.shout;
 
 import acme.entities.shouts.Shout;
+import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -18,6 +19,9 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 	
 	@Autowired
 	protected AnonymousShoutRepository repository;
+
+	@Autowired
+	protected SpamService spam;
 	
 	// AbstractCreateService<Administrator, Shout> interface
 
@@ -33,7 +37,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
 		request.bind(entity, errors);
 	}
 
@@ -64,12 +68,28 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		return result;
 	}
 
+
 	@Override
 	public void validate(final Request<Shout> request, final Shout entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
+		String phrase = request.getModel().getAttribute("text").toString();
+		String author = request.getModel().getAttribute("author").toString();
+
+		boolean authorSpam = spam.isItSpam(author);
+		boolean phraseSpam = spam.isItSpam(phrase);
+
+		if (!errors.hasErrors("text")) {
+			errors.state(request, !phraseSpam, "text", "anonymous.shout.form.error.spam");
+		}if(!errors.hasErrors("author")){
+			errors.state(request, !authorSpam, "author", "anonymous.shout.form.error.spam");
+		}
+
 	}
+
+
 
 	@Override
 	public void create(final Request<Shout> request, final Shout entity) {

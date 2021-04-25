@@ -20,3 +20,5 @@ anonymous.shout.list.label.text = Texto
 
 anonymous.shout.list.button.all= Todos los gritos
 anonymous.shout.list.button.recent= Gritos más recientes
+
+anonymous.shout.form.error.spam= El texto se considera spam. Por favor, use un vocabulario apropiado
