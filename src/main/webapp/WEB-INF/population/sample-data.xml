@@ -79,6 +79,8 @@
 		The tasks can be either public or private." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
+		<property name="workload" value="20.0" />
+		<property name="executionPeriod" value="3782.0" />
 	</bean>
 	<bean id="task02" class="acme.entities.tasks.Task">
 		<property name="title" value="task2" />
@@ -88,6 +90,8 @@
 		The tasks can be either public or private." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
+		<property name="workload" value="30.0" />
+		<property name="executionPeriod" value="110.0" />
 	</bean>
 	<bean id="task03" class="acme.entities.tasks.Task">
 		<property name="title" value="task3" />
@@ -96,6 +100,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
+		<property name="workload" value="5.30" />
+		<property name="executionPeriod" value="686.0" />
 	</bean>
 	<bean id="task04" class="acme.entities.tasks.Task">
 		<property name="title" value="task4" />
@@ -104,6 +110,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="true" />
+		<property name="workload" value="6.0" />
+		<property name="executionPeriod" value="759.0" />
 	</bean>
 	<bean id="task05" class="acme.entities.tasks.Task">
 		<property name="title" value="task5" />
@@ -112,6 +120,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="false" />
+		<property name="workload" value="10.15" />
+		<property name="executionPeriod" value="63.0" />
 	</bean>
 	<bean id="task06" class="acme.entities.tasks.Task">
 		<property name="title" value="task6" />
@@ -120,6 +130,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers." />
 		<property name="link" value="http://www.example.com" />
 		<property name="isPublic" value="false" />
+		<property name="workload" value="15.0" />
+		<property name="executionPeriod" value="1286.0" />
 	</bean>
 	<bean id="task07" class="acme.entities.tasks.Task">
 		<property name="title" value="task7"/>
@@ -128,6 +140,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="false"/>
+		<property name="workload" value="30.0" />
+		<property name="executionPeriod" value="830.0" />
 	</bean>
 	<bean id="task08" class="acme.entities.tasks.Task">
 		<property name="title" value="task8"/>
@@ -136,6 +150,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
+		<property name="workload" value="25.30" />
+		<property name="executionPeriod" value="830.0" />
 	</bean>
 	<bean id="task09" class="acme.entities.tasks.Task">
 		<property name="title" value="task9"/>
@@ -144,6 +160,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
+		<property name="workload" value="20.0" />
+		<property name="executionPeriod" value="1498.0" />
 	</bean>
 	<bean id="task10" class="acme.entities.tasks.Task">
 		<property name="title" value="task10"/>
@@ -152,6 +170,8 @@
 		<property name="description" value="The principals of the system can be either anonymous users, administrators, or managers."/>
 		<property name="link" value="http://www.example.com"/>
 		<property name="isPublic" value="true"/>
+		<property name="workload" value="26.15" />
+		<property name="executionPeriod" value="1070.0" />
 	</bean>
 
 	<!-- Workplan -->
@@ -227,6 +247,34 @@
 		<property name="tasks">
 			<null />
 		</property>
+	</bean>
+	
+		<bean name="manager1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="manager1" />
+		<property name="password" value="manager1" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Manager" />
+				<property name="surname" value="One" />
+				<property name="email" value="manager1@mail.com" />
+				<property name="phone" value="+44 123-456-789" />
+			</bean>
+		</property>
+		<property name="enabled" value="true" />
+		<property name="roles">
+			<list>
+				<ref bean="manager1Employer" />
+				<ref bean="manager1Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="manager1Employer" class="acme.entities.roles.Manager">
+		<property name="userAccount" ref="manager1UserAccount" />
+	</bean>
+
+	<bean name="manager1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="manager1UserAccount" />
 	</bean>
 
 </beans>

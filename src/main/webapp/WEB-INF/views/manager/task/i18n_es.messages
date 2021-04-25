@@ -1,0 +1,19 @@
+# i18n_es.messages
+
+manager.task.list.label.title = Título
+manager.task.list.label.begin = Fecha de inicio
+manager.task.list.label.end = Fecha de fin
+manager.task.list.label.workload = Carga de trabajo
+
+manager.task.form.label.title = Título
+manager.task.form.label.begin = Fecha de inicio
+manager.task.form.label.end = Fecha de fin
+manager.task.form.label.description = Descripción
+manager.task.form.label.link = Link
+manager.task.form.label.isPublic = Pública
+manager.task.form.label.workload = Carga de trabajo
+
+manager.task.form.button.return = Volver
+manager.task.form.button.create = Crear
+manager.task.form.button.update = Guardar Cambios
+manager.task.form.button.delete = Eliminar
