@@ -324,6 +324,7 @@ Shout
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 WorkPlan
 --
++ title: String {NotBlank}
 + isPublic: Boolean
 + begin: Date {NotNull, Temporal(TIMESTAMP)}
 + end: Date {NotNull, Temporal(TIMESTAMP)}
