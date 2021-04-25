@@ -5,14 +5,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-<acme:form readonly="${readonly}">
+<acme:form readonly="${!ItsMine}">
     <acme:form-hidden path="id"/>
+    <acme:form-textbox code="manager.workplan.form.label.title" path="title"/>
     <jstl:if test="${command!='create'}">    
-   		<acme:form-textbox code="manager.workplan.form.label.workload" path="workload"/> 	
+   		<acme:form-textbox readonly="true" code="manager.workplan.form.label.workload" path="workload"/> 	
+   		<acme:form-textbox readonly="true" code="manager.workplan.form.label.executionPeriod" path="executionPeriod"/> 	   		
     </jstl:if>
     <acme:form-moment code="manager.workplan.form.label.begin" path="begin"/>
     <acme:form-moment code="manager.workplan.form.label.end" path="end"/>   
-    <acme:form-checkbox code="manager.workplan.form.label.isPublic" path="isPublic"/>
+    <acme:form-checkbox readonly="true" code="manager.workplan.form.label.isPublic" path="isPublic"/>
     
     <jstl:if test="${command=='show'}">    
 		   <div class="table-responsive">
@@ -45,5 +47,6 @@
     
     <acme:form-submit test="${canPublish && command=='show'}" code="manager.workplan.form.button.publish" action="/manager/work-plan/publish"/>
     <acme:form-submit test="${ItsMine && command=='show'}" code="manager.workplan.form.button.delete" action="/manager/work-plan/delete"/>
+    <acme:form-submit test="${ItsMine && command=='show'}" code="manager.workplan.form.button.update" action="/manager/work-plan/update"/>
     <acme:form-return code="manager.workplan.form.button.return"/>
 </acme:form>

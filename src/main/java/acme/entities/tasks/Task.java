@@ -4,8 +4,10 @@ import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -13,13 +15,14 @@ import javax.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.roles.Manager;
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
+@Setter 
 public class Task extends DomainEntity {
 
 	// Serialisation identifier
@@ -56,13 +59,15 @@ public class Task extends DomainEntity {
 	
 	protected double executionPeriod;
 	
+	protected boolean finalMode;
+	
 	//	Derived attributes
 
 	public void setExecutionPeriod() {
 		this.executionPeriod = (double) (this.end.getTime() - this.begin.getTime()) / (1000 * 3600);
 	}
 
-	@Transient
+	
 	public Boolean isFinished() {
 		Date now;
 		now = new Date();
@@ -127,5 +132,10 @@ public class Task extends DomainEntity {
 	
 
 	// Relationships
+	
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	protected Manager manager;
 
 }

@@ -1,6 +1,5 @@
 package acme.features.manager.workPlan;
 
-import org.hibernate.boot.registry.classloading.spi.ClassLoaderService.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,7 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class ManagerWorkPlanPublishService implements AbstractUpdateService<Manager, WorkPlan>{
+public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager, WorkPlan> {
 
 	@Autowired
 	private ManagerWorkPlanRepository repository;
@@ -80,7 +79,10 @@ public class ManagerWorkPlanPublishService implements AbstractUpdateService<Mana
 	@Override
 	public void update(Request<WorkPlan> request, WorkPlan entity) {
 		WorkPlan wp = repository.findWorkPlanById(entity.getId());
-		wp.setIsPublic(true);
+		wp.setEnd(entity.getEnd());
+		wp.setBegin(entity.getBegin());
+		wp.setTitle(entity.getTitle());
+		wp.setExecutionPeriod();
 		repository.save(wp);
 	}
 

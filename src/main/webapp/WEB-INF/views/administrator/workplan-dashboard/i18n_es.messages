@@ -15,3 +15,4 @@ administrator.workplan.dashboard.form.label.deviation-workplan = Desviación de 
 administrator.workplan.dashboard.form.label.minimum-number-workloads = Mínimo número de carga de trabajo
 administrator.workplan.dashboard.form.label.maximum-number-workloads = Máximo número de carga de trabajo
 administrator.workplan.dashboard.form.label.hours = horas
+administrator.workplan.dashboard.form.title.application-statuses = Gráfico de estadísticas
