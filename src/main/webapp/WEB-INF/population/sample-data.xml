@@ -235,7 +235,8 @@
 
 	<!-- Workplan -->
 	<bean name="workPlan1" class="acme.entities.workPlan.WorkPlan">
-		<property name="isPublic" value="false" />
+		<property name="title" value="Workplan 1" />
+ 		<property name="isPublic" value="true" />
 		<property name="begin" value="2021/05/09 09:00" />
 		<property name="end" value="2021/06/09 09:00" />
 		<property name="manager" ref="manager1Manager" />
@@ -251,6 +252,7 @@
 	</bean>
 
 	<bean name="workPlan2" class="acme.entities.workPlan.WorkPlan">
+		<property name="title" value="Workplan 2" />
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/19 00:00" />
 		<property name="end" value="2021/06/19 00:00" />
@@ -262,6 +264,7 @@
 	</bean>
 
 	<bean name="workPlan3" class="acme.entities.workPlan.WorkPlan">
+		<property name="title" value="Workplan 3" />
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2022/05/09 09:00" />
 		<property name="end" value="2022/06/09 09:00" />
@@ -277,6 +280,7 @@
 	</bean>
 
 	<bean name="workPlan4" class="acme.entities.workPlan.WorkPlan">
+		<property name="title" value="Workplan 4" />
 		<property name="isPublic" value="true" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
@@ -291,6 +295,7 @@
 	</bean>
 
 	<bean name="workPlan5" class="acme.entities.workPlan.WorkPlan">
+		<property name="title" value="Workplan 5" />
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
@@ -302,6 +307,7 @@
 	</bean>
 
 	<bean name="workPlan6" class="acme.entities.workPlan.WorkPlan">
+		<property name="title" value="Workplan 6" />
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
@@ -316,6 +322,7 @@
 	</bean>
 	
 	<bean name="workPlan7" class="acme.entities.workPlan.WorkPlan">
+		<property name="title" value="Workplan 7" />
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/04/10 00:00" />
 		<property name="end" value="2021/04/12 00:00" />
