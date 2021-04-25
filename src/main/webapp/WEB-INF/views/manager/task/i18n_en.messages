@@ -1,10 +1,11 @@
 # i18n_en.messages
 
 manager.task.list.label.title = Title
-manager.task.list.label.begin = Start date
-manager.task.list.label.end = End date
+manager.task.list.label.executionPeriod = Execution Period
 manager.task.list.label.workload = Workload
-manager.task.list.label.isPublic = Is public?
+manager.task.list.label.isPublic = Privacy
+manager.task.list.label.isPublic.true= Public
+manager.task.list.label.isPublic.false= Private
 
 manager.task.form.label.title = Title
 manager.task.form.label.begin = Start date
@@ -13,6 +14,12 @@ manager.task.form.label.description = Description
 manager.task.form.label.link = Link
 manager.task.form.label.isPublic = Public
 manager.task.form.label.workload = Workload
+manager.task.form.label.executionPeriod = Execution Period
+manager.task.form.error.must-be-before-end = Begin must be before end
+manager.task.form.error.must-be-in-future = The date must be in future
+manager.task.form.error.must-be-less-than-work-period = The workload must be less than execution period
+manager.task.form.error.decimal-must-be-under-60 = Decimal must be under 60
+manager.task.form.error.spam = Your text is considered spam, please, use a proper vocabulary
 
 manager.task.form.button.return = Return
 manager.task.form.button.create = Create

@@ -81,7 +81,8 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		final Date now =new Date();
 		final Date begin = entity.getBegin();
 		final Date end = entity.getEnd();
-		final double periodo = (end.getTime()-begin.getTime())/(1000.0*3600); //Este calculo se debe a que la diferencia está en milisegundos
+		entity.setExecutionPeriod();
+		final double periodo = entity.getExecutionPeriod(); 
 		
 		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
 		final boolean descripcionSpam = this.spam.isItSpam(entity.getDescription());
@@ -98,17 +99,18 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		}
 		if(!errors.hasErrors("workload")) {
 			errors.state(request, periodo>entity.getWorkload(), "workload", "manager.task.form.error.must-be-less-than-work-period");
+			errors.state(request, periodo>entity.getWorkload(), "workload", "("+periodo+")");
 		}
 		final int ent = (int) entity.getWorkload();
 		final double dec = entity.getWorkload() - ent;
 		if(!errors.hasErrors("workload")) {
 			errors.state(request, 0.59>=dec, "workload", "manager.task.form.error.decimal-must-be-under-60");
 		}
-		if(titleSpam==true) {
-			errors.add("title", "Your text is considered spam, please, use a proper vocabulary ");
+		if(!errors.hasErrors("title")) {
+			errors.state(request, titleSpam==false, "title", "manager.task.form.error.spam");
 		}
-		if(descripcionSpam==true) {
-			errors.add("description", "Your text is considered spam, please, use a proper vocabulary ");
+		if(!errors.hasErrors("description")) {
+			errors.state(request, descripcionSpam==false, "description", "manager.task.form.error.spam");
 		}
 	}
 

@@ -11,6 +11,9 @@
     <acme:form-double path="workload" code="manager.task.form.label.workload"/>
     <acme:form-url path="link" code="manager.task.form.label.link"/>
     <acme:form-textarea path="description" code="manager.task.form.label.description"/>
+     <jstl:if test="${command=='show' && finalMode=='true'}">
+     <acme:form-double  code="manager.task.form.label.executionPeriod" path="executionPeriod"/>
+    </jstl:if>
     <jstl:if test="${command=='show' && finalMode=='false'}">
     <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
     </jstl:if>
