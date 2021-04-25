@@ -257,6 +257,7 @@
 	</bean>
 	
 	<bean name="workPlan7" class="acme.entities.workPlan.WorkPlan">
+		<property name="title" value="Workplan 7" />
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/04/10 00:00" />
 		<property name="end" value="2021/04/12 00:00" />
