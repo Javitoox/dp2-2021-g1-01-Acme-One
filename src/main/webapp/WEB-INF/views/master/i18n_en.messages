@@ -43,6 +43,7 @@ master.menu.anonymous.list-workplan = Workplan list
 
 master.menu.administrator = Administrator
 master.menu.administrator.task-dashboard = Task Dashboard
+master.menu.administrator.dashboard-workplans = Workplan Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
@@ -75,6 +76,10 @@ master.menu.manager= Manager
 master.menu.manager.workplan.list= Workplan list
 master.menu.manager.task.list= Task list
 master.menu.manager.task.create = Create Task
+# master.menu.authenticated ##########################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.tasks= Tasks
 
 # master.menu.user-account ####################################################
 
