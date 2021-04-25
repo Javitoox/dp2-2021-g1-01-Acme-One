@@ -27,14 +27,14 @@ public class AuthenticatedTaskShowService implements AbstractShowService<Authent
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end", "workload", "link", "description");
+		request.unbind(entity, model, "title", "begin", "end", "workload", "link", "description","finalMode","executionPeriod");
 		
 	}
 
 	@Override
 	public Task findOne(final Request<Task> request) {
 		assert request != null;
-		int id = request.getModel().getInteger("id");
+		final int id = request.getModel().getInteger("id");
 		Task result;
 		result = this.repository.findOneTaskById(id);
 		return result;
