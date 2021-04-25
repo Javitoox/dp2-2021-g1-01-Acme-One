@@ -174,12 +174,72 @@
 		<property name="executionPeriod" value="1070.0" />
 	</bean>
 
+	<!-- Manager -->
+		<bean name="manager1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="manager1" />
+		<property name="password" value="manager1" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Manager" />
+				<property name="surname" value="One" />
+				<property name="email" value="manager1@mail.com" />
+				<property name="phone" value="+44 123-456-789" />
+			</bean>
+		</property>
+		<property name="enabled" value="true" />
+		<property name="roles">
+			<list>
+				<ref bean="manager1Manager" />
+				<ref bean="manager1Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="manager1Manager" class="acme.entities.roles.Manager">
+		<property name="userAccount" ref="manager1UserAccount" />
+	</bean>
+
+	<bean name="manager1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="manager1UserAccount" />
+	</bean>
+	
+	<bean name="manager2UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="manager2" />
+		<property name="password" value="manager2" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Manager" />
+				<property name="surname" value="One" />
+				<property name="email" value="manager2@mail.com" />
+				<property name="phone" value="+44 123-456-789" />
+			</bean>
+		</property>
+		<property name="enabled" value="true" />
+		<property name="roles">
+			<list>
+				<ref bean="manager2Manager" />
+				<ref bean="manager2Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="manager2Manager" class="acme.entities.roles.Manager">
+		<property name="userAccount" ref="manager2UserAccount" />
+	</bean>
+
+	<bean name="manager2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="manager2UserAccount" />
+	</bean>
+
+
+
 	<!-- Workplan -->
 	<bean name="workPlan1" class="acme.entities.workPlan.WorkPlan">
-		<property name="title" value="Workplan 1" />
- 		<property name="isPublic" value="true" />
+		<property name="title" value="WorkPlan 1" />
+		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/09 09:00" />
 		<property name="end" value="2021/06/09 09:00" />
+		<property name="manager" ref="manager1Manager" />
 		<property name="tasks">
 			<list>
 				<ref bean="task01" />
@@ -196,6 +256,7 @@
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/19 00:00" />
 		<property name="end" value="2021/06/19 00:00" />
+		<property name="manager" ref="manager1Manager" />
 		<property name="tasks">
 			<null />
 		</property>
@@ -207,6 +268,7 @@
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2022/05/09 09:00" />
 		<property name="end" value="2022/06/09 09:00" />
+		<property name="manager" ref="manager1Manager" />
 		<property name="tasks">
 			<list>
 				<ref bean="task03" />
@@ -222,6 +284,7 @@
 		<property name="isPublic" value="true" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
+		<property name="manager" ref="manager2Manager" />
 		<property name="tasks">
 			<list>
 				<ref bean="task05" />
@@ -236,6 +299,7 @@
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
+		<property name="manager" ref="manager2Manager" />		
 		<property name="tasks">
 			<null />
 		</property>
@@ -247,6 +311,7 @@
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
+		<property name="manager" ref="manager2Manager" />		
 		<property name="tasks">
 			<list>
 				<ref bean="task03" />
@@ -261,6 +326,7 @@
 		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/04/10 00:00" />
 		<property name="end" value="2021/04/12 00:00" />
+		<property name="manager" ref="manager2Manager" />		
 		<property name="tasks">
 			<null />
 		</property>

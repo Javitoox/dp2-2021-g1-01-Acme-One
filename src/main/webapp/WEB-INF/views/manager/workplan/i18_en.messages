@@ -1,14 +1,31 @@
 # i18n_en.messages
-
 manager.workplan.list.label.isPublic = Is the workplan public?
 manager.workplan.list.label.tasks = Tasks
 manager.workplan.list.label.begin = Start date
 manager.workplan.list.label.end = End date
 manager.workplan.list.label.id = Workplan's id
+manager.workplan.list.label.manager = Manager
+manager.workplan.list.label.title = Title
+manager.workplan.list.label.workload= Workload
+manager.workplan.list.label.executionPeriod = Execution time
 manager.workplan.form.label.isPublic = Is it public?
 manager.workplan.form.label.begin = Start date
 manager.workplan.form.label.end = End date
 manager.workplan.form.label.workload = Workload
 manager.workplan.form.button.return = Return
 manager.workplan.form.label.id = Workplan id
+manager.workplan.form.button.create = Create
+manager.workplan.form.label.tasks.title= Title
+manager.workplan.form.label.tasks.id= Id
+manager.workplan.form.label.tasks= Workplan tasks
+manager.workplan.form.button.delete= Delete workplan
+manager.workplan.form.label.tasks.public = Privacy
+manager.workplan.form.label.tasks.public.true= Public
+manager.workplan.form.label.tasks.public.false= Private
+manager.workplan.form.button.publish = Publish
+manager.workplan.form.label.title= Title
+manager.workplan.form.label.executionPeriod= Execution time
+manager.workplan.form.button.update = Update
+manager.workplan.form.label.isPublic.true = Public
+manager.workplan.form.label.isPublic.false = Private
 

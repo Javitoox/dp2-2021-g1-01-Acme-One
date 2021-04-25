@@ -9,4 +9,10 @@
 	<definition name="manager/work-plan/list" extends="master">
 		<put-attribute name="body" type="template" value="../manager/workplan/list.jsp" />
 	</definition>
+	
+	<definition name="manager/work-plan/form" extends="master">
+		<put-attribute name="body" type="template" value="../manager/workplan/form.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>
