@@ -75,8 +75,7 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
 		final boolean descripcionSpam = this.spam.isItSpam(entity.getDescription());
 		
-		
-		if(!errors.hasErrors("begin")) {
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
 			errors.state(request, end.after(begin), "begin", "manager.task.form.error.must-be-before-end");
 		} 
 		if(!errors.hasErrors("begin")) {
@@ -85,6 +84,9 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		if(!errors.hasErrors("end")) {
 			errors.state(request, end.after(now), "end", "manager.task.form.error.must-be-in-future");
 		}
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
+            errors.state(request, begin.before(end), "end", "manager.task.form.error.must-be-after-begin");
+        }
 		if(!errors.hasErrors("begin")&&!errors.hasErrors("end")) {
 			entity.setExecutionPeriod();
 			final double periodo = entity.getExecutionPeriod(); 
