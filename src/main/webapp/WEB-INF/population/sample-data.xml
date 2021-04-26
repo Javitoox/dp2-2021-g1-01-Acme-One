@@ -207,6 +207,8 @@
 
 	<bean name="manager1Manager" class="acme.entities.roles.Manager">
 		<property name="userAccount" ref="manager1UserAccount" />
+		<property name="company" value="PinguLovers" />
+		<property name="sector" value="Informatica" />
 	</bean>
 
 	<bean name="manager1Authenticated" class="acme.framework.entities.Authenticated">
@@ -235,6 +237,8 @@
 
 	<bean name="manager2Manager" class="acme.entities.roles.Manager">
 		<property name="userAccount" ref="manager2UserAccount" />
+		<property name="company" value="TigerLovers" />
+		<property name="sector" value="Informatica" />
 	</bean>
 
 	<bean name="manager2Authenticated" class="acme.framework.entities.Authenticated">
