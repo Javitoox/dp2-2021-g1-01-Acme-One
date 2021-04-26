@@ -14,23 +14,14 @@
      <jstl:if test="${command=='show' && finalMode=='true'}">
      <acme:form-double  code="manager.task.form.label.executionPeriod" path="executionPeriod"/>
     </jstl:if>
-    <jstl:if test="${command=='show' && finalMode=='false'}">
-    <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
-    </jstl:if>
-     <jstl:if test="${command=='update'}">
-    <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
-    </jstl:if>
-    <jstl:if test="${command=='publish'}">
-    <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
-    </jstl:if>
     <jstl:if test="${command=='create'}">
     <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
     </jstl:if>
     <acme:form-submit test="${command=='create'}" code="manager.task.form.button.create" 
     action="/manager/task/create"/>
-    <acme:form-submit test= "${command=='show' && finalMode=='false'}" code="manager.task.form.button.update" action="/manager/task/update"/>
-    <acme:form-submit test= "${command=='show' && finalMode=='false'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
-    <acme:form-submit test= "${command=='show' && finalMode=='false'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>
+    <acme:form-submit test= "${command=='show' && isPublic=='false'}" code="manager.task.form.button.update" action="/manager/task/update"/>
+    <acme:form-submit test= "${command=='show' && isPublic=='false'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
+    <acme:form-submit test= "${command=='show' && isPublic=='false'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>
     <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.update" action="/manager/task/update"/>
     <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
     <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>

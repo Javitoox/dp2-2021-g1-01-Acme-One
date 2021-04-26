@@ -29,7 +29,7 @@ public class ManagerTaskShowService implements AbstractShowService<Manager, Task
 		task=this.repository.findOneTaskById(taskId);
 		manager = task.getManager();
 		principal = request.getPrincipal();
-		result = task.isFinalMode() ||!task.isFinalMode() && manager.getUserAccount().getId() == principal.getAccountId();
+		result = task.getIsPublic() ||!task.getIsPublic() && manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -40,7 +40,6 @@ public class ManagerTaskShowService implements AbstractShowService<Manager, Task
 		assert model != null;
 		
 		request.unbind(entity, model, "title", "begin", "end","description","link", "isPublic", "workload","executionPeriod");
-		model.setAttribute("finalMode", entity.isFinalMode());
 	}
 
 	@Override
