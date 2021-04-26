@@ -9,7 +9,6 @@ anonymous.task.form.label.begin = Fecha de inicio
 anonymous.task.form.label.end = Fecha de fin
 anonymous.task.form.label.description = Descripción
 anonymous.task.form.label.link = Link
-anonymous.task.form.label.isPublic = Pública
 anonymous.task.form.label.workload = Carga de trabajo
 anonymous.task.form.label.executionPeriod = Periodo de ejecución
 
