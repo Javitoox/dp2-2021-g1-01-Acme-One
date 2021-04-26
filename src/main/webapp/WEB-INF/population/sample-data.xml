@@ -289,7 +289,7 @@
 
 	<bean name="workPlan4" class="acme.entities.workPlan.WorkPlan">
 		<property name="title" value="Workplan 4" />
-		<property name="isPublic" value="true" />
+		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
 		<property name="manager" ref="manager2Manager" />

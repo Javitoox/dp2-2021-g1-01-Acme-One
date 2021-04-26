@@ -28,4 +28,16 @@ manager.workplan.form.label.executionPeriod= Execution time
 manager.workplan.form.button.update = Update
 manager.workplan.form.label.isPublic.true = Public
 manager.workplan.form.label.isPublic.false = Private
+manager.workplan.form.button.addTask= Add task
+manager.workplan.form.select.addTask = Available tasks to add
+
+
+manager.workplan.form.error.must-be-before-end = Begin must be before end
+manager.workplan.form.error.must-be-in-future = The date must be in future
+manager.workplan.form.error.must-be-after-begin= The date must be after begin
+manager.workplan.form.error.spam = Your text is considered spam, please, use a proper vocabulary
+manager.workplan.form.error.all-tasks-must-be-public= To publish a workplan all tasks must be public
+
+
+
 

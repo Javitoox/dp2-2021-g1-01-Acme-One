@@ -1,13 +1,15 @@
 package acme.features.manager.workPlan;
 
-import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
+import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
-import acme.features.spam.SpamService;
+import acme.features.anonymous.task.AnonymousTaskRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -15,14 +17,14 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager, WorkPlan> {
+public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Manager, WorkPlan> {
 
 	@Autowired
 	private ManagerWorkPlanRepository repository;
 	
 	@Autowired
-	protected SpamService spam;
-	
+	AnonymousTaskRepository taskRepository;
+		
 	@Override
 	public boolean authorise(Request<WorkPlan> request) {
 		assert request != null;
@@ -47,6 +49,8 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		assert entity != null;
 		assert errors != null;
 		
+		System.out.println(request.getModel().getAttribute("taskSelected"));
+		
 		request.bind(entity, errors);			
 	}
 
@@ -63,20 +67,20 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
 		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		//You can publish a workplan if you have created it and all tasks inside are public
-        
+		List<Task>taskList = taskRepository.findPublicTask().stream().collect(Collectors.toList());//cambiar publicas por todas
+		model.setAttribute("tasksEneabled", taskList);
         model.setAttribute("canPublish", canPublish);          
         model.setAttribute("workload", entity.getWorkload());
 		model.setAttribute("readonly", false);
 		model.setAttribute("canDelete", true);
 		
-        request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");				
+        request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");					
 	}
 
 	@Override
 	public WorkPlan findOne(Request<WorkPlan> request) {
 		int id = request.getModel().getInteger("id");
 		return repository.findWorkPlanById(id);
-
 	}
 
 	@Override
@@ -84,29 +88,6 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		final Date now =new Date();
-		final Date begin = entity.getBegin();
-		final Date end = entity.getEnd();
-		
-		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
-			
-		if(!errors.hasErrors("begin")) {
-			errors.state(request, end.after(begin), "begin", "manager.workplan.form.error.must-be-before-end");
-		} 
-		if(!errors.hasErrors("begin")) {
-			errors.state(request, begin.after(now), "begin", "manager.workplan.form.error.must-be-in-future");
-		}
-		if(!errors.hasErrors("end")) {
-			errors.state(request, end.after(now), "end", "manager.workplan.form.error.must-be-in-future");
-		}
-		if(!errors.hasErrors("end")) {
-			errors.state(request, begin.before(end), "end", "manager.workplan.form.error.must-be-after-begin");
-		} 
-		if(!errors.hasErrors("title")) {
-			errors.state(request, titleSpam==false, "title", "manager.workplan.form.error.spam");
-		}
-		
 		
 		int workplanId = request.getModel().getInteger("id");
 		WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
@@ -116,17 +97,12 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		request.getModel().setAttribute("ItsMine", true);
         request.getModel().setAttribute("canPublish", canPublish);
-
 	}
 
 	@Override
 	public void update(Request<WorkPlan> request, WorkPlan entity) {
 		WorkPlan wp = repository.findWorkPlanById(entity.getId());
-		wp.setEnd(entity.getEnd());
-		wp.setBegin(entity.getBegin());
-		wp.setTitle(entity.getTitle());
-		wp.setExecutionPeriod();
-		repository.save(wp);
+		
 	}
 
 }

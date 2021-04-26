@@ -1,6 +1,7 @@
 package acme.features.manager.workPlan;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,7 @@ import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.features.anonymous.task.AnonymousTaskRepository;
+import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -24,6 +26,9 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	
 	@Autowired
 	AnonymousTaskRepository taskRepository; //cambiar por el de manu
+		
+	@Autowired
+	protected SpamService spam;
 	
 	@Override
 	public boolean authorise(Request<WorkPlan> request) {
@@ -49,8 +54,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
         model.setAttribute("workload", entity.getWorkload());
 		request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","manager");
 		model.setAttribute("ItsMine", true);
-		List<Task>taskList = taskRepository.findPublicTask().stream().collect(Collectors.toList());//cambiar publicas por todas
-		model.setAttribute("tasksEneabled", taskList);
+
 		
 	}
 
@@ -71,6 +75,31 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		assert request != null;
 		assert errors != null;
 		assert entity != null;
+		
+		final Date now =new Date();
+		final Date begin = entity.getBegin();
+		final Date end = entity.getEnd();
+		
+		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
+		
+		
+		if(!errors.hasErrors("begin")) {//Cuando compare dos fechas comprobar que ninguna tiene errores
+			errors.state(request, end.after(begin), "begin", "manager.workplan.form.error.must-be-before-end");
+		} 
+		if(!errors.hasErrors("begin")) {
+			errors.state(request, begin.after(now), "begin", "manager.workplan.form.error.must-be-in-future");
+		}
+		if(!errors.hasErrors("end")) {
+			errors.state(request, end.after(now), "end", "manager.workplan.form.error.must-be-in-future");
+		}
+		if(!errors.hasErrors("end")) {
+			errors.state(request, begin.before(end), "end", "manager.workplan.form.error.must-be-after-begin");
+		} 
+		if(!errors.hasErrors("title")) {
+			errors.state(request, titleSpam==false, "title", "manager.workplan.form.error.spam");
+		}
+		request.getModel().setAttribute("ItsMine", true);
+
 
 	}
 
