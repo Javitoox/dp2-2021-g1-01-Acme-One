@@ -32,6 +32,8 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+		    <acme:menu-suboption code="master.menu.administrator.spam.word.list" action="/administrator/word/list"/>
+		    <acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.task-dashboard" action="/administrator/task-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard-workplans" action="/administrator/workplan-dashboard/show"/>
 			<acme:menu-separator/>
