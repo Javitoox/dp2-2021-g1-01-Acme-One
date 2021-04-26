@@ -18,6 +18,7 @@ manager.task.form.error.must-be-in-future = La fecha debe estar en el futuro
 manager.task.form.error.must-be-less-than-work-period = La carga de trabajo debe ser menor al periodo de ejecución
 manager.task.form.error.decimal-must-be-under-60 = El número decimal debe ser menor a 60
 manager.task.form.error.spam = Tu texto es considerado spam, por favor, usa un vocabulario adecuado
+manager.workplan.form.error.must-be-after-begin = La fecha de fin debe ser posterior a la fecha de fin
 
 manager.task.form.button.return = Volver
 manager.task.form.button.create = Crear
