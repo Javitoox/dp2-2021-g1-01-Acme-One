@@ -71,8 +71,6 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		final Date now =new Date();
 		final Date begin = entity.getBegin();
 		final Date end = entity.getEnd();
-		entity.setExecutionPeriod();
-		final double periodo = entity.getExecutionPeriod(); 
 		
 		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
 		final boolean descripcionSpam = this.spam.isItSpam(entity.getDescription());
@@ -87,9 +85,13 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		if(!errors.hasErrors("end")) {
 			errors.state(request, end.after(now), "end", "manager.task.form.error.must-be-in-future");
 		}
-		if(!errors.hasErrors("workload")) {
+		if(!errors.hasErrors("begin")&&!errors.hasErrors("end")) {
+			entity.setExecutionPeriod();
+			final double periodo = entity.getExecutionPeriod(); 
+			if(!errors.hasErrors("workload")) {
 			errors.state(request, periodo>entity.getWorkload(), "workload", "manager.task.form.error.must-be-less-than-work-period");
 			errors.state(request, periodo>entity.getWorkload(), "workload", "("+periodo+")");
+			}
 		}
 		final int ent = (int) entity.getWorkload();
 		final double dec = entity.getWorkload() - ent;
