@@ -33,7 +33,7 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		task=this.repository.findOneTaskById(taskId);
 		manager = task.getManager();
 		principal = request.getPrincipal();
-		result = !task.isFinalMode() && manager.getUserAccount().getId() == principal.getAccountId();
+		result = !task.getIsPublic() && manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -54,7 +54,7 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		assert model != null;
 		
 		request.unbind(entity, model, "title", "begin", "end","description");
-		request.unbind(entity, model, "link", "isPublic", "workload", "finalMode");
+		request.unbind(entity, model, "link", "isPublic", "workload");
 		model.setAttribute("readonly", false);
 		
 	}

@@ -4,8 +4,6 @@ manager.task.list.label.title = Título
 manager.task.list.label.executionPeriod = Periodo de extensión
 manager.task.list.label.workload = Carga de trabajo
 manager.task.list.label.isPublic = Privacidad
-manager.task.form.label.isPublic.true= Publica
-manager.task.form.label.isPublic.false= Privada
 
 manager.task.form.label.title = Título
 manager.task.form.label.begin = Fecha de inicio
