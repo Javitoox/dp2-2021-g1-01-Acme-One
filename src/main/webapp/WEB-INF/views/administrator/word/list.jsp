@@ -6,3 +6,7 @@
 <acme:list>
 	<acme:list-column code="administrator.word.list.label.word" path="word" width="100%"/>
 </acme:list>
+
+<acme:form>
+    	<acme:form-submit action="/administrator/word/create" code="administrator.word.list.label.add" />
+</acme:form>

@@ -10,4 +10,7 @@
 		<put-attribute name="body" type="template" value="../administrator/word/list.jsp" />
 	</definition>
 	
+	<definition name="administrator/word/form" extends="master">
+		<put-attribute name="body" type="template" value="../administrator/word/form.jsp" />
+	</definition>
 </tiles-definitions>

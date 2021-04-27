@@ -14,4 +14,7 @@ public interface AdministratorWordRepository extends AbstractRepository{
 	@Query("select w from Word w")
     Collection<Word> findAllWords();
 	
+	@Query("select w from Word w where w.id = ?1")
+	Word findOneWordById(int id);
+	
 }
