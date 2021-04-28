@@ -2,8 +2,6 @@ package acme.features.manager.workPlan;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

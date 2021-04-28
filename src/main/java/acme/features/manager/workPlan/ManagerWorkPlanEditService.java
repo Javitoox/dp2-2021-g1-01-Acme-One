@@ -1,11 +1,14 @@
 package acme.features.manager.workPlan;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
+import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
@@ -114,8 +117,11 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		Principal principal = request.getPrincipal();
 		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
 		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
+		List<Task>taskList = repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
+		request.getModel().setAttribute("tasksEneabled", taskList);
 		request.getModel().setAttribute("ItsMine", true);
         request.getModel().setAttribute("canPublish", canPublish);
+        request.getModel().setAttribute("tasks", workplan.getTasks());
 
 	}
 

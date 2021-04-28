@@ -18,30 +18,7 @@
     <jstl:if test="${command=='create'}">    
     	<acme:form-checkbox code="manager.workplan.form.label.isPublic" path="isPublic"/>
     </jstl:if>
-    
-    <jstl:if test="${command=='show'}">    
-		   <div class="table-responsive">
-		   <table class="table table-striped table-condensed table-hover nowrap w-100">
-		   	  <caption><acme:message code="manager.workplan.form.label.tasks"/></caption>
-			  <thead>
-				    <tr>
-				      <th scope="col"><acme:message code="manager.workplan.form.label.tasks.id"/></th>
-				      <th scope="col"><acme:message code="manager.workplan.form.label.tasks.title"/></th>
-				      <th scope="col"><acme:message code="manager.workplan.form.label.tasks.public"/></th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  	<c:forEach items="${tasks}" var="task">
-					  	<tr class="table-light">
-					      <td>${task.id}</td>
-					      <td>${task.title}</td>
-					      <td><acme:message code="manager.workplan.form.label.tasks.public.${task.isPublic}"/></td>
-					    </tr>
-					</c:forEach>
-				    </tbody>
-			   </table>
-		    </div>
-    </jstl:if>
+
     <acme:form-submit test="${canDelete && command=='show'}" code="manager.workplan.form.button.publish" action="/manager/work-plan/publish"/>
     
     <jstl:if test="${command=='create'}">  		   		   	   		    		
@@ -54,12 +31,46 @@
 </acme:form>
 <br><br>
 
+<!-- TABLA DE TAREAS -->
+<jstl:if test="${command=='show'|| command =='update'}">    
+		   <div class="table-responsive">
+		   <table class="table table-striped table-condensed table-hover nowrap w-100">
+		   	  <caption><acme:message code="manager.workplan.form.label.tasks"/></caption>
+			  <thead>
+				    <tr>
+				      <th scope="col"><acme:message code="manager.workplan.form.label.tasks.id"/></th>
+				      <th scope="col"><acme:message code="manager.workplan.form.label.tasks.title"/></th>
+				      <th scope="col"><acme:message code="manager.workplan.form.label.tasks.public"/></th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<c:forEach items="${tasks}" var="task">
+					  	<tr class="table-light">
+					      <td>${task.id}</td>
+					      <td>${task.title}</td>
+					      <td><acme:message code="manager.workplan.form.label.tasks.public.${task.isPublic}"/></td>
+					      <td>
+					      	<acme:form>
+					      		<input type="hidden" name="taskId" value="${task.id}">
+					      		<input type="hidden" name="workplanId" value="${id}">
+					      		<acme:form-submit code="manager.workplan.form.button.removeTask" action="/manager/work-plan/remove_task"/>   
+					      	</acme:form>
+					      </td>
+					    </tr>
+					</c:forEach>
+				    </tbody>
+			   </table>
+		    </div>
+    </jstl:if>
+
+<!-- AÑADIR TAREA -->
 <jstl:if test="${ItsMine && (command=='show'|| command =='update')}">    
 	<center>
 	<acme:form>
 		<acme:form-select code="manager.workplan.form.select.addTask" path="taskSelected">
 			<c:forEach items="${tasksEneabled}" var="task">
-				<acme:form-option code="${task.title}" value="${task.id}"/>	
+				<acme:form-option code="${task.title} - ${task.description}" value="${task.id}"/>	
 			</c:forEach>
 		</acme:form-select>
 	<acme:form-submit code="manager.workplan.form.button.addTask" action="/manager/work-plan/add_task"/>    

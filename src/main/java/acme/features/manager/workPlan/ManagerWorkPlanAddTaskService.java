@@ -1,5 +1,6 @@
 package acme.features.manager.workPlan;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,9 +49,6 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		System.out.println(request.getModel().getAttribute("taskSelected"));
-		
 		request.bind(entity, errors);			
 	}
 
@@ -102,6 +100,13 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	@Override
 	public void update(Request<WorkPlan> request, WorkPlan entity) {
 		WorkPlan wp = repository.findWorkPlanById(entity.getId());
+		Task task = (Task) taskRepository.findById((Integer) request.getModel().getInteger("taskSelected")).orElse(null);
+		Collection<Task> ls = wp.getTasks();
+		ls.add(task);
+		wp.setTasks(ls);
+		wp.setWorkload();
+		
+		repository.save(wp);
 		
 	}
 
