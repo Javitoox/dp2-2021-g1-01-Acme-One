@@ -40,15 +40,21 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		WorkPlan workplan = this.managerWorkPlanRepository.findWorkPlanById(workplanId);
 		Manager manager = workplan.getManager();
 		Principal principal = request.getPrincipal();
-		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
-		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
+		Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+		Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		//You can publish a workplan if you have created it and all tasks inside are public
 		
-		List<Task>taskList = managerWorkPlanRepository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
+		List<Task>taskList = managerWorkPlanRepository.findTasksAvailable(manager.getId(), workplanId).stream()
+				.filter(x->!workplan.getTasks().contains(x))
+				.collect(Collectors.toList());
+		
+		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
+			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
+			
 		model.setAttribute("tasksEneabled", taskList);
         
 	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
-        model.setAttribute("ItsMine", canDelete);
+        model.setAttribute("ItsMine", itsMine);
         model.setAttribute("canPublish", canPublish);
 	}
 

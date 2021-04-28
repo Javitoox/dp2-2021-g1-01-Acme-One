@@ -13,6 +13,7 @@ import acme.features.anonymous.task.AnonymousTaskRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -26,7 +27,18 @@ public class ManagerWorkPlanRemoveTaskService implements AbstractUpdateService<M
 	@Override
 	public boolean authorise(Request<WorkPlan> request) {
 		assert request != null;
-		return true;
+		final boolean result;
+		WorkPlan workplan;
+		int workplanId;
+		Manager manager;
+		Principal principal;
+		
+		workplanId=request.getModel().getInteger("workplanId");
+		workplan=this.repository.findWorkPlanById(workplanId);
+		manager = workplan.getManager();
+		principal = request.getPrincipal();
+		result = manager.getUserAccount().getId() == principal.getAccountId();
+		return result;
 	}
 
 	@Override
@@ -34,9 +46,6 @@ public class ManagerWorkPlanRemoveTaskService implements AbstractUpdateService<M
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		System.out.println(request.getModel().getAttribute("taskId"));
-		System.out.println(request.getModel().getAttribute("workplanId"));
 
 		request.bind(entity, errors);			
 	}
@@ -47,7 +56,7 @@ public class ManagerWorkPlanRemoveTaskService implements AbstractUpdateService<M
         assert entity != null;
         assert model != null;
 		
-        request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");					
+	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 	}
 
 	@Override

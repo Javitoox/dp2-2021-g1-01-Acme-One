@@ -59,20 +59,8 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
         assert entity != null;
         assert model != null;
         
-        int workplanId = request.getModel().getInteger("id");
-		WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
-		Manager manager = workplan.getManager();
-		Principal principal = request.getPrincipal();
-		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
-		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
-		//You can publish a workplan if you have created it and all tasks inside are public
-        
-        model.setAttribute("canPublish", canPublish);          
-        model.setAttribute("workload", entity.getWorkload());
-		model.setAttribute("readonly", false);
-		model.setAttribute("canDelete", true);
 		
-        request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");				
+	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 	}
 
 	@Override
@@ -94,7 +82,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		
 		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
 			
-		if(!errors.hasErrors("begin")) {
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
 			errors.state(request, end.after(begin), "begin", "manager.workplan.form.error.must-be-before-end");
 		} 
 		if(!errors.hasErrors("begin")) {
@@ -103,11 +91,11 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		if(!errors.hasErrors("end")) {
 			errors.state(request, end.after(now), "end", "manager.workplan.form.error.must-be-in-future");
 		}
-		if(!errors.hasErrors("end")) {
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
 			errors.state(request, begin.before(end), "end", "manager.workplan.form.error.must-be-after-begin");
 		} 
 		if(!errors.hasErrors("title")) {
-			errors.state(request, titleSpam==false, "title", "manager.workplan.form.error.spam");
+			errors.state(request, !titleSpam,  "title", "manager.workplan.form.error.spam");
 		}
 		
 		
@@ -115,13 +103,17 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
 		Manager manager = workplan.getManager();
 		Principal principal = request.getPrincipal();
-		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
-		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
+		Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+		Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
+		
 		List<Task>taskList = repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
-		request.getModel().setAttribute("tasksEneabled", taskList);
-		request.getModel().setAttribute("ItsMine", true);
+		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
+			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
+		
+		request.getModel().setAttribute("ItsMine", itsMine);
         request.getModel().setAttribute("canPublish", canPublish);
         request.getModel().setAttribute("tasks", workplan.getTasks());
+		request.getModel().setAttribute("tasksEneabled", taskList);
 
 	}
 

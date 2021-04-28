@@ -57,22 +57,8 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert request != null;
         assert entity != null;
         assert model != null;
-        
-        int workplanId = request.getModel().getInteger("id");
-		WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
-		Manager manager = workplan.getManager();
-		Principal principal = request.getPrincipal();
-		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
-		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
-		//You can publish a workplan if you have created it and all tasks inside are public
-		List<Task>taskList = taskRepository.findPublicTask().stream().collect(Collectors.toList());//cambiar publicas por todas
-		model.setAttribute("tasksEneabled", taskList);
-        model.setAttribute("canPublish", canPublish);          
-        model.setAttribute("workload", entity.getWorkload());
-		model.setAttribute("readonly", false);
-		model.setAttribute("canDelete", true);
 		
-        request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");					
+	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 	}
 
 	@Override
@@ -86,15 +72,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		int workplanId = request.getModel().getInteger("id");
-		WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
-		Manager manager = workplan.getManager();
-		Principal principal = request.getPrincipal();
-		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
-		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
-		request.getModel().setAttribute("ItsMine", true);
-        request.getModel().setAttribute("canPublish", canPublish);
+	
 	}
 
 	@Override

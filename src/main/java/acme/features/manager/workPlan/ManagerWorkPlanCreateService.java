@@ -49,8 +49,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		assert entity != null;
 		assert model != null;		
 		
-        model.setAttribute("workload", entity.getWorkload());
-		request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","manager");
+	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 		model.setAttribute("ItsMine", true);
 
 		
@@ -81,7 +80,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
 		
 		
-		if(!errors.hasErrors("begin")) {//Cuando compare dos fechas comprobar que ninguna tiene errores
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
 			errors.state(request, end.after(begin), "begin", "manager.workplan.form.error.must-be-before-end");
 		} 
 		if(!errors.hasErrors("begin")) {
@@ -90,12 +89,13 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		if(!errors.hasErrors("end")) {
 			errors.state(request, end.after(now), "end", "manager.workplan.form.error.must-be-in-future");
 		}
-		if(!errors.hasErrors("end")) {
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
 			errors.state(request, begin.before(end), "end", "manager.workplan.form.error.must-be-after-begin");
 		} 
 		if(!errors.hasErrors("title")) {
-			errors.state(request, titleSpam==false, "title", "manager.workplan.form.error.spam");
+			errors.state(request, !titleSpam,  "title", "manager.workplan.form.error.spam");
 		}
+		
 		request.getModel().setAttribute("ItsMine", true);
 
 
