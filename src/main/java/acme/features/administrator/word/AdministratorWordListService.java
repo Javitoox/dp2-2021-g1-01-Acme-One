@@ -15,7 +15,7 @@ import acme.framework.services.AbstractListService;
 public class AdministratorWordListService implements AbstractListService<Administrator, Word>{
 	
 	@Autowired
-	AdministratorWordRepository administratorWordRepository;
+	AdministratorWordRepository repository;
 
 	@Override
 	public boolean authorise(final Request<Word> request) {
@@ -37,7 +37,7 @@ public class AdministratorWordListService implements AbstractListService<Adminis
 		assert request != null;
 		
         Collection<Word> words;
-        words = this.administratorWordRepository.findAllWords();
+        words = this.repository.findAllWords();
         return words;
 	}
 

@@ -19,7 +19,6 @@ public class Spam extends DomainEntity {
     @OneToMany
     private Collection<Word> spamWords;
 
-
     protected double threshold;
 //Definimos el threshold (umbral)que debe tener el spam para hacer getThreshold y compararlo con el actual, por defecto siempre debera estar a 10%
 }

@@ -35,7 +35,6 @@ public class AdministratorWordController extends AbstractController<Administrato
 		super.addBasicCommand(BasicCommand.LIST, this.administratorWordListService);
 		super.addBasicCommand(BasicCommand.SHOW, this.administratorWordShowService);
 		super.addBasicCommand(BasicCommand.CREATE, this.administratorWordCreateService);
-		
 	}
 
 }

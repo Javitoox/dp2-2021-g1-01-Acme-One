@@ -7,5 +7,5 @@
     <acme:form-textbox path="word" code="administrator.word.form.label.word" />
 
     <acme:form-submit action="/administrator/word/create" code="administrator.word.form.button.create" />
-    <acme:form-return code="administrator.word.form.button.return" />
+    <acme:form-return action="/administrator/word/list" code="administrator.word.form.button.return" />
 </acme:form>

@@ -1,12 +1,13 @@
 package acme.features.anonymous.shout;
 
 import acme.entities.shouts.Shout;
-import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Anonymous;
 import acme.framework.services.AbstractCreateService;
+import acme.services.SpamService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
