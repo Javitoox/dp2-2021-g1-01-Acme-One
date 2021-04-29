@@ -10,7 +10,7 @@ import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AdministratorThresholdShowService implements AbstractShowService<Administrator, Threshold>{
+public class AdministratorThresholdUpdateShowService implements AbstractShowService<Administrator, Threshold>{
 	
 	@Autowired
 	protected AdministratorThresholdRepository repository;
@@ -28,7 +28,7 @@ public class AdministratorThresholdShowService implements AbstractShowService<Ad
 		assert model != null;
 
 		request.unbind(entity, model, "thresholdNumber");
-		model.setAttribute("readonly", true);
+		model.setAttribute("readonly", false);
 	}
 
 	@Override
