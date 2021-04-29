@@ -1,6 +1,8 @@
 package acme.features.manager.workPlan;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -24,4 +26,11 @@ public interface ManagerWorkPlanRepository extends AbstractRepository {
 
 	@Query("select t from Task t where (t.isPublic=1 or t.manager.id =?1)")
 	public Collection<Task> findTasksAvailable(int id, int idWP);
+	
+	@Query("select t.begin from WorkPlan w join w.tasks t where w.id=?1 order by t.begin asc" )
+	public List<Date> findInitialDateFirstTask(int id);
+	
+	@Query("select t.end from WorkPlan w join w.tasks t where w.id=?1 order by t.end desc" )
+	public List<Date> findEndDateLastTask(int id);
+	
 }

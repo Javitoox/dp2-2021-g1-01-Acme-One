@@ -11,9 +11,14 @@
     <jstl:if test="${command!='create'}">    
    		<acme:form-textbox readonly="true" code="manager.workplan.form.label.workload" path="workload"/> 	
    		<acme:form-textbox readonly="true" code="manager.workplan.form.label.executionPeriod" path="executionPeriod"/> 	   		
-    </jstl:if>
+    </jstl:if>   
+    
     <acme:form-moment code="manager.workplan.form.label.begin" path="begin"/>
+    <p class="text-success"><acme:message code="manager.workplan.form.label.begin.recommend"/><acme:message code="${recommendedInitialDate}"/></p>
+  
     <acme:form-moment code="manager.workplan.form.label.end" path="end"/>   
+   	<p class="text-success"><acme:message code="manager.workplan.form.label.end.recommend"/><acme:message code="${recommendedEndDate}"/></p>
+        
     <jstl:if test="${command=='create'}">    
     	<acme:form-checkbox code="manager.workplan.form.label.isPublic" path="isPublic"/>
     </jstl:if>

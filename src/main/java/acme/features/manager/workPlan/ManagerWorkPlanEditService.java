@@ -106,6 +106,20 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
 		Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		
+		if(workplan.getTasks().size()>0) {
+			Date recommendedInitialDate = repository.findInitialDateFirstTask(workplanId).get(0);
+			Date recommendedEndDate= repository.findEndDateLastTask(workplanId).get(0);
+			
+			//Add or substract one day in miliseconds
+			recommendedInitialDate = new Date(recommendedInitialDate.getTime() - (1000 * 60 * 60 * 24));
+			recommendedInitialDate.setHours(8);
+			
+			recommendedEndDate= new Date(recommendedEndDate.getTime() + (1000 * 60 * 60 * 24));
+			recommendedEndDate.setHours(17);
+			
+			request.getModel().setAttribute("recommendedInitialDate", recommendedInitialDate.toGMTString());
+			request.getModel().setAttribute("recommendedEndDate", recommendedEndDate.toGMTString());
+		}		
 		List<Task>taskList = repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
 		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
 			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());

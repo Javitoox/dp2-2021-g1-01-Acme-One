@@ -1,5 +1,6 @@
 package acme.features.manager.workPlan;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +44,21 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
 		Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		//You can publish a workplan if you have created it and all tasks inside are public
+		
+		if(workplan.getTasks().size()>0) {
+			Date recommendedInitialDate = managerWorkPlanRepository.findInitialDateFirstTask(workplanId).get(0);
+			Date recommendedEndDate= managerWorkPlanRepository.findEndDateLastTask(workplanId).get(0);
+			
+			//Add or substract one day in miliseconds
+			recommendedInitialDate = new Date(recommendedInitialDate.getTime() - (1000 * 60 * 60 * 24));
+			recommendedInitialDate.setHours(8);
+			
+			recommendedEndDate= new Date(recommendedEndDate.getTime() + (1000 * 60 * 60 * 24));
+			recommendedEndDate.setHours(17);
+			
+			model.setAttribute("recommendedInitialDate", recommendedInitialDate.toGMTString());
+			model.setAttribute("recommendedEndDate", recommendedEndDate.toGMTString());
+		}
 		
 		List<Task>taskList = managerWorkPlanRepository.findTasksAvailable(manager.getId(), workplanId).stream()
 				.filter(x->!workplan.getTasks().contains(x))
