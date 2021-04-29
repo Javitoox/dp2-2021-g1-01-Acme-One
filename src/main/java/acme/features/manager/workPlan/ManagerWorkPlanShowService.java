@@ -1,10 +1,15 @@
 package acme.features.manager.workPlan;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
+import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
+import acme.features.anonymous.task.AnonymousTaskRepository;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
@@ -15,6 +20,9 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 
     @Autowired
     ManagerWorkPlanRepository managerWorkPlanRepository;
+    
+	@Autowired
+	AnonymousTaskRepository taskRepository;
     
 	@Override
 	public boolean authorise(Request<WorkPlan> request) {
@@ -32,12 +40,21 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		WorkPlan workplan = this.managerWorkPlanRepository.findWorkPlanById(workplanId);
 		Manager manager = workplan.getManager();
 		Principal principal = request.getPrincipal();
-		Boolean canDelete = manager.getUserAccount().getId() == principal.getAccountId();
-		Boolean canPublish= canDelete && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
+		Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+		Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		//You can publish a workplan if you have created it and all tasks inside are public
+		
+		List<Task>taskList = managerWorkPlanRepository.findTasksAvailable(manager.getId(), workplanId).stream()
+				.filter(x->!workplan.getTasks().contains(x))
+				.collect(Collectors.toList());
+		
+		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
+			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
+			
+		model.setAttribute("tasksEneabled", taskList);
         
 	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
-        model.setAttribute("ItsMine", canDelete);
+        model.setAttribute("ItsMine", itsMine);
         model.setAttribute("canPublish", canPublish);
 	}
 
