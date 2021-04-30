@@ -85,6 +85,10 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		if(!errors.hasErrors("end")) {
 			errors.state(request, end.after(now), "end", "manager.task.form.error.must-be-in-future");
 		}
+		if(!errors.hasErrors("end")) {
+			errors.state(request, begin.before(end), "end", "manager.task.form.error.must-be-after-begin");
+		} 
+		
 		if(!errors.hasErrors("begin")&&!errors.hasErrors("end")) {
 			entity.setExecutionPeriod();
 			final double periodo = entity.getExecutionPeriod(); 
