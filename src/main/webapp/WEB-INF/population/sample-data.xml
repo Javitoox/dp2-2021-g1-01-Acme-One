@@ -207,6 +207,8 @@
 
 	<bean name="manager1Manager" class="acme.entities.roles.Manager">
 		<property name="userAccount" ref="manager1UserAccount" />
+		<property name="company" value="PinguLovers" />
+		<property name="sector" value="Informatica" />
 	</bean>
 
 	<bean name="manager1Authenticated" class="acme.framework.entities.Authenticated">
@@ -235,6 +237,8 @@
 
 	<bean name="manager2Manager" class="acme.entities.roles.Manager">
 		<property name="userAccount" ref="manager2UserAccount" />
+		<property name="company" value="TigerLovers" />
+		<property name="sector" value="Informatica" />
 	</bean>
 
 	<bean name="manager2Authenticated" class="acme.framework.entities.Authenticated">
@@ -289,7 +293,7 @@
 
 	<bean name="workPlan4" class="acme.entities.workPlan.WorkPlan">
 		<property name="title" value="Workplan 4" />
-		<property name="isPublic" value="true" />
+		<property name="isPublic" value="false" />
 		<property name="begin" value="2021/05/12 09:00" />
 		<property name="end" value="2021/06/12 09:00" />
 		<property name="manager" ref="manager2Manager" />
