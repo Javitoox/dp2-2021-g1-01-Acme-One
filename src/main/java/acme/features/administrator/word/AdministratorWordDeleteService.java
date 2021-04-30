@@ -1,3 +1,4 @@
+
 package acme.features.administrator.word;
 
 import java.util.Collection;
@@ -11,18 +12,15 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
-import acme.framework.services.AbstractCreateService;
-import acme.repositories.SpamRepository;
+import acme.framework.services.AbstractDeleteService;
 
 @Service
-public class AdministratorWordCreateService implements AbstractCreateService<Administrator, Word>{
+public class AdministratorWordDeleteService implements AbstractDeleteService<Administrator, Word> {
 
 	@Autowired
 	protected AdministratorWordRepository repository;
-	
-	@Autowired
-	protected SpamRepository spamRepo;
-	
+
+
 	@Override
 	public boolean authorise(final Request<Word> request) {
 		assert request != null;
@@ -34,8 +32,9 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
 		request.bind(entity, errors);
+
 	}
 
 	@Override
@@ -43,19 +42,16 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		
+
 		request.unbind(entity, model, "word");
 	}
 
 	@Override
-	public Word instantiate(final Request<Word> request) {
-		assert request != null;
-		Word result;
-		
-		result  = new Word();
-		result.setWord("estonovauwu");
-		
-		return result;
+	public Word findOne(final Request<Word> request) {
+		Word word = new Word();
+		final int id = request.getModel().getInteger("id");
+		word = this.repository.findOneWordById(id);
+		return word;
 	}
 
 	@Override
@@ -63,19 +59,17 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-	
+
 	}
 
 	@Override
-	public void create(final Request<Word> request, final Word entity) {
+	public void delete(final Request<Word> request, final Word entity) {
 		assert request != null;
 		assert entity != null;
 		final Spam spam = this.repository.findSpam();
 		final Collection<Word> spamWords = spam.getSpamWords();
-		this.repository.save(entity);
-		spamWords.add(entity);
-		this.spamRepo.save(spam);
-	
+		spamWords.remove(entity);
+		this.repository.deleteById(entity.getId());
 	}
 
 }

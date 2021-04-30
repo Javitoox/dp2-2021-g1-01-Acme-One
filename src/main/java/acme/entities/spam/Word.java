@@ -16,4 +16,5 @@ public class Word extends DomainEntity {
 
     @NotBlank
     private String word;
+    
 }

@@ -27,6 +27,11 @@ public class AdministratorWordController extends AbstractController<Administrato
 	@Autowired
 	protected AdministratorWordCreateService administratorWordCreateService;
 	
+	@Autowired
+	protected AdministratorWordDeleteService administratorWordDeleteService;
+	
+	@Autowired
+	protected AdministratorWordUpdateService administratorWordUpdateService;
 	// Constructors -----------------------------------------------------------
 
 
@@ -35,6 +40,9 @@ public class AdministratorWordController extends AbstractController<Administrato
 		super.addBasicCommand(BasicCommand.LIST, this.administratorWordListService);
 		super.addBasicCommand(BasicCommand.SHOW, this.administratorWordShowService);
 		super.addBasicCommand(BasicCommand.CREATE, this.administratorWordCreateService);
+		super.addBasicCommand(BasicCommand.DELETE, this.administratorWordDeleteService);
+		super.addBasicCommand(BasicCommand.UPDATE, this.administratorWordUpdateService);
+
 	}
 
 }
