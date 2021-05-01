@@ -15,7 +15,6 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractCreateService;
-import acme.services.SpamService;
 
 @Service
 public class ManagerWorkPlanCreateService implements AbstractCreateService<Manager, WorkPlan>{

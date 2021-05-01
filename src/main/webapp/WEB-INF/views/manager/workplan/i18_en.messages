@@ -39,6 +39,6 @@ manager.workplan.form.error.must-be-after-begin= The date must be after begin
 manager.workplan.form.error.spam = Your text is considered spam, please, use a proper vocabulary
 manager.workplan.form.error.all-tasks-must-be-public= To publish a workplan all tasks must be public
 
-
-
-
+manager.workplan.form.addTask.error.task = Task should not be null
+manager.workplan.form.addTask.error.public = Public workplans only can have public tasks
+manager.workplan.form.addTask.error.executionPeriod = A work plan has an execution period that must be long enough to position all the tasks

@@ -1,5 +1,6 @@
 package acme.features.manager.workPlan;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +17,6 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
-import acme.services.SpamService;
 
 @Service
 public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager, WorkPlan> {
@@ -28,7 +28,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 	protected SpamService spam;
 	
 	@Override
-	public boolean authorise(Request<WorkPlan> request) {
+	public boolean authorise(final Request<WorkPlan> request) {
 		assert request != null;
 		final boolean result;
 		WorkPlan workplan;
@@ -46,7 +46,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 	}
 
 	@Override
-	public void bind(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void bind(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -55,7 +55,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 	}
 
 	@Override
-	public void unbind(Request<WorkPlan> request, WorkPlan entity, Model model) {
+	public void unbind(final Request<WorkPlan> request, final WorkPlan entity, final Model model) {
 		assert request != null;
         assert entity != null;
         assert model != null;
@@ -65,14 +65,14 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 	}
 
 	@Override
-	public WorkPlan findOne(Request<WorkPlan> request) {
-		int id = request.getModel().getInteger("id");
-		return repository.findWorkPlanById(id);
+	public WorkPlan findOne(final Request<WorkPlan> request) {
+		final int id = request.getModel().getInteger("id");
+		return this.repository.findWorkPlanById(id);
 
 	}
 
 	@Override
-	public void validate(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void validate(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -100,14 +100,14 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		}
 		
 		
-		int workplanId = request.getModel().getInteger("id");
-		WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
-		Manager manager = workplan.getManager();
-		Principal principal = request.getPrincipal();
-		Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
-		Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
+		final int workplanId = request.getModel().getInteger("id");
+		final WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
+		final Manager manager = workplan.getManager();
+		final Principal principal = request.getPrincipal();
+		final Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+		final Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		
-		List<Task>taskList = repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
+		List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
 		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
 			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
 		
@@ -116,16 +116,20 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
         request.getModel().setAttribute("tasks", workplan.getTasks());
 		request.getModel().setAttribute("tasksEneabled", taskList);
 
+		final Collection<Task> ls = workplan.getTasks();
+		errors.state(request, ((end.getTime() - begin.getTime()) / (1000 * 3600)) 
+			>= (ls.stream().mapToDouble(Task::getExecutionPeriod).sum()), "executionPeriod", 
+			"manager.workplan.form.addTask.error.executionPeriod");
 	}
 
 	@Override
-	public void update(Request<WorkPlan> request, WorkPlan entity) {
-		WorkPlan wp = repository.findWorkPlanById(entity.getId());
+	public void update(final Request<WorkPlan> request, final WorkPlan entity) {
+		final WorkPlan wp = this.repository.findWorkPlanById(entity.getId());
 		wp.setEnd(entity.getEnd());
 		wp.setBegin(entity.getBegin());
 		wp.setTitle(entity.getTitle());
 		wp.setExecutionPeriod();
-		repository.save(wp);
+		this.repository.save(wp);
 	}
 
 }

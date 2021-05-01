@@ -63,7 +63,7 @@
     </jstl:if>
 
 <!-- ADD TASK  -->
-<jstl:if test="${ItsMine && (command=='show'|| command =='update')}">    
+<jstl:if test="${(ItsMine && (command=='show'|| command =='update')) || errorsAdd}">    
 	<center>
 	<acme:form>
 		<acme:form-select code="manager.workplan.form.select.addTask" path="taskSelected">
@@ -71,7 +71,9 @@
 				<acme:form-option code="${task.title} - ${task.description}" value="${task.id}"/>	
 			</c:forEach>
 		</acme:form-select>
-	<acme:form-submit code="manager.workplan.form.button.addTask" action="/manager/work-plan/add_task"/>    
+    <jstl:if test="${!errorsAdd}">
+		<acme:form-submit code="manager.workplan.form.button.addTask" action="/manager/work-plan/add_task"/>
+	</jstl:if>
 	</acme:form>
 	</center>
 </jstl:if>
