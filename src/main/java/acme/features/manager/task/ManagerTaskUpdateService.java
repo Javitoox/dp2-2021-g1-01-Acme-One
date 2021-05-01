@@ -110,12 +110,8 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		if(!errors.hasErrors("workload")) {
 			errors.state(request, 0.59>=dec, "workload", "manager.task.form.error.decimal-must-be-under-60");
 		}
-		if(!errors.hasErrors("title")) {
-			errors.state(request, titleSpam==false, "title", "manager.task.form.error.spam");
-		}
-		if(!errors.hasErrors("description")) {
-			errors.state(request, descripcionSpam==false, "description", "manager.task.form.error.spam");
-		}
+		errors.state(request, !titleSpam, "title", "manager.task.form.error.spam");
+		errors.state(request, !descripcionSpam, "description", "manager.task.form.error.spam");
 	}
 
 	@Override
