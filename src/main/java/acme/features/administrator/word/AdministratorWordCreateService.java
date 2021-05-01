@@ -1,3 +1,4 @@
+
 package acme.features.administrator.word;
 
 import java.util.Collection;
@@ -12,17 +13,18 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractCreateService;
-import acme.repositories.SpamRepository;
+import acme.services.SpamService;
 
 @Service
-public class AdministratorWordCreateService implements AbstractCreateService<Administrator, Word>{
+public class AdministratorWordCreateService implements AbstractCreateService<Administrator, Word> {
 
 	@Autowired
-	protected AdministratorWordRepository repository;
-	
+	protected AdministratorWordRepository	repository;
+
 	@Autowired
-	protected SpamRepository spamRepo;
-	
+	protected SpamService					spamService;
+
+
 	@Override
 	public boolean authorise(final Request<Word> request) {
 		assert request != null;
@@ -34,7 +36,7 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
+
 		request.bind(entity, errors);
 	}
 
@@ -43,7 +45,7 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		
+
 		request.unbind(entity, model, "word");
 	}
 
@@ -51,10 +53,10 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 	public Word instantiate(final Request<Word> request) {
 		assert request != null;
 		Word result;
-		
-		result  = new Word();
-		result.setWord("estonovauwu");
-		
+
+		result = new Word();
+		result.setWord("Word");
+
 		return result;
 	}
 
@@ -63,7 +65,10 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-	
+		
+		final boolean spam = this.spamService.isItSpam(entity.getWord());
+		errors.state(request, spam == false, "word", "administrator.word.form.error.exists");
+
 	}
 
 	@Override
@@ -72,10 +77,9 @@ public class AdministratorWordCreateService implements AbstractCreateService<Adm
 		assert entity != null;
 		final Spam spam = this.repository.findSpam();
 		final Collection<Word> spamWords = spam.getSpamWords();
-		this.repository.save(entity);
 		spamWords.add(entity);
-		this.spamRepo.save(spam);
-	
+		this.repository.save(entity);
+
 	}
 
 }

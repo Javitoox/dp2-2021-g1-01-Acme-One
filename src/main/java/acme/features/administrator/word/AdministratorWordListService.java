@@ -16,7 +16,7 @@ public class AdministratorWordListService implements AbstractListService<Adminis
 	
 	@Autowired
 	AdministratorWordRepository repository;
-
+	
 	@Override
 	public boolean authorise(final Request<Word> request) {
 		assert request != null;

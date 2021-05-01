@@ -8,6 +8,5 @@
 </acme:list>
 
 <acme:form>
-    	<acme:form-submit action="/administrator/word/create" code="administrator.word.list.label.add" />
     	<acme:form-submit method="get" action="/administrator/threshold/show" code="administrator.word.form.threshold" />
 </acme:form>

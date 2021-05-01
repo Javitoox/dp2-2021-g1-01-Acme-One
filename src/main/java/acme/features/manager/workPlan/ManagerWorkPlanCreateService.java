@@ -10,11 +10,11 @@ import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.features.anonymous.task.AnonymousTaskRepository;
-import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractCreateService;
+import acme.services.SpamService;
 
 @Service
 public class ManagerWorkPlanCreateService implements AbstractCreateService<Manager, WorkPlan>{
@@ -29,13 +29,13 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	protected SpamService spam;
 	
 	@Override
-	public boolean authorise(Request<WorkPlan> request) {
+	public boolean authorise(final Request<WorkPlan> request) {
 		assert request!=null;
 		return true;
 	}
 
 	@Override
-	public void bind(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void bind(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -44,7 +44,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	}
 
 	@Override
-	public void unbind(Request<WorkPlan> request, WorkPlan entity, Model model) {
+	public void unbind(final Request<WorkPlan> request, final WorkPlan entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;		
@@ -56,11 +56,11 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	}
 
 	@Override
-	public WorkPlan instantiate(Request<WorkPlan> request) {
+	public WorkPlan instantiate(final Request<WorkPlan> request) {
 		assert request != null;
 
-		Manager manager = this.repository.findOneManagerById(request.getPrincipal().getActiveRoleId());
-		WorkPlan workPlan = new WorkPlan();
+		final Manager manager = this.repository.findOneManagerById(request.getPrincipal().getActiveRoleId());
+		final WorkPlan workPlan = new WorkPlan();
 		workPlan.setManager(manager);
 		workPlan.setTasks(new ArrayList<Task>());
 		
@@ -68,7 +68,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	}
 
 	@Override
-	public void validate(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void validate(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert errors != null;
 		assert entity != null;
@@ -102,7 +102,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	}
 
 	@Override
-	public void create(Request<WorkPlan> request, WorkPlan entity) {
+	public void create(final Request<WorkPlan> request, final WorkPlan entity) {
 		assert request!= null;
 		assert entity!= null;
 		entity.setWorkload();
