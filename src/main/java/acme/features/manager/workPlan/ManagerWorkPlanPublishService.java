@@ -1,6 +1,5 @@
 package acme.features.manager.workPlan;
 
-import org.hibernate.boot.registry.classloading.spi.ClassLoaderService.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,11 +40,7 @@ public class ManagerWorkPlanPublishService implements AbstractUpdateService<Mana
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		boolean allTaskArePublic = entity.getTasks().stream().filter(x->x.getIsPublic().equals(false)).count()==0; 
-		if(!allTaskArePublic) {
-			errors.add("isPublic", "All tasks must be public to publish a workplan");
-		}
+	
 		request.bind(entity, errors);			
 	}
 
@@ -54,12 +49,8 @@ public class ManagerWorkPlanPublishService implements AbstractUpdateService<Mana
 		assert request != null;
         assert entity != null;
         assert model != null;
-        model.setAttribute("workload", entity.getWorkload());
-        request.unbind(entity, model, "isPublic", "begin", "end", "workload","id","tasks");		
-		model.setAttribute("readonly", false);
-		model.setAttribute("canDelete", true);
 
-		
+        request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");	
 	}
 
 	@Override
@@ -74,6 +65,9 @@ public class ManagerWorkPlanPublishService implements AbstractUpdateService<Mana
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
+		boolean allTaskArePublic = entity.getTasks().stream().filter(x->x.getIsPublic().equals(false)).count()==0; 
+		errors.state(request, allTaskArePublic, "title", "manager.workplan.form.error.all-tasks-must-be-public");
 		
 	}
 

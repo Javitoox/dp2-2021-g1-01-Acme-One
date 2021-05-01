@@ -1,8 +1,8 @@
 package acme.entities.tasks;
 
-import java.beans.Transient;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -45,6 +45,7 @@ public class Task extends DomainEntity {
 
 	@NotBlank
 	@Length(max = 500)
+	@Column(length = 500)
 	protected String description;
 
 	@URL
@@ -59,7 +60,6 @@ public class Task extends DomainEntity {
 	
 	protected double executionPeriod;
 	
-	protected boolean finalMode;
 	
 	//	Derived attributes
 
@@ -78,53 +78,53 @@ public class Task extends DomainEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((begin == null) ? 0 : begin.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((end == null) ? 0 : end.hashCode());
-		result = prime * result + ((isPublic == null) ? 0 : isPublic.hashCode());
-		result = prime * result + ((link == null) ? 0 : link.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((this.begin == null) ? 0 : this.begin.hashCode());
+		result = prime * result + ((this.description == null) ? 0 : this.description.hashCode());
+		result = prime * result + ((this.end == null) ? 0 : this.end.hashCode());
+		result = prime * result + ((this.isPublic == null) ? 0 : this.isPublic.hashCode());
+		result = prime * result + ((this.link == null) ? 0 : this.link.hashCode());
+		result = prime * result + ((this.title == null) ? 0 : this.title.hashCode());
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (!super.equals(obj))
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		Task other = (Task) obj;
-		if (begin == null) {
+		final Task other = (Task) obj;
+		if (this.begin == null) {
 			if (other.begin != null)
 				return false;
-		} else if (!begin.equals(other.begin))
+		} else if (!this.begin.equals(other.begin))
 			return false;
-		if (description == null) {
+		if (this.description == null) {
 			if (other.description != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!this.description.equals(other.description))
 			return false;
-		if (end == null) {
+		if (this.end == null) {
 			if (other.end != null)
 				return false;
-		} else if (!end.equals(other.end))
+		} else if (!this.end.equals(other.end))
 			return false;
-		if (isPublic == null) {
+		if (this.isPublic == null) {
 			if (other.isPublic != null)
 				return false;
-		} else if (!isPublic.equals(other.isPublic))
+		} else if (!this.isPublic.equals(other.isPublic))
 			return false;
-		if (link == null) {
+		if (this.link == null) {
 			if (other.link != null)
 				return false;
-		} else if (!link.equals(other.link))
+		} else if (!this.link.equals(other.link))
 			return false;
-		if (title == null) {
+		if (this.title == null) {
 			if (other.title != null)
 				return false;
-		} else if (!title.equals(other.title))
+		} else if (!this.title.equals(other.title))
 			return false;
 		return true;
 	}
