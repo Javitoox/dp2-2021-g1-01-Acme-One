@@ -10,6 +10,7 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
+import acme.services.SpamService;
 
 @Service
 public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager, WorkPlan> {

@@ -15,6 +15,7 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractCreateService;
+import acme.services.SpamService;
 
 @Service
 public class ManagerWorkPlanCreateService implements AbstractCreateService<Manager, WorkPlan>{
@@ -23,7 +24,10 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	ManagerWorkPlanRepository repository;
 	
 	@Autowired
-	AnonymousTaskRepository taskRepository; //cambiar por el de manu
+	AnonymousTaskRepository taskRepository;
+		
+	@Autowired
+	protected SpamService spam;
 	
 	@Override
 	public boolean authorise(Request<WorkPlan> request) {
