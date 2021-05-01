@@ -1,5 +1,4 @@
 administrator.word.list.label.word = Spam word
-administrator.word.list.label.add = Add a spam word
 administrator.word.form.button.create = Add word
 administrator.word.form.button.return = Return
 administrator.word.form.label.word = Word

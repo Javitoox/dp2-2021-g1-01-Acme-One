@@ -33,6 +33,7 @@
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 		    <acme:menu-suboption code="master.menu.administrator.spam.word.list" action="/administrator/word/list"/>
+		    <acme:menu-suboption code="master.menu.administrator.spam.word.add" action="/administrator/word/create"/>
 		    <acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.task-dashboard" action="/administrator/task-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard-workplans" action="/administrator/workplan-dashboard/show"/>
@@ -43,8 +44,6 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/master/populate-sample"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shutdown" action="/master/shutdown"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="administrator.word.list.label.add" action="/administrator/word/create"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">

@@ -49,7 +49,7 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
 master.menu.administrator.spam.word.list = Spam words list
-
+master.menu.administrator.spam.word.add = Add a spam word
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
