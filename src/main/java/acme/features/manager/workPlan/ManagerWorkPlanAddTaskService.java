@@ -71,16 +71,15 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert entity != null;
 		assert errors != null;
 
-		final WorkPlan wp = this.repository.findWorkPlanById(entity.getId());
 		final Task task = (Task) this.taskRepository.findById(request.getModel().getInteger("taskSelected")).orElse(null);
-		final Collection<Task> ls = wp.getTasks();
+		final Collection<Task> ls = entity.getTasks();
 		
 		errors.state(request, task!=null , "taskSelected", "manager.workplan.form.addTask.error.task");
 		
-		if(Boolean.TRUE.equals(wp.getIsPublic())) 
+		if(Boolean.TRUE.equals(entity.getIsPublic())) 
 			errors.state(request, task!=null && Boolean.TRUE.equals(task.getIsPublic()), "taskSelected", "manager.workplan.form.addTask.error.public");
 		
-		errors.state(request, task!=null && task.getBegin().after(wp.getBegin()) && task.getEnd().before(wp.getEnd()) && wp.getExecutionPeriod() >= 
+		errors.state(request, task!=null && task.getBegin().after(entity.getBegin()) && task.getEnd().before(entity.getEnd()) && entity.getExecutionPeriod() >= 
 			(ls.stream().mapToDouble(Task::getExecutionPeriod).sum() + task.getExecutionPeriod()), "taskSelected", 
 			"manager.workplan.form.addTask.error.executionPeriod");
 		
