@@ -68,7 +68,6 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 	public WorkPlan findOne(final Request<WorkPlan> request) {
 		final int id = request.getModel().getInteger("id");
 		return this.repository.findWorkPlanById(id);
-
 	}
 
 	@Override
@@ -107,8 +106,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		final Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
 		final Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		
-		List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
-		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
+		List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());
 			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
 		
 		request.getModel().setAttribute("ItsMine", itsMine);

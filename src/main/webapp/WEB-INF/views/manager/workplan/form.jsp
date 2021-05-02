@@ -18,19 +18,18 @@
     	<acme:form-checkbox code="manager.workplan.form.label.isPublic" path="isPublic"/>
     </jstl:if>
 
-    <acme:form-submit test="${canDelete && command=='show'}" code="manager.workplan.form.button.publish" action="/manager/work-plan/publish"/>   
     <jstl:if test="${command=='create'}">  		   		   	   		    		
 	    <acme:form-submit code="manager.workplan.form.button.create" action="/manager/work-plan/create"/>    
     </jstl:if>  
-    <acme:form-submit test="${canPublish && ItsMine && (command=='show'|| command =='update')}" code="manager.workplan.form.button.publish" action="/manager/work-plan/publish"/>
-    <acme:form-submit test="${ItsMine && (command=='show' || command =='update')}" code="manager.workplan.form.button.delete" action="/manager/work-plan/delete"/>
-    <acme:form-submit test="${ItsMine && (command=='show'|| command =='update')}" code="manager.workplan.form.button.update" action="/manager/work-plan/update"/>
+    <acme:form-submit test="${canPublish && ItsMine && (command=='show'|| command =='update' || errorsAdd)}" code="manager.workplan.form.button.publish" action="/manager/work-plan/publish"/>
+    <acme:form-submit test="${ItsMine && (command=='show' || command =='update' || errorsAdd)}" code="manager.workplan.form.button.delete" action="/manager/work-plan/delete"/>
+    <acme:form-submit test="${ItsMine && (command=='show'|| command =='update' || errorsAdd)}" code="manager.workplan.form.button.update" action="/manager/work-plan/update"/>
     <acme:form-return code="manager.workplan.form.button.return"/>
 </acme:form>
 <br><br>
 
 <!-- TASK TABLE -->
-<jstl:if test="${command=='show'|| command =='update'}">    
+<jstl:if test="${command=='show'|| command =='update' || errorsAdd}">    
 		   <div class="table-responsive">
 		   <table class="table table-striped table-condensed table-hover nowrap w-100">
 		   	  <caption><acme:message code="manager.workplan.form.label.tasks"/></caption>
@@ -71,9 +70,7 @@
 				<acme:form-option code="${task.title} - ${task.description}" value="${task.id}"/>	
 			</c:forEach>
 		</acme:form-select>
-    <jstl:if test="${!errorsAdd}">
 		<acme:form-submit code="manager.workplan.form.button.addTask" action="/manager/work-plan/add_task"/>
-	</jstl:if>
 	</acme:form>
 	</center>
 </jstl:if>

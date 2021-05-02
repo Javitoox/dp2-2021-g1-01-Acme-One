@@ -1,6 +1,8 @@
 package acme.features.manager.workPlan;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,7 +62,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	}
 
 	@Override
-	public WorkPlan findOne(final Request<WorkPlan> request) {
+	public WorkPlan findOne(final Request<WorkPlan> request) {		
 		final int id = request.getModel().getInteger("id");
 		return this.repository.findWorkPlanById(id);
 	}
@@ -70,19 +72,38 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		if(request.getModel().hasAttribute("taskSelected")) {
+			
+			final WorkPlan wp = this.repository.findWorkPlanById(entity.getId());
+			final Task task = (Task) this.taskRepository.findById(request.getModel().getInteger("taskSelected")).orElse(null);
+			final Collection<Task> ls = wp.getTasks();
+			
+			if(Boolean.TRUE.equals(wp.getIsPublic())) 
+				errors.state(request, task!=null && Boolean.TRUE.equals(task.getIsPublic()), "taskSelected", "manager.workplan.form.addTask.error.public");
 
-		final WorkPlan wp = this.repository.findWorkPlanById(entity.getId());
-		final Task task = (Task) this.taskRepository.findById(request.getModel().getInteger("taskSelected")).orElse(null);
-		final Collection<Task> ls = wp.getTasks();
-
-		errors.state(request, task!=null , "taskSelected", "manager.workplan.form.addTask.error.task");
-
-		if(Boolean.TRUE.equals(wp.getIsPublic())) 
-			errors.state(request, task!=null && Boolean.TRUE.equals(task.getIsPublic()), "taskSelected", "manager.workplan.form.addTask.error.public");
-
-		errors.state(request, task!=null && task.getBegin().after(wp.getBegin()) && task.getEnd().before(wp.getEnd()) && wp.getExecutionPeriod() >= 
-			(ls.stream().mapToDouble(Task::getExecutionPeriod).sum() + task.getExecutionPeriod()), "taskSelected", 
-			"manager.workplan.form.addTask.error.executionPeriod");
+			errors.state(request, task!=null && task.getBegin().after(wp.getBegin()) && task.getEnd().before(wp.getEnd()) && wp.getExecutionPeriod() >= 
+				(ls.stream().mapToDouble(Task::getExecutionPeriod).sum() + task.getExecutionPeriod()), "taskSelected", 
+				"manager.workplan.form.addTask.error.executionPeriod");
+			
+			final Manager manager = wp.getManager();
+			final Principal principal = request.getPrincipal();
+			final Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+			final Boolean canPublish= itsMine && wp.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !wp.getIsPublic();
+			
+			List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), wp.getId()).stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toList());
+				taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
+			
+			request.getModel().setAttribute("ItsMine", itsMine);
+	        request.getModel().setAttribute("canPublish", canPublish);
+	        request.getModel().setAttribute("tasks", wp.getTasks());
+			request.getModel().setAttribute("tasksEneabled", taskList);
+			
+		}else {
+			errors.state(request, false , "taskSelected", "manager.workplan.form.addTask.error.task");
+		}
+		
+		request.unbind(entity, request.getModel(),  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 
 		if(errors.hasErrors()) {
 			request.getModel().setAttribute("errorsAdd", true);
