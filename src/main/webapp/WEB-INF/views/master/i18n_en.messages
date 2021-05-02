@@ -48,7 +48,8 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
-
+master.menu.administrator.spam.word.list = Spam words list
+master.menu.administrator.spam.word.add = Add a spam word
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
@@ -91,6 +92,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.become-manager = Become a manager
+master.menu.user-account.manager = Manager data
 
 # master.footer ###############################################################
 

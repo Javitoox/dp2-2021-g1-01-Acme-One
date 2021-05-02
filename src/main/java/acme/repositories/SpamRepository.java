@@ -1,4 +1,4 @@
-package acme.features.spam;
+package acme.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

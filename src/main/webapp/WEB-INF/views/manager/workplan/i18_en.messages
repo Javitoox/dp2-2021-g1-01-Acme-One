@@ -18,7 +18,7 @@ manager.workplan.form.button.create = Create
 manager.workplan.form.label.tasks.title= Title
 manager.workplan.form.label.tasks.id= Id
 manager.workplan.form.label.tasks= Workplan tasks
-manager.workplan.form.button.delete= Delete workplan
+manager.workplan.form.button.delete= Delete
 manager.workplan.form.label.tasks.public = Privacy
 manager.workplan.form.label.tasks.public.true= Public
 manager.workplan.form.label.tasks.public.false= Private
@@ -28,4 +28,17 @@ manager.workplan.form.label.executionPeriod= Execution time
 manager.workplan.form.button.update = Update
 manager.workplan.form.label.isPublic.true = Public
 manager.workplan.form.label.isPublic.false = Private
+manager.workplan.form.button.addTask= Add task
+manager.workplan.form.select.addTask = Available tasks to add
+manager.workplan.form.button.removeTask= X
 
+
+manager.workplan.form.error.must-be-before-end = Begin must be before end
+manager.workplan.form.error.must-be-in-future = The date must be in future
+manager.workplan.form.error.must-be-after-begin= The date must be after begin
+manager.workplan.form.error.spam = Your text is considered spam, please, use a proper vocabulary
+manager.workplan.form.error.all-tasks-must-be-public= To publish a workplan all tasks must be public
+
+manager.workplan.form.addTask.error.task = Task should not be null
+manager.workplan.form.addTask.error.public = Public workplans only can have public tasks
+manager.workplan.form.addTask.error.executionPeriod = A work plan has an execution period that must be long enough to position all the tasks

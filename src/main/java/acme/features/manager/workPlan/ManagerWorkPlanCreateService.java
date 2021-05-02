@@ -1,8 +1,7 @@
 package acme.features.manager.workPlan;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,7 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractCreateService;
+import acme.services.SpamService;
 
 @Service
 public class ManagerWorkPlanCreateService implements AbstractCreateService<Manager, WorkPlan>{
@@ -23,16 +23,19 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	ManagerWorkPlanRepository repository;
 	
 	@Autowired
-	AnonymousTaskRepository taskRepository; //cambiar por el de manu
+	AnonymousTaskRepository taskRepository;
+		
+	@Autowired
+	protected SpamService spam;
 	
 	@Override
-	public boolean authorise(Request<WorkPlan> request) {
+	public boolean authorise(final Request<WorkPlan> request) {
 		assert request!=null;
 		return true;
 	}
 
 	@Override
-	public void bind(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void bind(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -41,25 +44,23 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	}
 
 	@Override
-	public void unbind(Request<WorkPlan> request, WorkPlan entity, Model model) {
+	public void unbind(final Request<WorkPlan> request, final WorkPlan entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;		
 		
-        model.setAttribute("workload", entity.getWorkload());
-		request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","manager");
+	    request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 		model.setAttribute("ItsMine", true);
-		List<Task>taskList = taskRepository.findPublicTask().stream().collect(Collectors.toList());//cambiar publicas por todas
-		model.setAttribute("tasksEneabled", taskList);
+
 		
 	}
 
 	@Override
-	public WorkPlan instantiate(Request<WorkPlan> request) {
+	public WorkPlan instantiate(final Request<WorkPlan> request) {
 		assert request != null;
 
-		Manager manager = this.repository.findOneManagerById(request.getPrincipal().getActiveRoleId());
-		WorkPlan workPlan = new WorkPlan();
+		final Manager manager = this.repository.findOneManagerById(request.getPrincipal().getActiveRoleId());
+		final WorkPlan workPlan = new WorkPlan();
 		workPlan.setManager(manager);
 		workPlan.setTasks(new ArrayList<Task>());
 		
@@ -67,23 +68,46 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	}
 
 	@Override
-	public void validate(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void validate(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert errors != null;
 		assert entity != null;
+		
+		final Date now =new Date();
+		final Date begin = entity.getBegin();
+		final Date end = entity.getEnd();
+		
+		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
+		
+		
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
+			errors.state(request, end.after(begin), "begin", "manager.workplan.form.error.must-be-before-end");
+		} 
+		if(!errors.hasErrors("begin")) {
+			errors.state(request, begin.after(now), "begin", "manager.workplan.form.error.must-be-in-future");
+		}
+		if(!errors.hasErrors("end")) {
+			errors.state(request, end.after(now), "end", "manager.workplan.form.error.must-be-in-future");
+		}
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
+			errors.state(request, begin.before(end), "end", "manager.workplan.form.error.must-be-after-begin");
+		} 
+		if(!errors.hasErrors("title")) {
+			errors.state(request, !titleSpam,  "title", "manager.workplan.form.error.spam");
+		}
+		
+		request.getModel().setAttribute("ItsMine", true);
+
 
 	}
 
 	@Override
-	public void create(Request<WorkPlan> request, WorkPlan entity) {
+	public void create(final Request<WorkPlan> request, final WorkPlan entity) {
 		assert request!= null;
 		assert entity!= null;
 		entity.setWorkload();
 		entity.setExecutionPeriod();
 		this.repository.save(entity);
-		
-		
-		
 	}
 
 }
