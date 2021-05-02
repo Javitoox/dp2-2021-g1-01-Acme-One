@@ -16,10 +16,10 @@ import acme.framework.entities.Authenticated;
 public class AuthenticatedTaskController extends AbstractController<Authenticated, Task>{
 	
 	@Autowired
-	private AuthenticatedTaskListService listService;
+	protected AuthenticatedTaskListService listService;
 	
 	@Autowired
-	private AuthenticatedTaskShowService showService;
+	protected AuthenticatedTaskShowService showService;
 	
 	@PostConstruct
 	private void initialise() {

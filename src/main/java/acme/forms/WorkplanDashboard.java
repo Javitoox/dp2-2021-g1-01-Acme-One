@@ -1,4 +1,4 @@
-package acme.forms.workplan.dashboard;
+package acme.forms;
 
 import java.io.Serializable;
 
