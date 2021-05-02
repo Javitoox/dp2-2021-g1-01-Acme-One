@@ -82,9 +82,10 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		
 		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
 		final boolean descripcionSpam = this.spam.isItSpam(entity.getDescription());
+		final int ent = (int) entity.getWorkload();
+		final double dec = entity.getWorkload() - ent;
 		
-		
-		if(!errors.hasErrors("begin")) {
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
 			errors.state(request, end.after(begin), "begin", "manager.task.form.error.must-be-before-end");
 		} 
 		if(!errors.hasErrors("begin")) {
@@ -93,25 +94,19 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		if(!errors.hasErrors("end")) {
 			errors.state(request, end.after(now), "end", "manager.task.form.error.must-be-in-future");
 		}
+		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
+            errors.state(request, begin.before(end), "end", "manager.task.form.error.must-be-after-begin");
+        }
 		if(!errors.hasErrors("begin")&&!errors.hasErrors("end")) {
 			entity.setExecutionPeriod();
 			final double periodo = entity.getExecutionPeriod(); 
-			if(!errors.hasErrors("workload")) {
 			errors.state(request, periodo>entity.getWorkload(), "workload", "manager.task.form.error.must-be-less-than-work-period");
 			errors.state(request, periodo>entity.getWorkload(), "workload", "("+periodo+")");
-			}
 		}
-		final int ent = (int) entity.getWorkload();
-		final double dec = entity.getWorkload() - ent;
-		if(!errors.hasErrors("workload")) {
 			errors.state(request, 0.59>=dec, "workload", "manager.task.form.error.decimal-must-be-under-60");
-		}
-		if(!errors.hasErrors("title")) {
-			errors.state(request, titleSpam==false, "title", "manager.task.form.error.spam");
-		}
-		if(!errors.hasErrors("description")) {
-			errors.state(request, descripcionSpam==false, "description", "manager.task.form.error.spam");
-		}
+			errors.state(request, !titleSpam, "title", "manager.task.form.error.spam");
+			errors.state(request, !descripcionSpam, "description", "manager.task.form.error.spam");
+		
 	}
 
 	@Override
