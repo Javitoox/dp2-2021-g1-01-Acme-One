@@ -23,7 +23,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	ManagerWorkPlanRepository repository;
 	
 	@Autowired
-	AnonymousTaskRepository taskRepository; //cambiar por el de manu
+	AnonymousTaskRepository taskRepository;
 		
 	@Autowired
 	protected SpamService spam;
@@ -108,9 +108,6 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		entity.setWorkload();
 		entity.setExecutionPeriod();
 		this.repository.save(entity);
-		
-		
-		
 	}
 
 }

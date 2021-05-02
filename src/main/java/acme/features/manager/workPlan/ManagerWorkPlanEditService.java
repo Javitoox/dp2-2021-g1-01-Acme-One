@@ -1,5 +1,6 @@
 package acme.features.manager.workPlan;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,7 +68,6 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 	public WorkPlan findOne(final Request<WorkPlan> request) {
 		final int id = request.getModel().getInteger("id");
 		return this.repository.findWorkPlanById(id);
-
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		final Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
 		final Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		
-		List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
+		List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());
 		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
 			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
 		
@@ -115,6 +115,10 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
         request.getModel().setAttribute("tasks", workplan.getTasks());
 		request.getModel().setAttribute("tasksEneabled", taskList);
 
+		final Collection<Task> ls = workplan.getTasks();
+		errors.state(request, ((end.getTime() - begin.getTime()) / (1000 * 3600)) 
+			>= (ls.stream().mapToDouble(Task::getExecutionPeriod).sum()), "executionPeriod", 
+			"manager.workplan.form.addTask.error.executionPeriod");
 	}
 
 	@Override

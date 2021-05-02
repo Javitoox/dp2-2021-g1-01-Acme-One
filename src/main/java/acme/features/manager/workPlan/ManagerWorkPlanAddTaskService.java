@@ -27,7 +27,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	AnonymousTaskRepository taskRepository;
 		
 	@Override
-	public boolean authorise(Request<WorkPlan> request) {
+	public boolean authorise(final Request<WorkPlan> request) {
 		assert request != null;
 		final boolean result;
 		WorkPlan workplan;
@@ -45,7 +45,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	}
 
 	@Override
-	public void bind(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void bind(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -53,7 +53,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	}
 
 	@Override
-	public void unbind(Request<WorkPlan> request, WorkPlan entity, Model model) {
+	public void unbind(final Request<WorkPlan> request, final WorkPlan entity, final Model model) {
 		assert request != null;
         assert entity != null;
         assert model != null;
@@ -62,29 +62,64 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	}
 
 	@Override
-	public WorkPlan findOne(Request<WorkPlan> request) {
-		int id = request.getModel().getInteger("id");
-		return repository.findWorkPlanById(id);
+	public WorkPlan findOne(final Request<WorkPlan> request) {		
+		final int id = request.getModel().getInteger("id");
+		return this.repository.findWorkPlanById(id);
 	}
 
 	@Override
-	public void validate(Request<WorkPlan> request, WorkPlan entity, Errors errors) {
+	public void validate(final Request<WorkPlan> request, final WorkPlan entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-	
+		
+		if(request.getModel().hasAttribute("taskSelected")) {
+			
+			final WorkPlan wp = this.repository.findWorkPlanById(entity.getId());
+			final Task task = (Task) this.taskRepository.findById(request.getModel().getInteger("taskSelected")).orElse(null);
+			final Collection<Task> ls = wp.getTasks();
+			
+			if(Boolean.TRUE.equals(wp.getIsPublic())) 
+				errors.state(request, task!=null && Boolean.TRUE.equals(task.getIsPublic()), "taskSelected", "manager.workplan.form.addTask.error.public");
+
+			errors.state(request, task!=null && task.getBegin().after(wp.getBegin()) && task.getEnd().before(wp.getEnd()) && wp.getExecutionPeriod() >= 
+				(ls.stream().mapToDouble(Task::getExecutionPeriod).sum() + task.getExecutionPeriod()), "taskSelected", 
+				"manager.workplan.form.addTask.error.executionPeriod");
+			
+			final Manager manager = wp.getManager();
+			final Principal principal = request.getPrincipal();
+			final Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+			final Boolean canPublish= itsMine && wp.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !wp.getIsPublic();
+			
+			List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), wp.getId()).stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toList());
+				taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
+			
+			request.getModel().setAttribute("ItsMine", itsMine);
+	        request.getModel().setAttribute("canPublish", canPublish);
+	        request.getModel().setAttribute("tasks", wp.getTasks());
+			request.getModel().setAttribute("tasksEneabled", taskList);
+			
+		}else {
+			errors.state(request, false , "taskSelected", "manager.workplan.form.addTask.error.task");
+		}
+		
+		request.unbind(entity, request.getModel(),  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
+
+		if(errors.hasErrors()) {
+			request.getModel().setAttribute("errorsAdd", true);
+		}
 	}
 
 	@Override
-	public void update(Request<WorkPlan> request, WorkPlan entity) {
-		WorkPlan wp = repository.findWorkPlanById(entity.getId());
-		Task task = (Task) taskRepository.findById((Integer) request.getModel().getInteger("taskSelected")).orElse(null);
-		Collection<Task> ls = wp.getTasks();
+	public void update(final Request<WorkPlan> request, final WorkPlan entity) {
+		final WorkPlan wp = this.repository.findWorkPlanById(entity.getId());
+		final Task task = (Task) this.taskRepository.findById(request.getModel().getInteger("taskSelected")).orElse(null);
+		final Collection<Task> ls = wp.getTasks();
 		ls.add(task);
 		wp.setTasks(ls);
 		wp.setWorkload();
 		
-		repository.save(wp);
+		this.repository.save(wp);
 		
 	}
 
