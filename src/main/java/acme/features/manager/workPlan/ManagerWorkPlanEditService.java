@@ -113,12 +113,13 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 			//Add or substract one day in miliseconds
 			recommendedInitialDate = new Date(recommendedInitialDate.getTime() - (1000 * 60 * 60 * 24));
 			recommendedInitialDate.setHours(8);
-			
+			recommendedInitialDate.setMinutes(0);
 			recommendedEndDate= new Date(recommendedEndDate.getTime() + (1000 * 60 * 60 * 24));
 			recommendedEndDate.setHours(17);
+			recommendedEndDate.setMinutes(0);
 			
-			request.getModel().setAttribute("recommendedInitialDate", recommendedInitialDate.toGMTString());
-			request.getModel().setAttribute("recommendedEndDate", recommendedEndDate.toGMTString());
+			request.getModel().setAttribute("recommendedInitialDate", recommendedInitialDate.toString());
+			request.getModel().setAttribute("recommendedEndDate", recommendedEndDate.toString());
 		}		
 		List<Task>taskList = repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
 		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added

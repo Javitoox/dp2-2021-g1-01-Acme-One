@@ -52,12 +52,14 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 			//Add or substract one day in miliseconds
 			recommendedInitialDate = new Date(recommendedInitialDate.getTime() - (1000 * 60 * 60 * 24));
 			recommendedInitialDate.setHours(8);
-			
+			recommendedInitialDate.setMinutes(0);
+
 			recommendedEndDate= new Date(recommendedEndDate.getTime() + (1000 * 60 * 60 * 24));
 			recommendedEndDate.setHours(17);
-			
-			model.setAttribute("recommendedInitialDate", recommendedInitialDate.toGMTString());
-			model.setAttribute("recommendedEndDate", recommendedEndDate.toGMTString());
+			recommendedEndDate.setMinutes(0);
+
+			model.setAttribute("recommendedInitialDate", recommendedInitialDate.toString());
+			model.setAttribute("recommendedEndDate", recommendedEndDate.toString());
 		}
 		
 		List<Task>taskList = managerWorkPlanRepository.findTasksAvailable(manager.getId(), workplanId).stream()
