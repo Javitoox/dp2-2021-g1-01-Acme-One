@@ -11,9 +11,18 @@
     <jstl:if test="${command!='create'}">    
    		<acme:form-textbox readonly="true" code="manager.workplan.form.label.workload" path="workload"/> 	
    		<acme:form-textbox readonly="true" code="manager.workplan.form.label.executionPeriod" path="executionPeriod"/> 	   		
-    </jstl:if>
+    </jstl:if>   
+    
     <acme:form-moment code="manager.workplan.form.label.begin" path="begin"/>
+     <jstl:if test="${recommendedInitialDate != null && ItsMine}">	    
+	    <p class="text-success"><acme:message code="manager.workplan.form.label.begin.recommend"/><acme:message code="${recommendedInitialDate}"/></p>
+    </jstl:if>
     <acme:form-moment code="manager.workplan.form.label.end" path="end"/>   
+    
+    <jstl:if test="${recommendedEndDate != null && ItsMine}">
+	   	<p class="text-success"><acme:message code="manager.workplan.form.label.end.recommend"/><acme:message code="${recommendedEndDate}"/></p>
+    </jstl:if>
+    
     <jstl:if test="${command=='create'}">    
     	<acme:form-checkbox code="manager.workplan.form.label.isPublic" path="isPublic"/>
     </jstl:if>
@@ -48,11 +57,13 @@
 					      <td>${task.title}</td>
 					      <td><acme:message code="manager.workplan.form.label.tasks.public.${task.isPublic}"/></td>
 					      <td>
+					      <jstl:if test="${ItsMine}">
 					      	<acme:form>
 					      		<input type="hidden" name="taskId" value="${task.id}">
 					      		<input type="hidden" name="workplanId" value="${id}">
 					      		<acme:form-submit code="manager.workplan.form.button.removeTask" action="/manager/work-plan/remove_task"/>   
 					      	</acme:form>
+					      </jstl:if>
 					      </td>
 					    </tr>
 					</c:forEach>
