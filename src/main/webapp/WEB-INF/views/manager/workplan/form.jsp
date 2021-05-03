@@ -30,7 +30,15 @@
     <jstl:if test="${command=='create'}">  		   		   	   		    		
 	    <acme:form-submit code="manager.workplan.form.button.create" action="/manager/work-plan/create"/>    
     </jstl:if>  
-    <acme:form-submit test="${canPublish && ItsMine && (command=='show'|| command =='update' || errorsAdd)}" code="manager.workplan.form.button.publish" action="/manager/work-plan/publish"/>
+   
+
+   	<jstl:if test="${ItsMine && !isPublic && !canPublish && (command=='show'|| command =='update' || errorsAdd)}">
+    	<button disabled type="submit" formmethod="post" onclick="javascript: form.action = getAbsoluteUrl('/manager/work-plan/publish')" class="btn btn-primary">
+			<acme:message code="manager.workplan.form.button.publish"/>
+		</button>
+   	</jstl:if>
+    <acme:form-submit test="${ItsMine && !isPublic && canPublish && (command=='show'|| command =='update' || errorsAdd)}" code="manager.workplan.form.button.publish" action="/manager/work-plan/publish"/>
+    <acme:form-submit test="${isPublic && ItsMine}" code="manager.workplan.form.button.privatize" action="/manager/work-plan/privatize"/>
     <acme:form-submit test="${ItsMine && (command=='show' || command =='update' || errorsAdd)}" code="manager.workplan.form.button.delete" action="/manager/work-plan/delete"/>
     <acme:form-submit test="${ItsMine && (command=='show'|| command =='update' || errorsAdd)}" code="manager.workplan.form.button.update" action="/manager/work-plan/update"/>
     <acme:form-return code="manager.workplan.form.button.return"/>
