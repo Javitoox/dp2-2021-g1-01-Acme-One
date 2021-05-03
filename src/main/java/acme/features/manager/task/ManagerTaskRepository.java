@@ -28,6 +28,9 @@ public interface ManagerTaskRepository extends AbstractRepository{
 	
 	@Query("select count(w) from WorkPlan w join w.tasks t where t.id = ?1 and w.isPublic = false")
 	int findPivateWorkPlansByTaskId(int id);
+	
+	@Query("select count(w) from WorkPlan w join w.tasks t where t.id = ?1 and w.isPublic = true")
+	int findNumberOfPublicWorkPlansByTaskId(int id);
 
 
 }
