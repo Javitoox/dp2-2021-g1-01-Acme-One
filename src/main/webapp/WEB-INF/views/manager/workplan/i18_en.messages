@@ -33,6 +33,7 @@ manager.workplan.form.label.isPublic.false = Private
 manager.workplan.form.button.addTask= Add task
 manager.workplan.form.select.addTask = Available tasks to add
 manager.workplan.form.button.removeTask= X
+manager.workplan.form.button.privatize= Privatize
 
 
 manager.workplan.form.error.must-be-before-end = Begin must be before end
