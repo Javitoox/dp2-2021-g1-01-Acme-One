@@ -36,7 +36,7 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		task=this.repository.findOneTaskById(taskId);
 		manager = task.getManager();
 		principal = request.getPrincipal();
-		result = !task.getIsPublic() && manager.getUserAccount().getId() == principal.getAccountId();
+		result = manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -56,8 +56,7 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end","description");
-		request.unbind(entity, model, "link", "isPublic", "workload");
+		request.unbind(entity, model, "title", "begin", "end","description","link", "isPublic", "workload", "executionPeriod");
 		model.setAttribute("readonly", false);
 	}
 
@@ -114,7 +113,11 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		assert request != null;
 		assert entity != null;
 		
+		if(entity.getIsPublic().equals(false)) {
 		entity.setIsPublic(true);
+		}else {
+		entity.setIsPublic(false);	
+		}
 		this.repository.save(entity);
 		
 	}

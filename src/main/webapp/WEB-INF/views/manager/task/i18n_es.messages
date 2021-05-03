@@ -25,3 +25,4 @@ manager.task.form.button.create = Crear
 manager.task.form.button.update = Actualizar
 manager.task.form.button.delete = Eliminar
 manager.task.form.button.publish = Publicar
+manager.task.form.button.unpublish = Despublicar
