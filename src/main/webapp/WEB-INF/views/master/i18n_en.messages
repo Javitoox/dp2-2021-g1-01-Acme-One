@@ -10,13 +10,13 @@
 
 # master.banner.welcome #######################################################
 
-master.banner.background = #DFFFA5
+master.banner.background = #B498EB
 
 # master.welcome ##############################################################
 
 master.welcome.title = Welcome!
 master.welcome.text = \
-	Welcome to Acme One! Your first project in D&T
+	Welcome to Acme Planner! Your first project in D&T
 
 # master.menu #################################################################
 
@@ -28,12 +28,6 @@ master.menu.sign-out = Sign out
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
-master.menu.anonymous.favourite-link.Manuel= Muñoz's favourite link
-master.menu.anonymous.favourite-link.Evelyn = Yugsi's favourite link
-master.menu.anonymous.favourite-link.JaviV = Vilariño's favourite link
-master.menu.anonymous.favourite-link.Gonzalo = Álvarez's favourite link
-master.menu.anonymous.favourite-link.Maribel = Ramos' favourite link
-master.menu.anonymous.favourite-link.JaviM = Martínez's favourite link
 master.menu.anonymous.list-shout = Shouts list
 master.menu.anonymous.create-shout = Create shout
 master.menu.anonymous.list-task = Tasks list
@@ -48,7 +42,8 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
-
+master.menu.administrator.spam.word.list = Spam words list
+master.menu.administrator.spam.word.add = Add a spam word
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
@@ -91,6 +86,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.become-manager = Become a manager
+master.menu.user-account.manager = Manager data
 
 # master.footer ###############################################################
 
@@ -108,10 +105,10 @@ master.footer.label.spanish = Spanish
 
 master.company.title = dp2-2021-g1-01
 master.company.text = \
-	Acme-One G1-01, Inc. is a fictitious fictitious company that provides a \
+	Acme-Planner G1-01, Inc. is a fictitious company that provides a \
 	starter project for the students of the Design and Testing subject of the \
 	Software Engineering Curriculum of the University of Sevilla.
-master.company.name = Acme-One G1-01, Inc.
+master.company.name = Acme-Planner G1-01, Inc.
 master.company.address = Calle Romeo de Julieta, 15, Sevilla, Sevilla, España
 master.company.phone = +34 639 654 355
 master.company.email = g101projects@acme.com

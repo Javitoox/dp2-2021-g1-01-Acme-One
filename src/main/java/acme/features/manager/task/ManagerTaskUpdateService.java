@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
-import acme.features.spam.SpamService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
+import acme.services.SpamService;
 
 @Service
 public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, Task>{

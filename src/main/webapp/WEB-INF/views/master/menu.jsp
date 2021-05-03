@@ -19,12 +19,6 @@
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link.Manuel" action="https://www.youtube.com/watch?v=845aepdpHm8&t=8s&ab_channel=JaviMart%C3%ADnez"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link.Evelyn" action="https://www.arcasevilla.es/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link.JaviV" action="https://www.blog.binaria.uno/2020/03/22/como-agregar-un-directorio-a-tu-path-en-linux/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link.Gonzalo" action="https://professor-falken.com/mac/como-instalar-mariadb-mysql-usando-homebrew-en-tu-mac/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link.Maribel" action="https://open.spotify.com/album/28adqly9V7wm5DFr7hlqtK?si=lv0oGBM1SLSiBxZ7A7U-wA&nd=1"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link.JaviM" action="https://open.spotify.com/album/5pQwQRnQOuKrbVUVnGMEN4?si=-9ewcULTRHKaxRjYfdRrrQ"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-shout" action="/anonymous/shout/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.create-shout" action="/anonymous/shout/create"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-task" action="/anonymous/task/list"/>
@@ -32,6 +26,9 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+		    <acme:menu-suboption code="master.menu.administrator.spam.word.list" action="/administrator/word/list"/>
+		    <acme:menu-suboption code="master.menu.administrator.spam.word.add" action="/administrator/word/create"/>
+		    <acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.task-dashboard" action="/administrator/task-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard-workplans" action="/administrator/workplan-dashboard/show"/>
 			<acme:menu-separator/>
@@ -83,6 +80,8 @@
 			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRole('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
+			<acme:menu-suboption code="master.menu.user-account.manager" action="/authenticated/manager/update" access="hasRole('Manager')"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/master/sign-out" access="isAuthenticated()"/>

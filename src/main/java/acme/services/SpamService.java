@@ -1,10 +1,12 @@
-package acme.features.spam;
+package acme.services;
 import acme.entities.spam.Spam;
 import acme.entities.spam.Word;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Anonymous;
 import acme.framework.services.AbstractListService;
+import acme.repositories.SpamRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
