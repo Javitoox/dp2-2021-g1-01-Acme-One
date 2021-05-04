@@ -15,4 +15,6 @@ who have enroled the Design and Testing subject of the Software Engineering curr
 University of Sevilla.  This project helps them start working on their new information system 
 projects.
 
-https://github.com/maribelrb22/dp2-2021-g1-01-Acme-One.git
+URL GitHub repository: https://github.com/maribelrb22/dp2-2021-g1-01-Acme-One.git
+</br>
+URL Deployed Application: http://app-bbea9840-8907-4987-9ee3-8fced489c191.cleverapps.io/master/welcome
