@@ -47,23 +47,10 @@ master.menu.administrator.spam.word.add = Add a spam word
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
-master.menu.provider.favourite-link.Manuel= Muñoz's favourite link
-master.menu.provider.favourite-link.Evelyn = Yugsi's favourite link
-master.menu.provider.favourite-link.JaviV = Vilariño's favourite link
-master.menu.provider.favourite-link.Gonzalo = Álvarez's favourite link
-master.menu.provider.favourite-link.Maribel = Ramos' favourite link
-master.menu.provider.favourite-link.JaviM = Martínez's favourite link
 
 # master.menu.consumer ##########################################################
 
 master.menu.consumer = Consumer
-master.menu.consumer.favourite-link.Manuel= Muñoz's favourite link
-master.menu.consumer.favourite-link.Evelyn = Yugsi's favourite link
-master.menu.consumer.favourite-link.JaviV = Vilariño's favourite link
-master.menu.consumer.favourite-link.Gonzalo = Álvarez's favourite link
-master.menu.consumer.favourite-link.Maribel = Ramos' favourite link
-master.menu.consumer.favourite-link.JaviM = Martínez's favourite link
-
 
 # master.menu.manager ##########################################################
 
