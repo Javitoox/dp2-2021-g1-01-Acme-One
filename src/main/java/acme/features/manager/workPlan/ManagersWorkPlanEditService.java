@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.framework.components.Errors;
@@ -19,10 +19,10 @@ import acme.framework.services.AbstractUpdateService;
 import acme.services.SpamService;
 
 @Service
-public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager, WorkPlan> {
+public class ManagersWorkPlanEditService implements AbstractUpdateService<Managers, WorkPlan> {
 
 	@Autowired
-	private ManagerWorkPlanRepository repository;
+	private ManagersWorkPlanRepository repository;
 	
 	@Autowired
 	protected SpamService spam;
@@ -33,15 +33,15 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		final boolean result;
 		WorkPlan workplan;
 		int workplanId;
-		Manager manager;
+		Managers Managers;
 		Principal principal;
 		
 		workplanId=request.getModel().getInteger("id");
 		workplan=this.repository.findWorkPlanById(workplanId);
-		manager = workplan.getManager();
+		Managers = workplan.getManagers();
 		principal = request.getPrincipal();
 		
-		result = (manager.getUserAccount().getId() == principal.getAccountId());
+		result = (Managers.getUserAccount().getId() == principal.getAccountId());
 		return result;
 	}
 
@@ -83,27 +83,27 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
 			
 		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
-			errors.state(request, end.after(begin), "begin", "manager.workplan.form.error.must-be-before-end");
+			errors.state(request, end.after(begin), "begin", "Managers.workplan.form.error.must-be-before-end");
 		} 
 		if(!errors.hasErrors("begin")) {
-			errors.state(request, begin.after(now), "begin", "manager.workplan.form.error.must-be-in-future");
+			errors.state(request, begin.after(now), "begin", "Managers.workplan.form.error.must-be-in-future");
 		}
 		if(!errors.hasErrors("end")) {
-			errors.state(request, end.after(now), "end", "manager.workplan.form.error.must-be-in-future");
+			errors.state(request, end.after(now), "end", "Managers.workplan.form.error.must-be-in-future");
 		}
 		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
-			errors.state(request, begin.before(end), "end", "manager.workplan.form.error.must-be-after-begin");
+			errors.state(request, begin.before(end), "end", "Managers.workplan.form.error.must-be-after-begin");
 		} 
 		if(!errors.hasErrors("title")) {
-			errors.state(request, !titleSpam,  "title", "manager.workplan.form.error.spam");
+			errors.state(request, !titleSpam,  "title", "Managers.workplan.form.error.spam");
 		}
 		
 		
 		final int workplanId = request.getModel().getInteger("id");
 		final WorkPlan workplan = this.repository.findWorkPlanById(workplanId);
-		final Manager manager = workplan.getManager();
+		final Managers Managers = workplan.getManagers();
 		final Principal principal = request.getPrincipal();
-		final Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+		final Boolean itsMine = Managers.getUserAccount().getId() == principal.getAccountId();
 		final Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		
 		if(workplan.getTasks().size()>0) {
@@ -121,7 +121,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 			request.getModel().setAttribute("recommendedInitialDate", recommendedInitialDate.toString());
 			request.getModel().setAttribute("recommendedEndDate", recommendedEndDate.toString());
 		}		
-		List<Task>taskList = repository.findTasksAvailable(manager.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
+		List<Task>taskList = repository.findTasksAvailable(Managers.getId(), workplanId).stream().filter(x->!workplan.getTasks().contains(x)).collect(Collectors.toList());//cambiar publicas por todas
 		if(workplan.getIsPublic())//If workplan is public, only public tasks can be added
 			taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
 		
@@ -133,7 +133,7 @@ public class ManagerWorkPlanEditService implements AbstractUpdateService<Manager
 		final Collection<Task> ls = workplan.getTasks();
 		errors.state(request, ((end.getTime() - begin.getTime()) / (1000 * 3600)) 
 			>= (ls.stream().mapToDouble(Task::getExecutionPeriod).sum()), "executionPeriod", 
-			"manager.workplan.form.addTask.error.executionPeriod");
+			"Managers.workplan.form.addTask.error.executionPeriod");
 	}
 
 	@Override

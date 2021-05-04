@@ -52,13 +52,13 @@ master.menu.provider = Provider
 
 master.menu.consumer = Consumer
 
-# master.menu.manager ##########################################################
+# master.menu.Managers ##########################################################
 
-master.menu.manager= Manager
-master.menu.manager.workplan.list= Workplan list
-master.menu.manager.task.list= Task list
-master.menu.manager.task.create = Create Task
-master.menu.manager.workplan.create = Create WorkPlan
+master.menu.Managers= Managers
+master.menu.Managers.workplan.list= Workplan list
+master.menu.Managers.task.list= Task list
+master.menu.Managers.task.create = Create Task
+master.menu.Managers.workplan.create = Create WorkPlan
 
 # master.menu.authenticated ##########################################################
 
@@ -73,8 +73,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
-master.menu.user-account.become-manager = Become a manager
-master.menu.user-account.manager = Manager data
+master.menu.user-account.become-Managers = Become a Managers
+master.menu.user-account.Managers = Managers data
 
 # master.footer ###############################################################
 

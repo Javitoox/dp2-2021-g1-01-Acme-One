@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.framework.components.Errors;
@@ -15,10 +15,10 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
-public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, Task>{
+public class ManagersTaskDeleteService implements AbstractDeleteService<Managers, Task>{
 	
 	@Autowired
-	protected ManagerTaskRepository repository;
+	protected ManagersTaskRepository repository;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -26,14 +26,14 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		final boolean result;
 		Task task;
 		int taskId;
-		Manager manager;
+		Managers Managers;
 		Principal principal;
 		
 		taskId=request.getModel().getInteger("id");
 		task=this.repository.findOneTaskById(taskId);
-		manager = task.getManager();
+		Managers = task.getManagers();
 		principal = request.getPrincipal();
-		result = manager.getUserAccount().getId() == principal.getAccountId();
+		result = Managers.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 

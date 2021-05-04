@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.framework.components.Errors;
@@ -15,10 +15,10 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class ManagerWorkPlanPrivatizeService implements AbstractUpdateService<Manager, WorkPlan>{
+public class ManagersWorkPlanPrivatizeService implements AbstractUpdateService<Managers, WorkPlan>{
 
 	@Autowired
-	private ManagerWorkPlanRepository repository;
+	private ManagersWorkPlanRepository repository;
 	
 	@Override
 	public boolean authorise(Request<WorkPlan> request) {
@@ -26,15 +26,15 @@ public class ManagerWorkPlanPrivatizeService implements AbstractUpdateService<Ma
 		final boolean result;
 		WorkPlan workplan;
 		int workplanId;
-		Manager manager;
+		Managers Managers;
 		Principal principal;
 		
 		workplanId=request.getModel().getInteger("id");
 		workplan=this.repository.findWorkPlanById(workplanId);
-		manager = workplan.getManager();
+		Managers = workplan.getManagers();
 		principal = request.getPrincipal();
 		
-		result = (manager.getUserAccount().getId() == principal.getAccountId());
+		result = (Managers.getUserAccount().getId() == principal.getAccountId());
 		return result;
 	}
 

@@ -6,22 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 import acme.framework.entities.Authenticated;
 
 @Controller
-@RequestMapping("/authenticated/manager/")
-public class AuthenticatedManagerController extends AbstractController<Authenticated, Manager>{
+@RequestMapping("/authenticated/managers/")
+public class AuthenticatedManagersController extends AbstractController<Authenticated, Managers>{
 
 	// Internal state ---------------------------------------------------------
 
 		@Autowired
-		protected AuthenticatedManagerCreateService	createService;
+		protected AuthenticatedManagersCreateService	createService;
 
 		@Autowired
-		protected AuthenticatedManagerUpdateService	updateService;
+		protected AuthenticatedManagersUpdateService	updateService;
 
 		// Constructors -----------------------------------------------------------
 

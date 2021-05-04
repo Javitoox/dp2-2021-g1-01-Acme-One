@@ -3,7 +3,7 @@ package acme.features.manager.task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -11,10 +11,10 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class ManagerTaskShowService implements AbstractShowService<Manager, Task>{
+public class ManagersTaskShowService implements AbstractShowService<Managers, Task>{
 	
 	@Autowired
-	protected ManagerTaskRepository repository;
+	protected ManagersTaskRepository repository;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -22,14 +22,14 @@ public class ManagerTaskShowService implements AbstractShowService<Manager, Task
 		final boolean result;
 		Task task;
 		int taskId;
-		Manager manager;
+		Managers Managers;
 		Principal principal;
 		
 		taskId=request.getModel().getInteger("id");
 		task=this.repository.findOneTaskById(taskId);
-		manager = task.getManager();
+		Managers = task.getManagers();
 		principal = request.getPrincipal();
-		result = task.getIsPublic() ||!task.getIsPublic() && manager.getUserAccount().getId() == principal.getAccountId();
+		result = task.getIsPublic() ||!task.getIsPublic() && Managers.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 

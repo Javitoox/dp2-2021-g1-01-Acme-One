@@ -8,32 +8,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.components.CustomCommand;
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 
 @Controller
-@RequestMapping("/manager/task/")
-public class ManagerTaskController extends AbstractController<Manager, Task> {
+@RequestMapping("/managers/task/")
+public class ManagersTaskController extends AbstractController<Managers, Task> {
 
 	@Autowired
-	private ManagerTaskListService listService;
+	private ManagersTaskListService listService;
 	
 	@Autowired
-	private ManagerTaskShowService showService;
+	private ManagersTaskShowService showService;
 	
 	@Autowired
-	private ManagerTaskCreateService createService;
+	private ManagersTaskCreateService createService;
 	
 	@Autowired
-	private ManagerTaskUpdateService updateService;
+	private ManagersTaskUpdateService updateService;
 	
 	@Autowired
-	private ManagerTaskDeleteService deleteService;
+	private ManagersTaskDeleteService deleteService;
 	
 	@Autowired
-	private ManagerTaskPublishService publishService;
+	private ManagersTaskPublishService publishService;
 	
 	
 	@PostConstruct

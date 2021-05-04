@@ -3,17 +3,17 @@ package acme.features.authenticated.manager;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.framework.entities.UserAccount;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface AuthenticatedManagerRepository extends AbstractRepository {
+public interface AuthenticatedManagersRepository extends AbstractRepository {
 
 	@Query("select ua from UserAccount ua where ua.id = ?1")
 	UserAccount findOneUserAccountById(int userAccountId);
 
-	@Query("select m from Manager m where m.userAccount.id = ?1")
-	Manager findOneManagerByUserAccountId(int userAccountId);
+	@Query("select m from Managers m where m.userAccount.id = ?1")
+	Managers findOneManagersByUserAccountId(int userAccountId);
 	
 }

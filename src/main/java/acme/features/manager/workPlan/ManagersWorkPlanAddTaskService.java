@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.features.anonymous.task.AnonymousTaskRepository;
@@ -18,10 +18,10 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Manager, WorkPlan> {
+public class ManagersWorkPlanAddTaskService implements AbstractUpdateService<Managers, WorkPlan> {
 
 	@Autowired
-	private ManagerWorkPlanRepository repository;
+	private ManagersWorkPlanRepository repository;
 	
 	@Autowired
 	AnonymousTaskRepository taskRepository;
@@ -32,15 +32,15 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		final boolean result;
 		WorkPlan workplan;
 		int workplanId;
-		Manager manager;
+		Managers Managers;
 		Principal principal;
 		
 		workplanId=request.getModel().getInteger("id");
 		workplan=this.repository.findWorkPlanById(workplanId);
-		manager = workplan.getManager();
+		Managers = workplan.getManagers();
 		principal = request.getPrincipal();
 		
-		result = (manager.getUserAccount().getId() == principal.getAccountId());
+		result = (Managers.getUserAccount().getId() == principal.getAccountId());
 		return result;
 	}
 
@@ -80,18 +80,18 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 			final Collection<Task> ls = wp.getTasks();
 			
 			if(Boolean.TRUE.equals(wp.getIsPublic())) 
-				errors.state(request, task!=null && Boolean.TRUE.equals(task.getIsPublic()), "taskSelected", "manager.workplan.form.addTask.error.public");
+				errors.state(request, task!=null && Boolean.TRUE.equals(task.getIsPublic()), "taskSelected", "Managers.workplan.form.addTask.error.public");
 
 			errors.state(request, task!=null && task.getBegin().after(wp.getBegin()) && task.getEnd().before(wp.getEnd()) && wp.getExecutionPeriod() >= 
 				(ls.stream().mapToDouble(Task::getExecutionPeriod).sum() + task.getExecutionPeriod()), "taskSelected", 
-				"manager.workplan.form.addTask.error.executionPeriod");
+				"Managers.workplan.form.addTask.error.executionPeriod");
 			
-			final Manager manager = wp.getManager();
+			final Managers Managers = wp.getManagers();
 			final Principal principal = request.getPrincipal();
-			final Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+			final Boolean itsMine = Managers.getUserAccount().getId() == principal.getAccountId();
 			final Boolean canPublish= itsMine && wp.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !wp.getIsPublic();
 			
-			List<Task>taskList = this.repository.findTasksAvailable(manager.getId(), wp.getId()).stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toList());
+			List<Task>taskList = this.repository.findTasksAvailable(Managers.getId(), wp.getId()).stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toList());
 				taskList= taskList.stream().filter(x->x.getIsPublic()).collect(Collectors.toList());
 			
 			request.getModel().setAttribute("ItsMine", itsMine);
@@ -100,7 +100,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 			request.getModel().setAttribute("tasksEneabled", taskList);
 			
 		}else {
-			errors.state(request, false , "taskSelected", "manager.workplan.form.addTask.error.task");
+			errors.state(request, false , "taskSelected", "Managers.workplan.form.addTask.error.task");
 		}
 		
 		request.unbind(entity, request.getModel(),  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");

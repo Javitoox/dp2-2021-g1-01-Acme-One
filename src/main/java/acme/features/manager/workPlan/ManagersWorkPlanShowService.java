@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.features.anonymous.task.AnonymousTaskRepository;
@@ -17,10 +17,10 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class ManagerWorkPlanShowService implements AbstractShowService<Manager, WorkPlan>{
+public class ManagersWorkPlanShowService implements AbstractShowService<Managers, WorkPlan>{
 
     @Autowired
-    ManagerWorkPlanRepository managerWorkPlanRepository;
+    ManagersWorkPlanRepository ManagersWorkPlanRepository;
     
 	@Autowired
 	AnonymousTaskRepository taskRepository;
@@ -38,16 +38,16 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
         assert model != null;
         
         int workplanId = request.getModel().getInteger("id");
-		WorkPlan workplan = this.managerWorkPlanRepository.findWorkPlanById(workplanId);
-		Manager manager = workplan.getManager();
+		WorkPlan workplan = this.ManagersWorkPlanRepository.findWorkPlanById(workplanId);
+		Managers Managers = workplan.getManagers();
 		Principal principal = request.getPrincipal();
-		Boolean itsMine = manager.getUserAccount().getId() == principal.getAccountId();
+		Boolean itsMine = Managers.getUserAccount().getId() == principal.getAccountId();
 		Boolean canPublish= itsMine && workplan.getTasks().stream().filter(x-> x.getIsPublic().equals(false)).count() == 0 && !workplan.getIsPublic();
 		//You can publish a workplan if you have created it and all tasks inside are public
 		
 		if(workplan.getTasks().size()>0) {
-			Date recommendedInitialDate = managerWorkPlanRepository.findInitialDateFirstTask(workplanId).get(0);
-			Date recommendedEndDate= managerWorkPlanRepository.findEndDateLastTask(workplanId).get(0);
+			Date recommendedInitialDate = ManagersWorkPlanRepository.findInitialDateFirstTask(workplanId).get(0);
+			Date recommendedEndDate= ManagersWorkPlanRepository.findEndDateLastTask(workplanId).get(0);
 			
 			//Add or substract one day in miliseconds
 			recommendedInitialDate = new Date(recommendedInitialDate.getTime() - (1000 * 60 * 60 * 24));
@@ -62,7 +62,7 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 			model.setAttribute("recommendedEndDate", recommendedEndDate.toString());
 		}
 		
-		List<Task>taskList = managerWorkPlanRepository.findTasksAvailable(manager.getId(), workplanId).stream()
+		List<Task>taskList = ManagersWorkPlanRepository.findTasksAvailable(Managers.getId(), workplanId).stream()
 				.filter(x->!workplan.getTasks().contains(x))
 				.collect(Collectors.toList());
 		
@@ -82,7 +82,7 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
         WorkPlan result;
         int id;
         id = request.getModel().getInteger("id");
-        result = this.managerWorkPlanRepository.findWorkPlanById(id);
+        result = this.ManagersWorkPlanRepository.findWorkPlanById(id);
 
         return result;
 	}

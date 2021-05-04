@@ -7,24 +7,24 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface ManagerWorkPlanRepository extends AbstractRepository {
+public interface ManagersWorkPlanRepository extends AbstractRepository {
 
-	@Query("select w from WorkPlan w where (w.isPublic=1 or w.manager.id =?1)")
+	@Query("select w from WorkPlan w where (w.isPublic=1 or w.Managers.id =?1)")
 	public Collection<WorkPlan>getAllWorkPlans(int id);
 	
 	@Query("select w from WorkPlan w where w.id =?1")
 	public WorkPlan findWorkPlanById(int id);
 
-	@Query("select m from Manager m where m.id = ?1")
-	public Manager findOneManagerById(int activeRoleId);
+	@Query("select m from Managers m where m.id = ?1")
+	public Managers findOneManagersById(int activeRoleId);
 
-	@Query("select t from Task t where (t.isPublic=1 or t.manager.id =?1)")
+	@Query("select t from Task t where (t.isPublic=1 or t.Managers.id =?1)")
 	public Collection<Task> findTasksAvailable(int id, int idWP);
 	
 	@Query("select t.begin from WorkPlan w join w.tasks t where w.id=?1 order by t.begin asc" )

@@ -1,11 +1,11 @@
 # i18n_en.messages
 
-authenticated.manager.form.title.create = Become a manager
-authenticated.manager.form.title.update = Update your manager data
+authenticated.Managers.form.title.create = Become a Managers
+authenticated.Managers.form.title.update = Update your Managers data
 
-authenticated.manager.form.label.company = Company
-authenticated.manager.form.label.sector = Sector
+authenticated.Managers.form.label.company = Company
+authenticated.Managers.form.label.sector = Sector
 
-authenticated.manager.form.button.create = Register
-authenticated.manager.form.button.update = Update
-authenticated.manager.form.button.return = Return
+authenticated.Managers.form.button.create = Register
+authenticated.Managers.form.button.update = Update
+authenticated.Managers.form.button.return = Return
