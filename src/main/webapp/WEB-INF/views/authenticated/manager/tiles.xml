@@ -6,7 +6,7 @@
 
 <tiles-definitions>
 
-	<definition name="authenticated/manager/form" extends="master">
+	<definition name="authenticated/managers/form" extends="master">
 		<put-attribute name="body" type="template" value="../authenticated/manager/form.jsp" />
 	</definition>
 	

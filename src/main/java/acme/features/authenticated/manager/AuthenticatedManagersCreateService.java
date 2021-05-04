@@ -3,7 +3,7 @@ package acme.features.authenticated.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.framework.components.Errors;
 import acme.framework.components.HttpMethod;
 import acme.framework.components.Model;
@@ -16,20 +16,20 @@ import acme.framework.helpers.PrincipalHelper;
 import acme.framework.services.AbstractCreateService;
 
 @Service
-public class AuthenticatedManagerCreateService implements AbstractCreateService<Authenticated, Manager> {
+public class AuthenticatedManagersCreateService implements AbstractCreateService<Authenticated, Managers> {
 
 	@Autowired
-	protected AuthenticatedManagerRepository repository;
+	protected AuthenticatedManagersRepository repository;
 	
 	@Override
-	public boolean authorise(Request<Manager> request) {
+	public boolean authorise(Request<Managers> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void bind(Request<Manager> request, Manager entity, Errors errors) {
+	public void bind(Request<Managers> request, Managers entity, Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -38,7 +38,7 @@ public class AuthenticatedManagerCreateService implements AbstractCreateService<
 	}
 
 	@Override
-	public void unbind(Request<Manager> request, Manager entity, Model model) {
+	public void unbind(Request<Managers> request, Managers entity, Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -47,10 +47,10 @@ public class AuthenticatedManagerCreateService implements AbstractCreateService<
 	}
 
 	@Override
-	public Manager instantiate(Request<Manager> request) {
+	public Managers instantiate(Request<Managers> request) {
 		assert request != null;
 
-		Manager result;
+		Managers result;
 		Principal principal;
 		int userAccountId;
 		UserAccount userAccount;
@@ -59,21 +59,21 @@ public class AuthenticatedManagerCreateService implements AbstractCreateService<
 		userAccountId = principal.getAccountId();
 		userAccount = this.repository.findOneUserAccountById(userAccountId);
 		
-		result = new Manager();
+		result = new Managers();
 		result.setUserAccount(userAccount);
 		
 		return result;
 	}
 
 	@Override
-	public void validate(Request<Manager> request, Manager entity, Errors errors) {
+	public void validate(Request<Managers> request, Managers entity, Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 	}
 
 	@Override
-	public void create(Request<Manager> request, Manager entity) {
+	public void create(Request<Managers> request, Managers entity) {
 		assert request != null;
 		assert entity != null;
 
@@ -81,7 +81,7 @@ public class AuthenticatedManagerCreateService implements AbstractCreateService<
 	}
 
 	@Override
-	public void onSuccess(final Request<Manager> request, final Response<Manager> response) {
+	public void onSuccess(final Request<Managers> request, final Response<Managers> response) {
 		assert request != null;
 		assert response != null;
 

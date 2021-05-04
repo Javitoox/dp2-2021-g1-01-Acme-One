@@ -5,17 +5,17 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.workPlan.WorkPlan;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class ManagerWorkPlanListService  implements AbstractListService<Manager, WorkPlan>{
+public class ManagersWorkPlanListService  implements AbstractListService<Managers, WorkPlan>{
 
     @Autowired
-    ManagerWorkPlanRepository managerWorkPlanRepository;
+    ManagersWorkPlanRepository ManagersWorkPlanRepository;
 	
 	@Override
 	public boolean authorise(Request<WorkPlan> request) {
@@ -28,7 +28,7 @@ public class ManagerWorkPlanListService  implements AbstractListService<Manager,
 	     assert request != null;
 	     assert entity != null;
 	     assert model != null;
-	     model.setAttribute("manager",entity.getManager().getUserAccount().getUsername() );
+	     model.setAttribute("Managers",entity.getManagers().getUserAccount().getUsername() );
 	     request.unbind(entity, model,  "isPublic", "begin", "end", "tasks","title","executionPeriod","workload");
 
 	}
@@ -36,7 +36,7 @@ public class ManagerWorkPlanListService  implements AbstractListService<Manager,
 	@Override
 	public Collection<WorkPlan> findMany(Request<WorkPlan> request) {
 		assert request!=null;
-		return managerWorkPlanRepository.getAllWorkPlans(request.getPrincipal().getActiveRoleId());
+		return ManagersWorkPlanRepository.getAllWorkPlans(request.getPrincipal().getActiveRoleId());
 	}
 
 }

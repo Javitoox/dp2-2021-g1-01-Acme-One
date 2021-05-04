@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -14,10 +14,10 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class ManagerTaskListService implements AbstractListService<Manager, Task>{
+public class ManagersTaskListService implements AbstractListService<Managers, Task>{
 	
 	@Autowired
-	protected ManagerTaskRepository repository;
+	protected ManagersTaskRepository repository;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -40,7 +40,7 @@ public class ManagerTaskListService implements AbstractListService<Manager, Task
 		assert request != null;
 		Collection<Task> result;
 		final Principal principal = request.getPrincipal();
-		result = this.repository.findAllManagerTasks(principal.getUsername()).stream().collect(Collectors.toList());
+		result = this.repository.findAllManagersTasks(principal.getUsername()).stream().collect(Collectors.toList());
 		return result;
 	}
 }

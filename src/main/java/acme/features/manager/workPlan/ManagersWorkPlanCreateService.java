@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.entities.workPlan.WorkPlan;
 import acme.features.anonymous.task.AnonymousTaskRepository;
@@ -17,10 +17,10 @@ import acme.framework.services.AbstractCreateService;
 import acme.services.SpamService;
 
 @Service
-public class ManagerWorkPlanCreateService implements AbstractCreateService<Manager, WorkPlan>{
+public class ManagersWorkPlanCreateService implements AbstractCreateService<Managers, WorkPlan>{
 
 	@Autowired
-	ManagerWorkPlanRepository repository;
+	ManagersWorkPlanRepository repository;
 	
 	@Autowired
 	AnonymousTaskRepository taskRepository;
@@ -59,9 +59,9 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	public WorkPlan instantiate(final Request<WorkPlan> request) {
 		assert request != null;
 
-		final Manager manager = this.repository.findOneManagerById(request.getPrincipal().getActiveRoleId());
+		final Managers Managers = this.repository.findOneManagersById(request.getPrincipal().getActiveRoleId());
 		final WorkPlan workPlan = new WorkPlan();
-		workPlan.setManager(manager);
+		workPlan.setManagers(Managers);
 		workPlan.setTasks(new ArrayList<Task>());
 		
 		return workPlan;
@@ -81,19 +81,19 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		
 		
 		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
-			errors.state(request, end.after(begin), "begin", "manager.workplan.form.error.must-be-before-end");
+			errors.state(request, end.after(begin), "begin", "Managers.workplan.form.error.must-be-before-end");
 		} 
 		if(!errors.hasErrors("begin")) {
-			errors.state(request, begin.after(now), "begin", "manager.workplan.form.error.must-be-in-future");
+			errors.state(request, begin.after(now), "begin", "Managers.workplan.form.error.must-be-in-future");
 		}
 		if(!errors.hasErrors("end")) {
-			errors.state(request, end.after(now), "end", "manager.workplan.form.error.must-be-in-future");
+			errors.state(request, end.after(now), "end", "Managers.workplan.form.error.must-be-in-future");
 		}
 		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
-			errors.state(request, begin.before(end), "end", "manager.workplan.form.error.must-be-after-begin");
+			errors.state(request, begin.before(end), "end", "Managers.workplan.form.error.must-be-after-begin");
 		} 
 		if(!errors.hasErrors("title")) {
-			errors.state(request, !titleSpam,  "title", "manager.workplan.form.error.spam");
+			errors.state(request, !titleSpam,  "title", "Managers.workplan.form.error.spam");
 		}
 		
 		request.getModel().setAttribute("ItsMine", true);

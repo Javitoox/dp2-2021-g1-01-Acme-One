@@ -3,7 +3,7 @@ package acme.features.manager.task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.roles.Manager;
+import acme.entities.roles.Managers;
 import acme.entities.tasks.Task;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -13,10 +13,10 @@ import acme.framework.services.AbstractUpdateService;
 import acme.services.SpamService;
 
 @Service
-public class ManagerTaskPublishService implements AbstractUpdateService<Manager, Task>{
+public class ManagersTaskPublishService implements AbstractUpdateService<Managers, Task>{
 	
 	@Autowired
-	protected ManagerTaskRepository repository;
+	protected ManagersTaskRepository repository;
 	
 	@Autowired
 	protected SpamService spam;
@@ -27,14 +27,14 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		final boolean result;
 		Task task;
 		int taskId;
-		Manager manager;
+		Managers Managers;
 		Principal principal;
 		
 		taskId=request.getModel().getInteger("id");
 		task=this.repository.findOneTaskById(taskId);
-		manager = task.getManager();
+		Managers = task.getManagers();
 		principal = request.getPrincipal();
-		result = manager.getUserAccount().getId() == principal.getAccountId();
+		result = Managers.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -75,7 +75,7 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		assert errors != null;
 		if(entity.getIsPublic().equals(true)) {
 			final int workPlansPublic=this.repository.findNumberOfPublicWorkPlansByTaskId(entity.getId());
-			errors.state(request, workPlansPublic<=0, "title", "manager.task.form.error.worPlan-public");
+			errors.state(request, workPlansPublic<=0, "title", "Managers.task.form.error.worPlan-public");
 		}
 	}
 
