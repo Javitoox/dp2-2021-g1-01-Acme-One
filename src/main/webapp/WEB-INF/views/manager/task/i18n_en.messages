@@ -19,9 +19,11 @@ manager.task.form.error.must-be-less-than-work-period = The workload must be les
 manager.task.form.error.decimal-must-be-under-60 = Decimal must be under 60
 manager.task.form.error.spam = Your text is considered spam, please, use a proper vocabulary
 manager.task.form.error.must-be-after-begin = End must be after begin
+manager.task.form.error.worPlan-public = This task belongs to a public work plan
 
 manager.task.form.button.return = Return
 manager.task.form.button.create = Create
 manager.task.form.button.update = Update
 manager.task.form.button.delete = Delete
 manager.task.form.button.publish = Publish
+manager.task.form.button.unpublish = Privatize

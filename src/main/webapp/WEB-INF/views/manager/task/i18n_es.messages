@@ -19,9 +19,11 @@ manager.task.form.error.must-be-less-than-work-period = La carga de trabajo debe
 manager.task.form.error.decimal-must-be-under-60 = El número decimal debe ser menor a 60
 manager.task.form.error.spam = Tu texto es considerado spam, por favor, usa un vocabulario adecuado
 manager.task.form.error.must-be-after-begin = La fecha de fin debe ser posterior a la fecha de fin
+manager.task.form.error.worPlan-public = Esta tarea pertenece a un plan de trabajo publico
 
 manager.task.form.button.return = Volver
 manager.task.form.button.create = Crear
 manager.task.form.button.update = Actualizar
 manager.task.form.button.delete = Eliminar
 manager.task.form.button.publish = Publicar
+manager.task.form.button.unpublish = Privatizar

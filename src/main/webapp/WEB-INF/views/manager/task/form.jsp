@@ -11,23 +11,29 @@
     <acme:form-double path="workload" code="manager.task.form.label.workload"/>
     <acme:form-url path="link" code="manager.task.form.label.link"/>
     <acme:form-textarea path="description" code="manager.task.form.label.description"/>
-     <jstl:if test="${command=='show' && finalMode=='true'}">
-     <acme:form-double  code="manager.task.form.label.executionPeriod" path="executionPeriod"/>
+    <jstl:if test="${command!='create'}">
+    <acme:form-hidden path="isPublic"/>
+    </jstl:if>
+    <jstl:if test="${command!='create'}">
+    <acme:form-double  code="manager.task.form.label.executionPeriod" path="executionPeriod" readonly="true"/>
     </jstl:if>
     <jstl:if test="${command=='create'}">
     <acme:form-checkbox code="manager.task.form.label.isPublic" path="isPublic"/>
     </jstl:if>
     <acme:form-submit test="${command=='create'}" code="manager.task.form.button.create" 
     action="/manager/task/create"/>
-    <acme:form-submit test= "${command=='show' && isPublic=='false'}" code="manager.task.form.button.update" action="/manager/task/update"/>
-    <acme:form-submit test= "${command=='show' && isPublic=='false'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
+    <acme:form-submit test= "${command=='show'}" code="manager.task.form.button.update" action="/manager/task/update"/>
+    <acme:form-submit test= "${command=='show'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
     <acme:form-submit test= "${command=='show' && isPublic=='false'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>
+    <acme:form-submit test= "${command=='show' && isPublic=='true'}" code="manager.task.form.button.unpublish" action="/manager/task/publish"/>
     <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.update" action="/manager/task/update"/>
     <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
-    <acme:form-submit test="${command == 'update'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>
+    <acme:form-submit test="${command == 'update' && isPublic=='false'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>
+    <acme:form-submit test= "${command=='update' && isPublic=='true'}" code="manager.task.form.button.unpublish" action="/manager/task/publish"/>
     <acme:form-submit test="${command=='publish'}" code="manager.task.form.button.update" action="/manager/task/update"/>
     <acme:form-submit test="${command=='publish'}" code="manager.task.form.button.delete" action="/manager/task/delete"/>
-    <acme:form-submit test= "${command=='publish'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>		
+    <acme:form-submit test= "${command=='publish' && isPublic=='false'}" code="manager.task.form.button.publish" action="/manager/task/publish"/>
+    <acme:form-submit test= "${command=='publish' && isPublic=='true'}" code="manager.task.form.button.unpublish" action="/manager/task/publish"/>		
     <acme:form-return code="manager.task.form.button.return" />
     
 </acme:form>

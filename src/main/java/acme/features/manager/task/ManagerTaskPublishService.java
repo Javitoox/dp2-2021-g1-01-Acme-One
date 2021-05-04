@@ -1,7 +1,5 @@
 package acme.features.manager.task;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +34,7 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		task=this.repository.findOneTaskById(taskId);
 		manager = task.getManager();
 		principal = request.getPrincipal();
-		result = !task.getIsPublic() && manager.getUserAccount().getId() == principal.getAccountId();
+		result = manager.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
@@ -56,8 +54,7 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "begin", "end","description");
-		request.unbind(entity, model, "link", "isPublic", "workload");
+		request.unbind(entity, model, "title", "begin", "end","description","link", "isPublic", "workload", "executionPeriod");
 		model.setAttribute("readonly", false);
 	}
 
@@ -76,37 +73,10 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		final Date now =new Date();
-		final Date begin = entity.getBegin();
-		final Date end = entity.getEnd();
-		
-		final boolean titleSpam = this.spam.isItSpam(entity.getTitle());
-		final boolean descripcionSpam = this.spam.isItSpam(entity.getDescription());
-		final int ent = (int) entity.getWorkload();
-		final double dec = entity.getWorkload() - ent;
-		
-		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
-			errors.state(request, end.after(begin), "begin", "manager.task.form.error.must-be-before-end");
-		} 
-		if(!errors.hasErrors("begin")) {
-			errors.state(request, begin.after(now), "begin", "manager.task.form.error.must-be-in-future");
+		if(entity.getIsPublic().equals(true)) {
+			final int workPlansPublic=this.repository.findNumberOfPublicWorkPlansByTaskId(entity.getId());
+			errors.state(request, workPlansPublic<=0, "title", "manager.task.form.error.worPlan-public");
 		}
-		if(!errors.hasErrors("end")) {
-			errors.state(request, end.after(now), "end", "manager.task.form.error.must-be-in-future");
-		}
-		if(!errors.hasErrors("begin") && !errors.hasErrors("end")) {
-            errors.state(request, begin.before(end), "end", "manager.task.form.error.must-be-after-begin");
-        }
-		if(!errors.hasErrors("begin")&&!errors.hasErrors("end")) {
-			entity.setExecutionPeriod();
-			final double periodo = entity.getExecutionPeriod(); 
-			errors.state(request, periodo>entity.getWorkload(), "workload", "manager.task.form.error.must-be-less-than-work-period");
-			errors.state(request, periodo>entity.getWorkload(), "workload", "("+periodo+")");
-		}
-			errors.state(request, 0.59>=dec, "workload", "manager.task.form.error.decimal-must-be-under-60");
-			errors.state(request, !titleSpam, "title", "manager.task.form.error.spam");
-			errors.state(request, !descripcionSpam, "description", "manager.task.form.error.spam");
-		
 	}
 
 	@Override
@@ -114,8 +84,14 @@ public class ManagerTaskPublishService implements AbstractUpdateService<Manager,
 		assert request != null;
 		assert entity != null;
 		
-		entity.setIsPublic(true);
-		this.repository.save(entity);
+		final Task task = this.repository.findOneTaskById(entity.getId());
+		
+		if(task.getIsPublic().equals(false)) {
+			task.setIsPublic(true);
+		}else {
+			task.setIsPublic(false);	
+		}
+		this.repository.save(task);
 		
 	}
 }
