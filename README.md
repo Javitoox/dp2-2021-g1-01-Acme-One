@@ -1,4 +1,4 @@
-dp2-2021-g1-01-Acme-One
+dp2-2021-g1-23-Acme-Work-Plans
 
 README.txt
 
@@ -17,4 +17,4 @@ projects.
 
 URL GitHub repository: https://github.com/maribelrb22/dp2-2021-g1-01-Acme-One.git
 </br>
-URL Deployed Application: http://app-bbea9840-8907-4987-9ee3-8fced489c191.cleverapps.io/master/welcome
+URL GitHub release: https://github.com/maribelrb22/dp2-2021-g1-01-Acme-One/releases/tag/2.0.0
